@@ -1,0 +1,48 @@
+project:
+  type: website
+  preview:
+    port: 3000
+    browser: false
+
+website:
+  title: "GRETL"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - getstarted.qmd
+      - documentation.qmd
+      - text: "Help"
+        menu:
+          - text: "Report an Issue"
+            icon: bug
+            href: https://github.com/sogis/gretl/issues
+          - text: "Discussions"
+            icon: chat-right-text
+            href: https://fubar.ch/
+          - text: "FAQ"
+            icon: question-circle
+            href: getting_started.ipynb#faq
+
+    right:
+      - icon: github
+        href: https://github.com/sogis/gretl
+        aria-label: GitHub
+  sidebar:
+    style: floating
+    contents: auto
+
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 4
+    grid:
+      sidebar-width: 200px
+      margin-width: 200px
+      body-width: 1000px
+
