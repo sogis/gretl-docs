@@ -12,7 +12,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - getstarted.qmd
+      - getting_started.qmd
       - documentation.qmd
       - text: "Help"
         menu:

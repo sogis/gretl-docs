@@ -4,11 +4,24 @@ page-layout: custom
 section-divs: false
 css: index.css
 toc: false
-image: https://nbdev.fast.ai/images/card.png
-description: Write, test, document, and distribute software packages and technical articles — all in one place, your notebook.
+image: https://fubar.png
+description: Fubar foo bar.
 ---
 
-This is a Quarto website.
+<section class="hero-banner content-block">
+
+# <span style='color:#009AF1'>Extract, transform and load</span><br>with GRETL
+
+### A fast, reliable and agile tool to design and run your ETL processes anywhere.
+
+
+<p>
+    <a href="https://nbdev.fast.ai/getting_started.html" class="btn-action-primary btn-action btn btn-success btn-lg" role="button">Get started</a>
+</p>
+
+</section>
+
+
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
