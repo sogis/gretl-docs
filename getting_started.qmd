@@ -2,4 +2,63 @@
 title: "Get Started"
 ---
 
-About this site
+Download, unzip and validate an INTERLIS transfer file with _GRETL_:
+
+## Java flavour
+
+You need Java 1.8 and [_Gradle_](https://gradle.org) >= 5.1.1 (and < 6) installed on your machine.
+
+Create a _build.gradle_ file and paste the following code into the file:
+
+```groovy
+import java.nio.file.Paths
+import ch.so.agi.gretl.tasks.*
+import ch.so.agi.gretl.api.*
+import de.undercouch.gradle.tasks.download.Download
+
+buildscript {
+    repositories {
+        maven { url "https://jars.interlis.ch" }
+        maven { url "https://repo.osgeo.org/repository/release/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+    }
+}
+
+plugins {
+  id "de.undercouch.download" version "4.1.2"
+  id "ch.so.agi.gretl" version "2.2.+"
+}
+
+defaultTasks 'validateData'
+
+tasks.register('downloadFile', Download) {
+    src "https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip"
+    dest file("2549.ch.so.agi.av.dm01_ch.itf.zip")
+    overwrite true
+}
+
+tasks.register('unzipFile', Copy) {
+    dependsOn 'downloadFile'
+    from zipTree(Paths.get("2549.ch.so.agi.av.dm01_ch.itf.zip"))
+    into file(".")
+    include "**/*.itf"
+}
+
+tasks.register('validateData', IliValidator) {
+    dependsOn 'downloadFile'
+    dataFiles = ["2549.ch.so.agi.av.dm01_ch.itf"]
+}
+```
+
+To run your first GRETL job just type `gradle` in the terminal - in the same directory where you saved the _build.gradle_ file - and hit enter. On the first run, it will download a lot of dependencies (external libraries). Be patient and after downloading everything it will actually run the job and should finish with `BUILD SUCCESSFUL`.
+
+If you want some more logging output, use `gradle -i` and you should see e.g. the well known output from [_ilivalidator_](https://github.com/claeis/ilivalidator).
+
+
+
+
+
+## Docker flavour
+
+You can build your very own image or just use [_docker.io/sogis/gretl:latest_](https://hub.docker.com/repository/docker/sogis/gretl/general).
