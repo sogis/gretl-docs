@@ -4,7 +4,6 @@ page-layout: custom
 section-divs: false
 css: index.css
 toc: false
-image: https://fubar.png
 description: Fubar foo bar.
 ---
 
@@ -15,26 +14,20 @@ description: Fubar foo bar.
 ### A fast, reliable and agile tool to design and run your ETL processes anywhere.
 
 
-<p>
-    <a href="https://nbdev.fast.ai/getting_started.html" class="btn-action-primary btn-action btn btn-success btn-lg" role="button">Get started</a>
-</p>
+```{=html}
+    <p>
+        <a href="getting_started.html" class="btn-action-primary btn-action btn btn-success btn-lg" role="button">Get started</a>
+    </p>
+
+    <div class="quarto-figure quarto-figure-center">
+        <figure class="figure">
+            <p>
+                <a href="images/card.png">
+                    <img src="images/card.png" class="img-fluid figure-img" style="margin-top: 40px; margin-bottom: 40px">
+                </a>
+            </p>
+        </figure>
+    </div>
 
 </section>
-
-
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-Hallo Welt.
-
-::: {.grid}
-
-::: {.g-col-4}
-This column takes 1/3 of the page
-:::
-
-::: {.g-col-8}
-This column takes 2/3 of the page
-:::
-
-:::
+```

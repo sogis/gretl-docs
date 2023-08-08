@@ -25,7 +25,6 @@ website:
           - text: "FAQ"
             icon: question-circle
             href: getting_started.ipynb#faq
-
     right:
       - icon: github
         href: https://github.com/sogis/gretl
@@ -33,7 +32,13 @@ website:
   sidebar:
     style: floating
     contents: auto
-
+  page-footer: 
+    left: "Copyright 2023, Amt für Geoinformation Kanton Solothurn" 
+    right: 
+      - icon: github
+        href: https://github.com/sogis
+      - icon: twitter 
+        href: https://twitter.com/_sogis 
 
 format:
   html:
