@@ -1,0 +1,148 @@
+---
+title: "Deployment"
+order: 2
+---
+
+_GRETL_ kann unterschiedlich deployed werden. Die ETL-Prozesse können somit auf unterschiedlichsten Runtimes ausgeführt werden.
+
+## Lokal
+
+Siehe Beispiele im ["Get Started" Kapitel](getting_started.qmd).
+
+## Jenkins
+
+## Github Actions
+
+Will man einen GRETL-Job als Github Action ausführen, funktioniert folgendes:
+
+In einem Github Repository erstellt man eine _build.gradle_-Datei.
+
+```groovy
+import java.nio.file.Paths
+import ch.so.agi.gretl.tasks.*
+import ch.so.agi.gretl.api.*
+import de.undercouch.gradle.tasks.download.Download
+
+apply plugin: 'ch.so.agi.gretl'
+apply plugin: 'de.undercouch.download'
+
+defaultTasks 'validateData'
+
+tasks.register('downloadFile', Download) {
+    src "https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip"
+    dest file("2549.ch.so.agi.av.dm01_ch.itf.zip")
+    overwrite true
+}
+
+tasks.register('unzipFile', Copy) {
+    dependsOn 'downloadFile'
+    from zipTree(Paths.get("2549.ch.so.agi.av.dm01_ch.itf.zip"))
+    into file(".")
+    include "**/*.itf"
+}
+
+tasks.register('validateData', IliValidator) {
+    dependsOn 'unzipFile'
+    dataFiles = ["2549.ch.so.agi.av.dm01_ch.itf"]
+}
+```
+
+Es muss ein Github Action Workflow erstellt werden:
+
+```yaml
+name: mein_erster_gretljob
+
+on:
+  push
+
+jobs:  
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    container: #<1>
+      image: sogis/gretl:latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run GRETL job
+        run: |
+          gradle -b build.gradle --init-script /home/gradle/init.gradle --no-daemon
+```
+
+
+1. Mit der Anweisung `container` wird der Action mitgeteilt, dass die folgenden Steps _im_ GRETL Dockerimage ausgeführt werden.
+
+Eine leicht komplizierter Workflow könnte so aussehen:
+
+```yaml
+name: mein_zweiter_gretljob
+
+on:
+  workflow_dispatch:                    #<1>
+    inputs:                             #<2>
+      directory:
+        description: 'directory?'
+        required: false
+      fileName:
+        description: 'file name?'
+        required: true
+
+jobs:  
+
+  build:
+
+    env:                                #<3>
+      ORG_GRADLE_PROJECT_awsAccessKeyAgi: ${{secrets.AWS_ACCESS_KEY_ID}}
+      ORG_GRADLE_PROJECT_awsSecretAccessKeyAgi: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: sogis/gretl:latest
+
+    services:                           #<4>
+      postgis:
+        image: postgis/postgis:14-3.3
+        env:
+          POSTGRES_PASSWORD: gretl
+          POSTGRES_USER: gretl
+          POSTGRES_DB: edit
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run GRETL job
+        run: |
+          gradle -b build.gradle --init-script /home/gradle/init.gradle --no-daemon
+        env:                           #<5> 
+          ORG_GRADLE_PROJECT_directory: ${{ github.event.inputs.directory }}
+          ORG_GRADLE_PROJECT_fileName: ${{ github.event.inputs.fileName }}
+          ORG_GRADLE_PROJECT_dbUriEdit: jdbc:postgresql://postgis:5432/edit
+          ORG_GRADLE_PROJECT_dbUserEdit: gretl
+          ORG_GRADLE_PROJECT_dbPwdEdit: gretl
+
+      - name: Upload results                           #<6>
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          path: |
+            out-**.xtf
+            *.log
+```
+
+1. Die Action wird entweder manuell gestartet oder durch einen API-Call.
+2. Es müssen zwei Input-Parameter übergeben werden: `directory` und `fileName`. Letzterer ist zwingend.
+3. Der GRETL-Job kommunziert mit AWS-S3 und benötigt Credentials. Diese werden _Gradle_ als ENV-Variablen bekannt gemacht.
+4. Es wird eine PostGIS-Datenbank als Dockercontainer gestartet, die wir für den ETL-Prozess benötigen.
+5. Weitere Umgebungsvariablen für den GRETL-Job.
+6. Das Resultat des GRETL-Jobs (eine XTF-Datei) und Logfiles werden als Artefakt hochgeladen und stehen dem Benutzer zum Download zur Verfügung.
+
+## Gitlab Pipelines

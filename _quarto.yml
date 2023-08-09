@@ -13,7 +13,15 @@ website:
       - href: index.qmd
         text: Home
       - getting_started.qmd
-      - documentation.qmd
+      - text: "Documentation"
+        menu: 
+          - text: "Reference"
+            href: documentation.qmd
+          - text: "Deployment"
+            href: deployment.qmd
+          - text: "Development"
+            href: development.qmd
+
       - text: "Help"
         menu:
           - text: "Report an Issue"
@@ -21,17 +29,17 @@ website:
             href: https://github.com/sogis/gretl/issues
           - text: "Discussions"
             icon: chat-right-text
-            href: https://fubar.ch/
-          - text: "FAQ"
-            icon: question-circle
-            href: getting_started.ipynb#faq
+            href: https://github.com/sogis/gretl/discussions/
+          # - text: "FAQ"
+          #   icon: question-circle
+          #   href: getting_started.ipynb#faq
     right:
       - icon: github
         href: https://github.com/sogis/gretl
         aria-label: GitHub
-  sidebar:
-    style: floating
-    contents: auto
+  # sidebar:
+  #   style: floating
+  #   contents: auto
   page-footer: 
     left: "Copyright 2023, Amt für Geoinformation Kanton Solothurn" 
     right: 
@@ -49,9 +57,9 @@ format:
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     mainfont: Inter
     toc: true
-    toc-depth: 4
+    toc-depth: 3
     grid:
-      sidebar-width: 200px
-      margin-width: 200px
+      sidebar-width: 300px
+      margin-width: 300px
       body-width: 1000px
 

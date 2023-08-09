@@ -1,5 +1,6 @@
 ---
 title: "Get Started"
+order: 1
 ---
 
 Download, unzip and validate an INTERLIS transfer file with _GRETL_:
@@ -46,7 +47,7 @@ tasks.register('unzipFile', Copy) {
 }
 
 tasks.register('validateData', IliValidator) {
-    dependsOn 'downloadFile'
+    dependsOn 'unzipFile'
     dataFiles = ["2549.ch.so.agi.av.dm01_ch.itf"]
 }
 ```
@@ -55,10 +56,47 @@ To run your first GRETL job just type `gradle` in the terminal - in the same dir
 
 If you want some more logging output, use `gradle -i` and you should see e.g. the well known output from [_ilivalidator_](https://github.com/claeis/ilivalidator).
 
-
-
-
-
 ## Docker flavour
 
-You can build your very own image or just use [_docker.io/sogis/gretl:latest_](https://hub.docker.com/repository/docker/sogis/gretl/general).
+You can build your very own image or just use [_docker.io/sogis/gretl:latest_](https://hub.docker.com/repository/docker/sogis/gretl/general). Since the image makes use of an _init.gradle_ file, the _build.gradle_ file looks a little bit different:
+
+
+```groovy
+import java.nio.file.Paths
+import ch.so.agi.gretl.tasks.*
+import ch.so.agi.gretl.api.*
+import de.undercouch.gradle.tasks.download.Download
+
+apply plugin: 'ch.so.agi.gretl'
+apply plugin: 'de.undercouch.download'
+
+defaultTasks 'validateData'
+
+tasks.register('downloadFile', Download) {
+    src "https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip"
+    dest file("2549.ch.so.agi.av.dm01_ch.itf.zip")
+    overwrite true
+}
+
+tasks.register('unzipFile', Copy) {
+    dependsOn 'downloadFile'
+    from zipTree(Paths.get("2549.ch.so.agi.av.dm01_ch.itf.zip"))
+    into file(".")
+    include "**/*.itf"
+}
+
+tasks.register('validateData', IliValidator) {
+    dependsOn 'unzipFile'
+    dataFiles = ["2549.ch.so.agi.av.dm01_ch.itf"]
+}
+```
+
+Run the following Docker command in the directory where the _build.gradle_ file is stored:
+
+```bash
+docker run -i --rm --name gretl --entrypoint="/bin/sh" -v $PWD:/home/gradle/project sogis/gretl:latest -c gretl
+```
+
+The most important part is the bind mount of the working directory (`$PWD`) to _/home/gradle/project/_ in the image. The image expects the _build.gradle_ file in this specific directory.
+
+If you want it a less verbose - especially if the run command gets more and more omplex by adding more options - you can use e.g. a [shell script](https://raw.githubusercontent.com/sogis/gretljobs/32e1e849332eb46c9b4e480101901de17a984190/start-gretl.sh).
