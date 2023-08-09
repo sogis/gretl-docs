@@ -1,7 +1,7 @@
-# gretlio
+# gretl-docs
 
 ```
-quarto create project gretlio
+quarto create project gretle-docs
 ```
 
 ```
