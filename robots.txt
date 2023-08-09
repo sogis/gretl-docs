@@ -1,1 +1,1 @@
-Sitemap: https://github.com/sogis/gretl-docs/sitemap.xml
+Sitemap: https://gretl.app/sitemap.xml
