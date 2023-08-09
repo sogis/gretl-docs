@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GRETL - Publisher</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">GRETL</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./getting_started.html" rel="" target="">
+ <span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="./documentation.html" rel="" target="">
+ <span class="dropdown-text">Reference</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./deployment.html" rel="" target="">
+ <span class="dropdown-text">Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./development.html" rel="" target="">
+ <span class="dropdown-text">Development</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/issues" rel="" target=""><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/discussions/" rel="" target=""><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Discussions</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis/gretl" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#einbindung-in-einen-typischen-gretl-publikationsjob" id="toc-einbindung-in-einen-typischen-gretl-publikationsjob" class="nav-link active" data-scroll-target="#einbindung-in-einen-typischen-gretl-publikationsjob">Einbindung in einen typischen GRETL-Publikationsjob</a></li>
+  <li><a href="#ablauf" id="toc-ablauf" class="nav-link" data-scroll-target="#ablauf">Ablauf</a></li>
+  <li><a href="#ordnerstruktur-im-ziel-verzeichnis" id="toc-ordnerstruktur-im-ziel-verzeichnis" class="nav-link" data-scroll-target="#ordnerstruktur-im-ziel-verzeichnis">Ordnerstruktur im Ziel-Verzeichnis</a>
+  <ul class="collapse">
+  <li><a href="#gängiger-fall-zwei-modelle-keine-regionen" id="toc-gängiger-fall-zwei-modelle-keine-regionen" class="nav-link" data-scroll-target="#gängiger-fall-zwei-modelle-keine-regionen">Gängiger Fall: Zwei Modelle, keine Regionen</a></li>
+  <li><a href="#abbildung-von-regionen-einteilungen" id="toc-abbildung-von-regionen-einteilungen" class="nav-link" data-scroll-target="#abbildung-von-regionen-einteilungen">Abbildung von Regionen-Einteilungen</a></li>
+  </ul></li>
+  <li><a href="#xtf---xtf" id="toc-xtf---xtf" class="nav-link" data-scroll-target="#xtf---xtf">XTF -&gt; XTF</a></li>
+  <li><a href="#db---xtf" id="toc-db---xtf" class="nav-link" data-scroll-target="#db---xtf">DB -&gt; XTF</a></li>
+  <li><a href="#regionen" id="toc-regionen" class="nav-link" data-scroll-target="#regionen">Regionen</a>
+  <ul class="collapse">
+  <li><a href="#beispiele-für-die-verwendung-von-regionen" id="toc-beispiele-für-die-verwendung-von-regionen" class="nav-link" data-scroll-target="#beispiele-für-die-verwendung-von-regionen">Beispiele für die Verwendung von Regionen</a></li>
+  </ul></li>
+  <li><a href="#verkettung-von-publishern" id="toc-verkettung-von-publishern" class="nav-link" data-scroll-target="#verkettung-von-publishern">Verkettung von Publishern</a></li>
+  <li><a href="#validierung" id="toc-validierung" class="nav-link" data-scroll-target="#validierung">Validierung</a></li>
+  <li><a href="#benutzer-formate-gpkg-dxf-shp" id="toc-benutzer-formate-gpkg-dxf-shp" class="nav-link" data-scroll-target="#benutzer-formate-gpkg-dxf-shp">Benutzer-Formate (GPKG, DXF, SHP)</a></li>
+  <li><a href="#kgdi-service" id="toc-kgdi-service" class="nav-link" data-scroll-target="#kgdi-service">KGDI-Service</a>
+  <ul class="collapse">
+  <li><a href="#beipackzettel-beziehen" id="toc-beipackzettel-beziehen" class="nav-link" data-scroll-target="#beipackzettel-beziehen">Beipackzettel beziehen</a></li>
+  <li><a href="#publikationsdatum-nachführen" id="toc-publikationsdatum-nachführen" class="nav-link" data-scroll-target="#publikationsdatum-nachführen">Publikationsdatum nachführen</a></li>
+  </ul></li>
+  <li><a href="#archiv-aufräumen" id="toc-archiv-aufräumen" class="nav-link" data-scroll-target="#archiv-aufräumen">Archiv aufräumen</a></li>
+  <li><a href="#parameter" id="toc-parameter" class="nav-link" data-scroll-target="#parameter">Parameter</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Publisher</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>GRETL-Task, welcher für Vektordaten die aktuellen Geodaten-Dateien bereitstellt und das Archiv der vorherigen Zeitstände pflegt.</p>
+<section id="einbindung-in-einen-typischen-gretl-publikationsjob" class="level2">
+<h2 class="anchored" data-anchor-id="einbindung-in-einen-typischen-gretl-publikationsjob">Einbindung in einen typischen GRETL-Publikationsjob</h2>
+<p>In den heute vorliegenden Publikationsjobs werden häufig die Daten vom relational aufgebauten Edit-Schema mittels SQL-Queries “flachgewalzt” und ins Pub-Schema kopiert. Die Schema-Struktur wird automatisch mittels <em>ili2pg</em> aus Edit- und Pub-Modell generiert.</p>
+<p>Für den Datenbezug wird das build.gradle mit zwei Aufrufen des Publisher-Task ergänzt:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>defaultTasks <span class="st">'pubProduct'</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>task <span class="fu">pubEdit</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.avt.verkehrszaehlstellen.edit"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transferVZS</span><span class="op">(</span>type<span class="op">:</span> Db2Db<span class="op">,</span> dependsOn<span class="op">:</span> pubEdit<span class="op">){</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>task <span class="fu">pubProduct</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">,</span> dependsOn<span class="op">:</span> transferDenkmal<span class="op">){</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.avt.verkehrszaehlstellen"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bei Problemen mit der Datenqualität der Originaldaten schlägt der Task “pubEdit” fehl. Der Job bricht mit Fehler ab, bevor die Daten irgendwo landen.</p>
+</section>
+<section id="ablauf" class="level2">
+<h2 class="anchored" data-anchor-id="ablauf">Ablauf</h2>
+<p>Der Publisher arbeitet die folgenden Hauptschritte ab:</p>
+<ol type="1">
+<li>Verstecktes Verzeichnis für den Datenstand via FTPS erstellen (.yyyy-MM-dd-UUID/). Kein Abbruch, falls das Verzeichnis vorhanden ist.</li>
+<li>XTFs in Verzeichnis ablegen.
+<ol type="1">
+<li>Für Datenthemen mit Quelle=Datenbank: XTF-Transferdateien exportieren.
+<ol type="1">
+<li>Mit ili2pg das xtf erzeugen</li>
+<li>Prüfung des xtf gegen das Modell. Abbruch bei fatalen Fehlern</li>
+<li>Prüf-Bericht (und evtl. Prüf-Konfiguartion) muss auch mit in die ZIP Datei</li>
+<li>ZIP-Datei publizieren</li>
+</ol></li>
+<li>Für Datenthemen mit Quelle=XTF: XTF in Verzeichnis kopieren.
+<ol type="1">
+<li>Prüfung des xtf gegen das Modell. Abbruch bei fatalen Fehlern</li>
+<li>Prüf-Bericht (und evtl. Prüf-Konfiguartion) muss auch mit in die ZIP Datei</li>
+<li>ZIP-Datei publizieren<br>
+</li>
+</ol></li>
+</ol></li>
+<li>Aus dem Publikations-xtf die Benutzerformate (Geopackage, Shapefile, Dxf) ableiten und ablegen.</li>
+<li>Metadaten sammeln und im Unterordner meta/ ablegen.
+<ol type="1">
+<li>Publikationsdatum</li>
+<li>ili-Dateien</li>
+<li>Beipackzettel (HTML via REST-API vom SIMI-Service beziehen)</li>
+</ol></li>
+<li>Neue Ordnernamen setzen.
+<ol type="1">
+<li>“aktuell” umbenennen auf Ordnername gemäss Datum in publishdate.json und verschieben in “hist”.</li>
+<li>Verstecktes Verzeichnis umbenennen auf aktuell.</li>
+<li>Benutzerformate in “hist” löschen</li>
+</ol></li>
+<li>Publikationsdatum via REST-API in den KGDI-Metadaten nachführen</li>
+<li>Historische Stände ausdünnen.</li>
+</ol>
+</section>
+<section id="ordnerstruktur-im-ziel-verzeichnis" class="level2">
+<h2 class="anchored" data-anchor-id="ordnerstruktur-im-ziel-verzeichnis">Ordnerstruktur im Ziel-Verzeichnis</h2>
+<section id="gängiger-fall-zwei-modelle-keine-regionen" class="level3">
+<h3 class="anchored" data-anchor-id="gängiger-fall-zwei-modelle-keine-regionen">Gängiger Fall: Zwei Modelle, keine Regionen</h3>
+<p>Publikation in den beiden Datenbereitstellungen ch.so.avt.verkehrszaehlstellen und ch.so.avt.verkehrszaehlstellen.edit</p>
+<p>Namenskonvention für die Dateien: [Datenbereitstellungs-Identifier].[Format-Identifier].zip</p>
+<p>data-Verzeichnis:</p>
+<blockquote class="blockquote">
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen/
+<ul>
+<li>aktuell/
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.dxf.zip
+<ul>
+<li>Tabelle1.dxf</li>
+<li>Tabelle2.dxf</li>
+<li>….</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>ch.so.avt.verkehrszaehlstellen.gpkg.zip
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.gpkg</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>ch.so.avt.verkehrszaehlstellen.shp.zip
+<ul>
+<li>Tabelle1.prj</li>
+<li>Tabelle1.shp</li>
+<li>Tabelle1.shx</li>
+<li>Tabelle2.dbf</li>
+<li>Tabelle2.prj</li>
+<li>Tabelle2.shp</li>
+<li>Tabelle2.shx</li>
+<li>….</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>ch.so.avt.verkehrszaehlstellen.xtf.zip
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.xtf</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>meta/
+<ul>
+<li>SO_AVT_Verkehrszaehlstellen_Publikation_20190206.ili</li>
+<li>publishdate.json<br>
+</li>
+<li>datenbeschreibung.html</li>
+</ul></li>
+</ul></li>
+<li>hist/
+<ul>
+<li>2021-04-12/ – intern identisch aufgebaut wie Ordner aktuell/ aber ohne Benutzerformate
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.xtf.zip
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.xtf</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>meta/
+<ul>
+<li>SO_AVT_Verkehrszaehlstellen_Publikation_20190206.ili</li>
+<li>publishdate.json<br>
+</li>
+<li>datenbeschreibung.html</li>
+</ul></li>
+</ul></li>
+<li>2021-03-14/</li>
+<li>…</li>
+</ul></li>
+</ul></li>
+<li>ch.so.avt.verkehrszaehlstellen.edit/
+<ul>
+<li>aktuell/
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.edit.xtf.zip
+<ul>
+<li>ch.so.avt.verkehrszaehlstellen.edit.xtf</li>
+<li>validation.log</li>
+<li>validation.ini</li>
+</ul></li>
+<li>meta/
+<ul>
+<li>SO_AVT_Verkehrszaehlstellen_20190206.ili<br>
+</li>
+<li>publishdate.json<br>
+</li>
+<li>datenbeschreibung.html</li>
+</ul></li>
+</ul></li>
+<li>hist/
+<ul>
+<li>…</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+</section>
+<section id="abbildung-von-regionen-einteilungen" class="level3">
+<h3 class="anchored" data-anchor-id="abbildung-von-regionen-einteilungen">Abbildung von Regionen-Einteilungen</h3>
+<p>Die Regionen werden als Präfix der Dateien abgebildet. Die Ordnerstruktur bleibt gleich. Aufbau Dateiname:<br>
+[Regionen-Identifier].[Datenbereitstellungs-Identifier].[Format-Identifier].zip</p>
+<p>Beispiel AV (Regionen-Identifier ist die BFS-NR):</p>
+<p>data-Verzeichnis:</p>
+<blockquote class="blockquote">
+<ul>
+<li>ch.so.agi.av.mopublic/
+<ul>
+<li>aktuell/
+<ul>
+<li>2501.ch.so.agi.av.mopublic.dxf.zip</li>
+<li>2501.ch.so.agi.av.mopublic.gpkg.zip</li>
+<li>2501.ch.so.agi.av.mopublic.shp.zip</li>
+<li>2501.ch.so.agi.av.mopublic.xtf.zip</li>
+<li>2502.ch.so.agi.av.mopublic.dxf.zip</li>
+<li>2502.ch.so.agi.av.mopublic.gpkg.zip</li>
+<li>2502.ch.so.agi.av.mopublic.shp.zip</li>
+<li>2502.ch.so.agi.av.mopublic.xtf.zip</li>
+<li>…</li>
+<li>meta/
+<ul>
+<li>…<br>
+</li>
+</ul></li>
+</ul></li>
+<li>hist/
+<ul>
+<li>…</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+</section>
+</section>
+<section id="xtf---xtf" class="level2">
+<h2 class="anchored" data-anchor-id="xtf---xtf">XTF -&gt; XTF</h2>
+<p>Falls die Daten bereits als XTF-/ITF-Datei vorliegen, muss die Quelldatei angegeben werden.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"/path/file.xtf"</span><span class="op">)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Die Daten können alternativ zu SFTP in ein lokales Verzeichnis publiziert werden:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span><span class="fu">file</span><span class="op">(</span><span class="st">"/out"</span><span class="op">)]</span>  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"/path/file.xtf"</span><span class="op">)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="db---xtf" class="level2">
+<h2 class="anchored" data-anchor-id="db---xtf">DB -&gt; XTF</h2>
+<p>Falls die Daten in einer ili2db konformen PostgreSQL Datenbank vorliegen, muss die Datenbank angegeben werden und welche Daten (Parameter dataset, modelsToPublish, regions, region) aus der Datenbank exportiert werden sollen.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromDb</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span><span class="st">"uri"</span><span class="op">,</span><span class="st">"user"</span><span class="op">,</span><span class="st">"password"</span><span class="op">]</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    dbSchema <span class="st">"av"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"dataset"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nur bei einfachen Modellen (falls das DB Schema ohne createBasketCol erstellt worden ist), kann der Export alternativ mit dem Parameter modelsToPublish mit Angabe des INTERLIS-Modellnamens erfolgen:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromDb</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span><span class="st">"uri"</span><span class="op">,</span><span class="st">"user"</span><span class="op">,</span><span class="st">"password"</span><span class="op">]</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    dbSchema <span class="st">"av"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    modelsToPublish <span class="op">=</span> <span class="st">"DM01AVCH24LV95D"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="regionen" class="level2">
+<h2 class="anchored" data-anchor-id="regionen">Regionen</h2>
+<p>Falls die Daten bereits als XTF-/ITF-Dateien vorliegen, muss zusätzlich zu einer möglichen Quelldatei (sourcePath) das Dateinamens-Muster (ohne Nameserweiterung (.xtf oder .itf) der Regionen (region) angegeben werden.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"/transferfiles/file.xtf"</span><span class="op">)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[0-9][0-9][0-9][0-9]"</span>  <span class="co">// regex; ersetzt den filename im sourcePath</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Der sourcePath ist wie bei der Verarbeitung eines XTF (ohne Regionen) ein Datei- und nicht ein Ordner-Pfad. Mittels Parameter “region” werden aus allem im Ordner “transferfiles” enthaltenen Transfer-Dateien die zu verarbeitenden selektiert.</p>
+<p>Falls die Daten in einer ili2db konformen PostgreSQL Datenbank vorliegen, muss das Muster der Datensatz-Namen (dataset) angegeben werden (= ein Datensatz pro Region (region)).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromDb</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span><span class="st">"uri"</span><span class="op">,</span><span class="st">"user"</span><span class="op">,</span><span class="st">"password"</span><span class="op">]</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    dbSchema <span class="st">"av"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[0-9][0-9][0-9][0-9]"</span>  <span class="co">// regex; ersetzt das dataset</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Verarbeitet werden alle Datensätze, deren Dateiname (Quelle Transferdatei) oder dataset Name (Quelle DB) auf das in Parameter “region” definierte Muster (regular Expression) zutreffen.</p>
+<section id="beispiele-für-die-verwendung-von-regionen" class="level3">
+<h3 class="anchored" data-anchor-id="beispiele-für-die-verwendung-von-regionen">Beispiele für die Verwendung von Regionen</h3>
+<p>Es können eindeutige Namen oder auch regular expressions verwendet werden.</p>
+<p>Export mit region aus lokaler DB (Nutzungsplanung mit 3 Datasets: 2580, 2581, 2582)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromDb2</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.arp.nutzungsplanung.publishFromDb2"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>dbUriPub<span class="op">,</span> dbUserPub<span class="op">,</span> dbPwdPub<span class="op">]</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dbSchema <span class="op">=</span> <span class="st">"arp_nutzungsplanung_pub_v1"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[2][5][8][0]"</span>         <span class="co">//exportiert Dataset 2580</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"2580"</span>                 <span class="co">//exportiert Dataset 2580</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="dv">2580</span>                   <span class="co">//exportiert Dataset 2580</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[0-9][0-9][0-9][0-9]"</span> <span class="co">//exportiert alle 3 Datasets</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">".*"</span>                   <span class="co">//exportiert alle 3 Datasets</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    userFormats <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    kgdiService <span class="op">=</span> <span class="op">[</span><span class="st">"http://localhost:8080/app/rest"</span><span class="op">,</span><span class="st">"admin"</span><span class="op">,</span><span class="st">"admin"</span><span class="op">]</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>4 xtf-Files: a2581.xtf, c2582.xtf, b2583.xtf, d2584.xtf, lokal im Job-Verzeichnis</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile2</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"publishFile2"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"a2581.xtf"</span><span class="op">)</span> <span class="co">// Angabe zum Ablageort eines der zu publizierenden Files</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[a-d][0-9][0-9][0-9][0-9]"</span>  <span class="co">//alle 4 Files werden publiziert</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[2][5][8][4]"</span>               <span class="co">//d2584.xtf wird publiziert</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    kgdiService <span class="op">=</span> <span class="op">[</span><span class="st">"http://localhost:8080/app/rest"</span><span class="op">,</span><span class="st">"admin"</span><span class="op">,</span><span class="st">"admin"</span><span class="op">]</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="verkettung-von-publishern" class="level2">
+<h2 class="anchored" data-anchor-id="verkettung-von-publishern">Verkettung von Publishern</h2>
+<p>Damit nachfolgende Tasks die Liste der tatsächlich publizierten Regionen auswerten können, kann der Parameter publishedRegions des Tasks Publisher verwendet werden.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"/path/file.xtf"</span><span class="op">)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"[0-9][0-9][0-9][0-9]"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>task <span class="fu">printPublishedRegions</span><span class="op">(</span>dependsOn<span class="op">:</span> publishFile<span class="op">){</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">doLast</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        println publishFile<span class="op">.</span>publishedRegions</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Der Publisher lässt sich somit auch über die zu publizierenden Regionen verketten.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile0</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"../../../../src/test/resources/data/publisher/files/av_test.itf"</span><span class="op">)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    modeldir<span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"../../../../src/test/resources/data/publisher/ili"</span><span class="op">)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    region<span class="op">=</span><span class="st">"[0-9][0-9][0-9][0-9]"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile1</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.pub"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"../../../../src/test/resources/data/publisher/files/av_test.itf"</span><span class="op">)</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    modeldir<span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"../../../../src/test/resources/data/publisher/ili"</span><span class="op">)</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    regions<span class="op">=</span>publishFile0<span class="op">.</span>publishedRegions</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Enthält das aktuelle Verzeichnis schon Daten (von Regionen), werden diese (wie sonst auch historisiert), und danach mit den neuen Regionen ergänzt. Der Parameter publishedRegions enthält nur die neu publizierten Regionen (und nicht alle publizierten Regionen). Auch an den KGDI-Service werden nur die neu publizierten Regionen notifiziert (und nicht alle publizierten Regionen). Die Dateien im meta Unterverzeichnis werden neu erstellt.</p>
+</section>
+<section id="validierung" class="level2">
+<h2 class="anchored" data-anchor-id="validierung">Validierung</h2>
+<p>Die Validierung kann mit einer ilivalidator Konfigurationsdatei konfiguriert werden.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    validationConfig <span class="op">=</span>  <span class="st">"validationConfig.ini"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="benutzer-formate-gpkg-dxf-shp" class="level2">
+<h2 class="anchored" data-anchor-id="benutzer-formate-gpkg-dxf-shp">Benutzer-Formate (GPKG, DXF, SHP)</h2>
+<p>Optional können Benutzerformate (Geopackage, Shapefile, Dxf) erstellt werden. Die Daten müssen in einer entsprechend flachen Struktur vorliegen.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromDb</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span> <span class="st">"sftp://ftp.server.ch/data"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"password"</span> <span class="op">]</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span><span class="st">"uri"</span><span class="op">,</span><span class="st">"user"</span><span class="op">,</span><span class="st">"password"</span><span class="op">]</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    dbSchema <span class="st">"av"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"dataset"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    userFormats <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFromFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    dataIdent <span class="op">=</span> <span class="st">"ch.so.agi.vermessung.edit"</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span><span class="fu">file</span><span class="op">(</span><span class="st">"/out"</span><span class="op">)]</span>  </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    sourcePath <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"/path/file.xtf"</span><span class="op">)</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    userFormats <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Falls das Datenmodell der Quelldaten <code>DM01AVCH24LV95D</code> ist, wird das DXF automatisch in der Geobau-Struktur erstellt und kein Geopackage und kein Shapefile erstellt.</p>
+<p>Die Benutzerformate werden beim Verschieben in den Archiv-Ordner entfernt.</p>
+</section>
+<section id="kgdi-service" class="level2">
+<h2 class="anchored" data-anchor-id="kgdi-service">KGDI-Service</h2>
+<p>Der Service wird benutzt, um:</p>
+<ul>
+<li>den Beipackzettel (im Unterordner <em>meta</em>) zu erstellen/beziehen</li>
+<li>das Publikationsdatum in den Metadaten nachzuführen</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    kgdiTokenService <span class="op">=</span> <span class="op">[</span><span class="st">"http://api.kgdi.ch/metadata"</span><span class="op">,</span><span class="st">"superuser"</span><span class="op">,</span><span class="st">"superpwd"</span><span class="op">]</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    kgdiService <span class="op">=</span> <span class="op">[</span><span class="st">"http://api.kgdi.ch/metadata"</span><span class="op">,</span><span class="st">"user"</span><span class="op">,</span><span class="st">"pwd"</span><span class="op">]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="beipackzettel-beziehen" class="level3">
+<h3 class="anchored" data-anchor-id="beipackzettel-beziehen">Beipackzettel beziehen</h3>
+<pre><code>HTTP GET: endpoint+"/doc?dataident="+dataIdent+"&amp;published="+versionTag</code></pre>
+</section>
+<section id="publikationsdatum-nachführen" class="level3">
+<h3 class="anchored" data-anchor-id="publikationsdatum-nachführen">Publikationsdatum nachführen</h3>
+<pre><code>HTTP PUT: endpoint+"/pubsignal",request</code></pre>
+<p>Der Request-Body “Ohne Regionen”:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"dataIdent"</span><span class="fu">:</span> <span class="st">"ch.so.afu.gewaesserschutz"</span><span class="fu">,</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"published"</span><span class="fu">:</span> <span class="st">"2021-12-23T14:54:49.050062"</span><span class="fu">,</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"publishedBaskets"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"model"</span><span class="fu">:</span> <span class="st">"SO_AGI_MOpublic_20201009"</span><span class="fu">,</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"topic"</span><span class="fu">:</span> <span class="st">"Bodenbedeckung"</span><span class="fu">,</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"basket"</span><span class="fu">:</span> <span class="st">"oltenBID"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"model"</span><span class="fu">:</span> <span class="st">"DM01"</span><span class="fu">,</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"topic"</span><span class="fu">:</span> <span class="st">"Liegenschaften"</span><span class="fu">,</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"basket"</span><span class="fu">:</span> <span class="st">"wangenBID"</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Der Request-Body “Mit Regionen”:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"dataIdent"</span><span class="fu">:</span> <span class="st">"ch.so.afu.gewaesserschutz"</span><span class="fu">,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"published"</span><span class="fu">:</span> <span class="st">"2021-12-23T14:54:49.050062"</span><span class="fu">,</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"publishedRegions"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"region"</span><span class="fu">:</span> <span class="st">"olten"</span><span class="fu">,</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"publishedBaskets"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"model"</span><span class="fu">:</span> <span class="st">"SO_AGI_MOpublic_20201009"</span><span class="fu">,</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"topic"</span><span class="fu">:</span> <span class="st">"Bodenbedeckung"</span><span class="fu">,</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"basket"</span><span class="fu">:</span> <span class="st">"oltenBID"</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"region"</span><span class="fu">:</span> <span class="st">"wangen"</span><span class="fu">,</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"publishedBaskets"</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"model"</span><span class="fu">:</span> <span class="st">"SO_AGI_MOpublic_20201009"</span><span class="fu">,</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"topic"</span><span class="fu">:</span> <span class="st">"Bodenbedeckung"</span><span class="fu">,</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"basket"</span><span class="fu">:</span> <span class="st">"wangenBID"</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="archiv-aufräumen" class="level2">
+<h2 class="anchored" data-anchor-id="archiv-aufräumen">Archiv aufräumen</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishFile</span><span class="op">(</span>type<span class="op">:</span> Publisher<span class="op">){</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    grooming <span class="op">=</span> <span class="st">"grooming.json"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In der Datei grooming.json wird konfiguriert, wie ausgedünnt wird.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"grooming"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"daily"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"from"</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"to"</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"weekly"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"from"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"to"</span><span class="fu">:</span> <span class="dv">4</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"monthly"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"from"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"to"</span><span class="fu">:</span> <span class="dv">52</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"yearly"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"from"</span><span class="fu">:</span> <span class="dv">52</span><span class="fu">,</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"to"</span><span class="fu">:</span> <span class="kw">null</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Die <code>to</code> Angabe muss mit der <code>from</code> Angabe der nächsthöheren Stufe identisch sein (also z.B daily.to=weekly.from). Alle <code>from</code> und <code>to</code> Angaben sind in Tagen. Einzelne Stufen können weggelassen werden. Bei der niedrigsten Stufe (i.d.R. <code>daily</code>) muss <code>from=0</code> sein. Bei der höchsten Stufe (i.d.R. <code>yearly</code>) kann <code>to</code> definiert oder <code>null</code> sein. Falls <code>to</code> definiert ist, wird der älteste Stand beim Erreichen des <code>to</code> Alters gelöscht. Falls bei der höchsten Stufe <code>to=null</code>, wird der älteste Stand nicht gelöscht.</p>
+</section>
+<section id="parameter" class="level2">
+<h2 class="anchored" data-anchor-id="parameter">Parameter</h2>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataIdent</td>
+<td>Identifikator der Daten z.B. “ch.so.agi.vermessung.edit”</td>
+</tr>
+<tr class="even">
+<td>target</td>
+<td>Zielverzeichnis z.B. [ “sftp://ftp.server.ch/data”, “user”, “password” ] oder einfach ein Pfad [file(“/out”)]</td>
+</tr>
+<tr class="odd">
+<td>sourcePath</td>
+<td>Quelldatei z.B. file(“/path/file.xtf”)</td>
+</tr>
+<tr class="even">
+<td>database</td>
+<td>Datenbank mit Quelldaten z.B. [“uri”,“user”,“password”]. Alternative zu sourcePath</td>
+</tr>
+<tr class="odd">
+<td>dbSchema</td>
+<td>Schema in der Datenbank z.B. “av”</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td>ili2db-Datasetname der Quelldaten “dataset” (Das ili2db-Schema muss also immer mit –createBasketCol erstellt werden)</td>
+</tr>
+<tr class="odd">
+<td>modelsToPublish</td>
+<td>Interlis-Modellnamen der Quelldaten in der DB (Nur für “einfache” Modelle, deren ili2db-Schema ohne –createBasketCol erstellt werden kann)</td>
+</tr>
+<tr class="even">
+<td>region</td>
+<td>Muster (Regular Expression) der Dateinamen oder Datasetnamen, falls die Publikation Regionen-weise erfolgt z.B. “[0-9][0-9][0-9][0-9]”. Alternative zum Parameter regions,<br><br>Bei Quelle “Datei” ist die Angabe einer “stellvertretenden” Transferdatei mittels “sourcePath” zwingend. Bsp.: Bei sourcePath “file(”/transferfiles/dummy.xtf”)” werden alle im Ordner “transferfiles” enthaltenen Transferdateien mit dem Muster verglichen und bei “match” selektiert und verarbeitet.</td>
+</tr>
+<tr class="odd">
+<td>regions</td>
+<td>Liste der zu publizierenden Regionen (Dateinamen oder Datasetnamen), falls die Publikation Regionen-weise erfolgen soll. Alternative zum Parameter region</td>
+</tr>
+<tr class="even">
+<td>publishedRegions</td>
+<td>Liste der effektiv publizierten Regionen</td>
+</tr>
+<tr class="odd">
+<td>validationConfig</td>
+<td>Konfiguration für die Validierung (eine ilivalidator-config-Datei) z.B. “validationConfig.ini”</td>
+</tr>
+<tr class="even">
+<td>userFormats</td>
+<td>Benutzerformat (Geopackage, Shapefile, Dxf) erstellen. Default ist false</td>
+</tr>
+<tr class="odd">
+<td>kgdiTokenService</td>
+<td>Endpunkt des Authentifizierung-Services, z.B. [“http://api.kgdi.ch/metadata”,“user”,“pwd”]. Publisher ergänzt die URL mit /v2/oauth/token.</td>
+</tr>
+<tr class="even">
+<td>kgdiService</td>
+<td>Endpunkt des SIMI-Services für die Rückmeldung des Publikationsdatums und die Erstellung des Beipackzettels, z.B. [“http://api.kgdi.ch/metadata”,“user”,“pwd”]. Publisher ergänzt die URL fallabhängig mit /pubsignal respektive /doc.</td>
+</tr>
+<tr class="odd">
+<td>grooming</td>
+<td>Konfiguration für die Ausdünnung z.B. “grooming.json”. Ohne Angabe wird nicht aufgeräumt.</td>
+</tr>
+<tr class="even">
+<td>exportModels</td>
+<td>Das Export-Modell, indem die Daten exportiert werden. Der Parameter wird nur bei der Ausdünnung benötigt. Als Export-Modelle sind Basis-Modelle zulässig.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%ITF_DIR;http://models.interlis.ch/</code>. <code>%ITF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der ITF-Datei.</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Amt für Geoinformation Kanton Solothurn</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/_sogis">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
