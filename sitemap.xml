@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sogis.github.io/gretl-docs/development.html</loc>
-    <lastmod>2023-08-09T15:54:24.712Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/help.html</loc>
+    <lastmod>2023-08-09T15:58:48.652Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/help.html</loc>
-    <lastmod>2023-08-09T15:54:23.520Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/development.html</loc>
+    <lastmod>2023-08-09T15:58:48.004Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/index.html</loc>
-    <lastmod>2023-08-09T15:54:22.761Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/documentation.html</loc>
+    <lastmod>2023-08-09T15:58:47.436Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/documentation.html</loc>
-    <lastmod>2023-08-09T15:54:21.974Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/publisher.html</loc>
+    <lastmod>2023-08-09T15:58:42.188Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/getting_started.html</loc>
-    <lastmod>2023-08-09T15:54:22.411Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/getting_started.html</loc>
+    <lastmod>2023-08-09T15:58:43.932Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/deployment.html</loc>
-    <lastmod>2023-08-09T15:54:23.194Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/index.html</loc>
+    <lastmod>2023-08-09T15:58:47.736Z</lastmod>
   </url>
   <url>
-    <loc>https://sogis.github.io/gretl-docs/publisher.html</loc>
-    <lastmod>2023-08-09T15:54:24.411Z</lastmod>
+    <loc>https://github.com/sogis/gretl-docs/deployment.html</loc>
+    <lastmod>2023-08-09T15:58:48.368Z</lastmod>
   </url>
 </urlset>
