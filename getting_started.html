@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Download, unzip and validate an INTERLIS transfer file with <em>GRETL</em>:</p>
+<p>Let’s start with a simple example: Download, unzip and validate an INTERLIS transfer file:</p>
 <section id="java-flavour" class="level2">
 <h2 class="anchored" data-anchor-id="java-flavour">Java flavour</h2>
 <p>You need Java 1.8 and <a href="https://gradle.org"><em>Gradle</em></a> &gt;= 5.1.1 (and &lt; 6) installed on your machine.</p>
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Run the following Docker command in the directory where the <em>build.gradle</em> file is stored:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-i</span> <span class="at">--rm</span> <span class="at">--name</span> gretl <span class="at">--entrypoint</span><span class="op">=</span><span class="st">"/bin/sh"</span> <span class="at">-v</span> <span class="va">$PWD</span>:/home/gradle/project sogis/gretl:latest <span class="at">-c</span> gretl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The most important part is the bind mount of the working directory (<code>$PWD</code>) to <em>/home/gradle/project/</em> in the image. The image expects the <em>build.gradle</em> file in this specific directory.</p>
-<p>If you want it a less verbose - especially if the run command gets more and more omplex by adding more options - you can use e.g.&nbsp;a <a href="https://raw.githubusercontent.com/sogis/gretljobs/32e1e849332eb46c9b4e480101901de17a984190/start-gretl.sh">shell script</a>.</p>
+<p>If you want it a less verbose - especially if the run command gets more and more complex by adding more options - you can use e.g.&nbsp;a <a href="https://raw.githubusercontent.com/sogis/gretljobs/32e1e849332eb46c9b4e480101901de17a984190/start-gretl.sh">shell script</a>.</p>
 
 
 </section>
