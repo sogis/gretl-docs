@@ -1224,12 +1224,56 @@ Der MetaPublisher dient zum Publizieren von Metadaten/-dateien. Er erstellt eine
 
 Pro Themenpublikation (also pro Publisher-Task) kann resp. muss es auch einen MetaPublisher-Task geben. Informationen zum Thema sind in einer Toml-Datei gespeichert. Diese dient auch zum Überschreiben von Klassen- und Attributbeschreibungen, die aus der Modelldatei gelesen werden. Die GeoJSON-Datei muss im gleichen Verzeichnis wie die Toml-Datei vorliegen.
 
-Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublikation im _meta_-Verzeichnis gespeicher und zusätzlich (damit es für die Datensuche leichter fällt) in einem übergeordneten _config_-Verzeichnis.
+Beispiel einer TOML-Datei:
+
+```toml 
+[meta]
+identifier = "ch.so.afu.abbaustellen"
+title = "Abbaustellen"
+description = """
+Die Abbaustellen umfassen die Flächen folgender Objekte: <br/>
+<ul>
+<li>sämtliche grösseren Abbaugebiete (Kiesgruben, Kalksteinbrüche sowie Tongruben), für welche ein Gestaltungsplan vorliegt. Die dargestellten Flächen umfassen jeweils den gesamten Perimeter der genehmigten Gestaltungspläne, und nicht einzelne Abbauetappen.</li>
+<li>Kleinabbaustellen. Es handelt sich üblicherweise um kleinere, gemeindeeigene Mergelgruben, in welchen Material für den Bau und Unterhalt von Wald- und Flurwegen abgebaut wird. Kleinabbaustellen erfordern keinen Gestaltungsplan. Die dargestellten Flächen umfassen hier jeweils den auf Stufe Bau-, bzw. Abbaubewilligung genehmigten Perimeter.</li>
+<li>alle künftigen Erweiterungs- und Ersatzstandorte, welche im kantonalen Richtplan (Kap. E-3.1 bis E-3.4) enthalten sind.</li>
+</ul>
+<br>
+Die Flächen wurden von verschiedenen Planvorlagen und bestehenden Flächendaten mit unterschiedlichem Massstab digitalisiert, bzw. übernommen.
+"""
+keywords = "unverschmutztes Aushubmaterial"
+synonyms = "Abbaugebiet,Kiesabbau,Kiesgrube,Steinbruch,Kalksteinbruch,Kalksteinbrüche,Tongrube,Kleinabbaustelle,Mergelgrube"
+model = "SO_AFU_ABBAUSTELLEN_Publikation_20221103"
+owner = "ch.so.afu"
+servicer = "ch.so.agi"
+licence = "https://files.geo.so.ch/nutzungsbedingungen.html"
+furtherInformation = "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-umwelt/boden-untergrund-geologie/rohstoffe-abbau/"
+formats = ["XTF", "GPKG", "SHP", "DXF"]
+
+[SO_AFU_ABBAUSTELLEN_Publikation_20221103.Abbaustelle.Abbaustelle]
+title = "Standorte Abbaustellen"
+description = "Umfasst die Flächenobjekte der Abbaugebiete, Kleinabbaustellen und künftigen Standorte. Er enthält u.a. Angaben zum abgebauten Material und zur Abstimmungskategorie im Richtplan."
+```
+
+**_Die Struktur, die möglichen Attribute im TOML und die Auswertelogik können sich noch ändern._**
+
+Ämter ("owner" und "servicer") und Formate werden im TOML nur verlinkt. Die Daten liegen in einer XTF-Datein als Resource in GRETL vor. Das hat heute den Nachteil, dass bei einer Änderung eine neue GRETL-Version installiert werden muss. Zukünft (Idee "Themenrepo") wird das anders gelöst.
+
+Es gibt Attribute ("identifier" und "model"), die redundant sind, wenn es auch einen Publisher-Task gibt. Weil es aber auch MetaPublisher-Tasks ohne einen Publisher-Task geben kann, ist das bis auf weiteres so. Vielleicht könnte man diese beiden Attribute als Task-Property exponieren und sie somit von aussen (über)steuern, wenn es sie gibt.
+
+Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublikation im _meta_-Verzeichnis gespeichert und zusätzlich (damit es für die Datensuche leichter fällt) in einem übergeordneten _config_-Verzeichnis.
+
+Die Informationen zu den Klassen/Tabellen und Attributen wird in erster Linie aus dem Datenmodell gelesen. Das Datenmodell muss in einem INTERLIS-Repo vorliegen oder im gleichen Verzeichnis wie die TOML-Datei gespeichert sein. Der Parser ist (noch) sehr einfach und es wird vor allem der Fokus auf flache Datenmodelle gelegte (keine Beziehungen). Bei Klassen wird das Metaattribut `title` ausgelesen und für den "schönen" Titel der Klasse verwendet. Für die Beschreibung der Klasse wird der Blockkommentar ausgewertet. Beide Informationen können im TOML-File überschrieben werden (siehe Beispiel). Bei Attributen gibt es _kein_ Metaattribut, sondern der Name des Attributes und der Blockkommentar.
+
+Das "gretlEnvironmement"-Property wird verwendet, um zu entscheiden in welche Geocat-Umgebung die Daten hochgeladen werden. Alles ausser `production` landet in der Geocat-Testumgebung.
+
+Vollständige Dokumentation muss noch erfolgen.
+
+Siehe auch die TOML-Beispiele im [Quellcode](https://github.com/sogis/gretl/tree/master/gretl/src/integrationTest/jobs/MetaPublisher).
 
 Beispiele:
 
 ```groovy
-tasks.register('publishMetaFile', MetaPublisher){
+tasks.register('publishMetaFile', MetaPublisher) {
     metaConfigFile = file("meta.toml")
     target = ["sftp://foo.bar.ch", "user", "pwd"]      
     geocatTarget = [Paths.get(project.buildDir.getAbsolutePath(), "geocat").toFile()]
