@@ -2423,19 +2423,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="metapublisher-incubating">MetaPublisher (incubating)</h3>
 <p>Der MetaPublisher dient zum Publizieren von Metadaten/-dateien. Er erstellt eine INTERLIS-Transferdatei pro Themenpublikation für die Datensuche, falls nötig eine GeoJSON-Datei und die Geocat-XML-Datei. Die GeoJSON-Datei ist entweder statisch (für Raster o.ä.) oder dynamisch (z.B. amtliche Vermessung). Bei einer dynamischen GeoJSON-Datei wird das Datum nachgeführt.</p>
 <p>Pro Themenpublikation (also pro Publisher-Task) kann resp. muss es auch einen MetaPublisher-Task geben. Informationen zum Thema sind in einer Toml-Datei gespeichert. Diese dient auch zum Überschreiben von Klassen- und Attributbeschreibungen, die aus der Modelldatei gelesen werden. Die GeoJSON-Datei muss im gleichen Verzeichnis wie die Toml-Datei vorliegen.</p>
-<p>Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublikation im <em>meta</em>-Verzeichnis gespeicher und zusätzlich (damit es für die Datensuche leichter fällt) in einem übergeordneten <em>config</em>-Verzeichnis.</p>
+<p>Beispiel einer TOML-Datei:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">meta</span><span class="kw">]</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">identifier</span> <span class="op">=</span> <span class="st">"ch.so.afu.abbaustellen"</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span> <span class="op">=</span> <span class="st">"Abbaustellen"</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="st">Die Abbaustellen umfassen die Flächen folgender Objekte: &lt;br/&gt;</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;ul&gt;</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;li&gt;sämtliche grösseren Abbaugebiete (Kiesgruben, Kalksteinbrüche sowie Tongruben), für welche ein Gestaltungsplan vorliegt. Die dargestellten Flächen umfassen jeweils den gesamten Perimeter der genehmigten Gestaltungspläne, und nicht einzelne Abbauetappen.&lt;/li&gt;</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;li&gt;Kleinabbaustellen. Es handelt sich üblicherweise um kleinere, gemeindeeigene Mergelgruben, in welchen Material für den Bau und Unterhalt von Wald- und Flurwegen abgebaut wird. Kleinabbaustellen erfordern keinen Gestaltungsplan. Die dargestellten Flächen umfassen hier jeweils den auf Stufe Bau-, bzw. Abbaubewilligung genehmigten Perimeter.&lt;/li&gt;</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;li&gt;alle künftigen Erweiterungs- und Ersatzstandorte, welche im kantonalen Richtplan (Kap. E-3.1 bis E-3.4) enthalten sind.&lt;/li&gt;</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/ul&gt;</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;br&gt;</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="st">Die Flächen wurden von verschiedenen Planvorlagen und bestehenden Flächendaten mit unterschiedlichem Massstab digitalisiert, bzw. übernommen.</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="dt">keywords</span> <span class="op">=</span> <span class="st">"unverschmutztes Aushubmaterial"</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="dt">synonyms</span> <span class="op">=</span> <span class="st">"Abbaugebiet,Kiesabbau,Kiesgrube,Steinbruch,Kalksteinbruch,Kalksteinbrüche,Tongrube,Kleinabbaustelle,Mergelgrube"</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="dt">model</span> <span class="op">=</span> <span class="st">"SO_AFU_ABBAUSTELLEN_Publikation_20221103"</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="dt">owner</span> <span class="op">=</span> <span class="st">"ch.so.afu"</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="dt">servicer</span> <span class="op">=</span> <span class="st">"ch.so.agi"</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="dt">licence</span> <span class="op">=</span> <span class="st">"https://files.geo.so.ch/nutzungsbedingungen.html"</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="dt">furtherInformation</span> <span class="op">=</span> <span class="st">"https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-umwelt/boden-untergrund-geologie/rohstoffe-abbau/"</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="dt">formats</span> <span class="op">=</span> <span class="op">[</span><span class="st">"XTF"</span><span class="op">,</span> <span class="st">"GPKG"</span><span class="op">,</span> <span class="st">"SHP"</span><span class="op">,</span> <span class="st">"DXF"</span><span class="op">]</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">SO_AFU_ABBAUSTELLEN_Publikation_20221103</span><span class="kw">.</span><span class="dt">Abbaustelle</span><span class="kw">.</span><span class="dt">Abbaustelle</span><span class="kw">]</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span> <span class="op">=</span> <span class="st">"Standorte Abbaustellen"</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Umfasst die Flächenobjekte der Abbaugebiete, Kleinabbaustellen und künftigen Standorte. Er enthält u.a. Angaben zum abgebauten Material und zur Abstimmungskategorie im Richtplan."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong><em>Die Struktur, die möglichen Attribute im TOML und die Auswertelogik können sich noch ändern.</em></strong></p>
+<p>Ämter (“owner” und “servicer”) und Formate werden im TOML nur verlinkt. Die Daten liegen in einer XTF-Datein als Resource in GRETL vor. Das hat heute den Nachteil, dass bei einer Änderung eine neue GRETL-Version installiert werden muss. Zukünft (Idee “Themenrepo”) wird das anders gelöst.</p>
+<p>Es gibt Attribute (“identifier” und “model”), die redundant sind, wenn es auch einen Publisher-Task gibt. Weil es aber auch MetaPublisher-Tasks ohne einen Publisher-Task geben kann, ist das bis auf weiteres so. Vielleicht könnte man diese beiden Attribute als Task-Property exponieren und sie somit von aussen (über)steuern, wenn es sie gibt.</p>
+<p>Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublikation im <em>meta</em>-Verzeichnis gespeichert und zusätzlich (damit es für die Datensuche leichter fällt) in einem übergeordneten <em>config</em>-Verzeichnis.</p>
+<p>Die Informationen zu den Klassen/Tabellen und Attributen wird in erster Linie aus dem Datenmodell gelesen. Das Datenmodell muss in einem INTERLIS-Repo vorliegen oder im gleichen Verzeichnis wie die TOML-Datei gespeichert sein. Der Parser ist (noch) sehr einfach und es wird vor allem der Fokus auf flache Datenmodelle gelegte (keine Beziehungen). Bei Klassen wird das Metaattribut <code>title</code> ausgelesen und für den “schönen” Titel der Klasse verwendet. Für die Beschreibung der Klasse wird der Blockkommentar ausgewertet. Beide Informationen können im TOML-File überschrieben werden (siehe Beispiel). Bei Attributen gibt es <em>kein</em> Metaattribut, sondern der Name des Attributes und der Blockkommentar.</p>
+<p>Das “gretlEnvironmement”-Property wird verwendet, um zu entscheiden in welche Geocat-Umgebung die Daten hochgeladen werden. Alles ausser <code>production</code> landet in der Geocat-Testumgebung.</p>
+<p>Vollständige Dokumentation muss noch erfolgen.</p>
+<p>Siehe auch die TOML-Beispiele im <a href="https://github.com/sogis/gretl/tree/master/gretl/src/integrationTest/jobs/MetaPublisher">Quellcode</a>.</p>
 <p>Beispiele:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'publishMetaFile'</span><span class="op">,</span> MetaPublisher<span class="op">){</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    metaConfigFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"meta.toml"</span><span class="op">)</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span><span class="st">"sftp://foo.bar.ch"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"pwd"</span><span class="op">]</span>      </span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    geocatTarget <span class="op">=</span> <span class="op">[</span>Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>project<span class="op">.</span>buildDir<span class="op">.</span><span class="fu">getAbsolutePath</span><span class="op">(),</span> <span class="st">"geocat"</span><span class="op">).</span><span class="fu">toFile</span><span class="op">()]</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'publishMetaFiles'</span><span class="op">,</span> MetaPublisher<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    dependsOn <span class="st">'publishFiles'</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    metaConfigFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"meta-dm01_so.toml"</span><span class="op">)</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span>  </span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    regions <span class="op">=</span> publishFiles<span class="op">.</span>publishedRegions</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'publishMetaFile'</span><span class="op">,</span> MetaPublisher<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    metaConfigFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"meta.toml"</span><span class="op">)</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span><span class="st">"sftp://foo.bar.ch"</span><span class="op">,</span> <span class="st">"user"</span><span class="op">,</span> <span class="st">"pwd"</span><span class="op">]</span>      </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    geocatTarget <span class="op">=</span> <span class="op">[</span>Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>project<span class="op">.</span>buildDir<span class="op">.</span><span class="fu">getAbsolutePath</span><span class="op">(),</span> <span class="st">"geocat"</span><span class="op">).</span><span class="fu">toFile</span><span class="op">()]</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'publishMetaFiles'</span><span class="op">,</span> MetaPublisher<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    dependsOn <span class="st">'publishFiles'</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    metaConfigFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"meta-dm01_so.toml"</span><span class="op">)</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> <span class="op">[</span>project<span class="op">.</span>buildDir<span class="op">]</span>  </span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    regions <span class="op">=</span> publishFiles<span class="op">.</span>publishedRegions</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Im zweiten Beispiel werden die Regionen aus dem vorausgegangenen Publisher-Task als Input verwendet.</p>
 <table class="table">
 <colgroup>
@@ -2474,10 +2507,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Mit dem “MetaPublisher” teilt er sich einiges an Copy/Paste-Code. Man könnte gewissen Aspekte wohl zusammenlegen (z.B. Infos aus INTERLIS-Modell lesen).</p>
 <p>Die INTERLIS-Modelldatei muss entweder in einem (bekannten) Repo sein oder im Verzeichnis der Toml-Datei vorliegen.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishMeta</span><span class="op">(</span>type<span class="op">:</span> OgdMetaPublisher<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    configFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./ch.so.hba.kantonale_gebaeude.toml"</span><span class="op">)</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    outputDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">publishMeta</span><span class="op">(</span>type<span class="op">:</span> OgdMetaPublisher<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    configFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./ch.so.hba.kantonale_gebaeude.toml"</span><span class="op">)</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    outputDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
 <tr class="header">
@@ -2501,11 +2534,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="postgisrasterexport">PostgisRasterExport</h3>
 <p>Exportiert eine PostGIS-Raster-Spalte in eine Raster-Datei mittels SQL-Query. Die SQL-Query darf nur einen Record zurückliefern, d.h. es muss unter Umständen <code>ST_Union()</code> verwendet werden. Es angenommen, dass die erste <em>bytea</em>-Spalte des Resultsets die Rasterdaten enthält. Weitere <em>bytea</em>-Spalten werden ignoriert.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">exportTiff</span><span class="op">(</span>type<span class="op">:</span> PostgisRasterExport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    sqlFile <span class="op">=</span> <span class="st">"raster.sql"</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"export.tif"</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">exportTiff</span><span class="op">(</span>type<span class="op">:</span> PostgisRasterExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    sqlFile <span class="op">=</span> <span class="st">"raster.sql"</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"export.tif"</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2542,15 +2575,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="s3download">S3Download</h3>
 <p>Lädt eine Datei aus einem S3-Bucket herunter.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">downloadFile</span><span class="op">(</span>type<span class="op">:</span> S3Download<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> abcdefg</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> hijklmnopqrstuvwxy</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    downloadDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./path/to/dir/"</span><span class="op">)</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"foo.pdf"</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">downloadFile</span><span class="op">(</span>type<span class="op">:</span> S3Download<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> abcdefg</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> hijklmnopqrstuvwxy</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    downloadDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./path/to/dir/"</span><span class="op">)</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"foo.pdf"</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2599,16 +2632,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Lädt ein Dokument (<code>sourceFile</code>) oder alle Dokumente in einem Verzeichnis (<code>sourceDir</code>) in einen S3-Bucket (<code>bucketName</code>) hoch.</p>
 <p>Mit dem passenden Content-Typ kann man das Verhalten des Browsers steuern. Default ist ‘application/octect-stream’, was dazu führt, dass die Datei immer heruntergeladen wird. Soll z.B. ein PDF oder ein Bild im Browser direkt angezeigt werden, muss der korrekte Content-Typ gewählt werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">uploadDirectory</span><span class="op">(</span>type<span class="op">:</span> S3Upload<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> abcdefg</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> hijklmnopqrstuvwxy</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    sourceDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./docs"</span><span class="op">)</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    contentType <span class="op">=</span> <span class="st">"application/pdf"</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">uploadDirectory</span><span class="op">(</span>type<span class="op">:</span> S3Upload<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> abcdefg</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> hijklmnopqrstuvwxy</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    sourceDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./docs"</span><span class="op">)</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    contentType <span class="op">=</span> <span class="st">"application/pdf"</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2672,13 +2705,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="s3bucket2bucket">S3Bucket2Bucket</h3>
 <p>Kopiert Objekte von einem Bucket in einen anderen. Die Buckets müssen in der gleichen Region sein. Die Permissions werden nicht mitkopiert und müssen explizit gesetzt werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">copyFiles</span><span class="op">(</span>type<span class="op">:</span> S3Bucket2Bucket<span class="op">,</span> dependsOn<span class="op">:</span><span class="st">'directoryupload'</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> s3AccessKey</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> s3SecretKey</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    sourceBucket <span class="op">=</span> s3SourceBucket</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    targetBucket <span class="op">=</span> s3TargetBucket</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">copyFiles</span><span class="op">(</span>type<span class="op">:</span> S3Bucket2Bucket<span class="op">,</span> dependsOn<span class="op">:</span><span class="st">'directoryupload'</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> s3AccessKey</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> s3SecretKey</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    sourceBucket <span class="op">=</span> s3SourceBucket</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    targetBucket <span class="op">=</span> s3TargetBucket</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2722,16 +2755,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="shpexport">ShpExport</h3>
 <p>Daten aus einer bestehenden Datenbanktabelle werden in eine Shp-Datei exportiert.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">shpexport</span><span class="op">(</span>type<span class="op">:</span> ShpExport<span class="op">){</span></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpexport"</span></span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"exportdata"</span></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">shpexport</span><span class="op">(</span>type<span class="op">:</span> ShpExport<span class="op">){</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpexport"</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"exportdata"</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2776,16 +2809,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="shpimport">ShpImport</h3>
 <p>Daten aus einer Shp-Datei in eine bestehende Datenbanktabelle importieren.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">shpimport</span><span class="op">(</span>type<span class="op">:</span> ShpImport<span class="op">){</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpimport"</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"importdata"</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">shpimport</span><span class="op">(</span>type<span class="op">:</span> ShpImport<span class="op">){</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpimport"</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"importdata"</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2832,10 +2865,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="shpvalidator">ShpValidator</h3>
 <p>Prüft eine SHP-Datei gegenüber einem INTERLIS-Modell. Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">validate</span><span class="op">(</span>type<span class="op">:</span> ShpValidator<span class="op">){</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"ShpModel"</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"data.shp"</span><span class="op">]</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">validate</span><span class="op">(</span>type<span class="op">:</span> ShpValidator<span class="op">){</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"ShpModel"</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"data.shp"</span><span class="op">]</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2928,25 +2961,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>In den Fällen 1 und 2 werden Stagingtabellen bzw. ein Stagingschema benötigt, in welche der Db2Db-Task die Daten zuerst 1:1 hineinschreibt. Der SqlExecutor-Task liest danach die Daten von dort, baut sie um und schreibt sie dann ins Zielschema. Die Queries für den SqlExecutor-Task können alle in einem einzelnen .sql-File sein oder (z.B. aus Gründen der Strukturierung oder Organisation) auf mehrere .sql-Dateien verteilt sein. Die Reihenfolge der .sql-Dateien ist relevant. Dies bedeutet, dass die SQL-Befehle des zuerst angegebenen .sql-Datei zuerst ausgeführt werden müssen, danach dies SQL-Befehle des an zweiter Stelle angegebenen .sql-Datei, usw.</p>
 <p>Der SqlExecutor-Task muss neben Updates ganzer Tabellen (d.h. Löschen des gesamten Inhalts einer Tabelle und gesamter neuer Stand in die Tabelle schreiben) auch Updates von Teilen von Tabellen zulassen. D.h. es muss z.B. möglich sein, innerhalb einer Tabelle nur die Objekte einer bestimmten Gemeinde zu aktualisieren. Darum ist es möglich innerhalb der .sql-Datei Paramater zu verwenden und diesen Parametern beim Task einen konkreten Wert zuzuweisen. Innerhalb der .sql-Datei werden Paramter mit folgender Syntax verwendet: <code>${paramName}</code>.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">executeSomeSql</span><span class="op">(</span>type<span class="op">:</span> SqlExecutor<span class="op">){</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">]</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Parametern angegeben werden.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">executeSomeSql</span><span class="op">(</span>type<span class="op">:</span> SqlExecutor<span class="op">){</span></span>
 <span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">],[</span>dataset<span class="op">:</span><span class="st">'Grenchen'</span><span class="op">]]</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">]</span></span>
 <span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
 <span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Parametern angegeben werden.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">executeSomeSql</span><span class="op">(</span>type<span class="op">:</span> SqlExecutor<span class="op">){</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">],[</span>dataset<span class="op">:</span><span class="st">'Grenchen'</span><span class="op">]]</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
@@ -2979,23 +3012,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="xsltransformer-incubating">XslTransformer (incubating)</h3>
 <p><strong>TODO:</strong> Signatur des Tasks. Muss wohl noch andere Möglichkeiten unterstützen: z.B. ganzes Verzeichnis. Wie sieht es mit der Endung aus? Immer XTF (wohl auch nicht)</p>
 <p>Transformiert eine Datei mittels einer XSL-Transformation ein eine andere Datei. Die XSL-Transformation muss im <code>src/main/resources/xslt</code>-Verzeichnis vorliegen.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb61"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"path/to/eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span><span class="op">)</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb62"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span><span class="st">"."</span><span class="op">).</span><span class="fu">matching</span> <span class="op">{</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>        include <span class="st">"*.xml"</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"path/to/eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span><span class="op">)</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span><span class="st">"."</span><span class="op">).</span><span class="fu">matching</span> <span class="op">{</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>        include <span class="st">"*.xml"</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
