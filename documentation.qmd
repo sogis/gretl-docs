@@ -1264,7 +1264,7 @@ Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublika
 
 Die Informationen zu den Klassen/Tabellen und Attributen wird in erster Linie aus dem Datenmodell gelesen. Das Datenmodell muss in einem INTERLIS-Repo vorliegen oder im gleichen Verzeichnis wie die TOML-Datei gespeichert sein. Der Parser ist (noch) sehr einfach und es wird vor allem der Fokus auf flache Datenmodelle gelegte (keine Beziehungen). Bei Klassen wird das Metaattribut `title` ausgelesen und für den "schönen" Titel der Klasse verwendet. Für die Beschreibung der Klasse wird der Blockkommentar ausgewertet. Beide Informationen können im TOML-File überschrieben werden (siehe Beispiel). Bei Attributen gibt es _kein_ Metaattribut, sondern der Name des Attributes und der Blockkommentar.
 
-Das "gretlEnvironmement"-Property wird verwendet, um zu entscheiden in welche Geocat-Umgebung die Daten hochgeladen werden. Alles ausser `production` landet in der Geocat-Testumgebung.
+Das "gretlEnvironmement"-Property wird verwendet, um zu entscheiden in welche Geocat-Umgebung die Daten hochgeladen werden. Alles ausser `production` landet in der Geocat-Testumgebung. Und die "files"- und "data"-URL, die in der XTF- und HTML-Datei ("Datenblatt") landen werden darüber gesteuert.
 
 Vollständige Dokumentation muss noch erfolgen.
 
