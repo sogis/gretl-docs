@@ -1229,7 +1229,7 @@ Mit dem MetaPublisher können auch Daten resp. Datenthemen publiziert werden, di
 Beispiel einer TOML-Datei:
 
 ```toml 
-[meta]
+["meta"]
 identifier = "ch.so.afu.abbaustellen"
 title = "Abbaustellen"
 description = """
@@ -1251,7 +1251,7 @@ licence = "https://files.geo.so.ch/nutzungsbedingungen.html"
 furtherInformation = "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-umwelt/boden-untergrund-geologie/rohstoffe-abbau/"
 formats = ["XTF", "GPKG", "SHP", "DXF"]
 
-[SO_AFU_ABBAUSTELLEN_Publikation_20221103.Abbaustelle.Abbaustelle]
+["SO_AFU_ABBAUSTELLEN_Publikation_20221103.Abbaustelle.Abbaustelle"]
 title = "Standorte Abbaustellen"
 description = "Umfasst die Flächenobjekte der Abbaugebiete, Kleinabbaustellen und künftigen Standorte. Er enthält u.a. Angaben zum abgebauten Material und zur Abstimmungskategorie im Richtplan."
 ```
@@ -1268,7 +1268,9 @@ Die Informationen zu den Klassen/Tabellen und Attributen wird in erster Linie au
 
 Das "gretlEnvironmement"-Property wird verwendet, um zu entscheiden in welche Geocat-Umgebung die Daten hochgeladen werden. Alles ausser `production` landet in der Geocat-Testumgebung. Die "files"- und "data"-URL, die in der XTF- und HTML-Datei ("Datenblatt") landen, werden ebenfalls darüber gesteuert. Die umgebungsabhängigen URL sind hardodiert im MetaPublisherStep-Code.
 
-Man kann die Herstellung der Klassen-/Tabellen-Metainformationen unterdrücken, in dem man in der Section `[config]` das Attribut `printClassDescription` auf `false` setzt. Dies ist zwingend notwendig für Rasterthemen und sinnvoll für Edit-Modelle.
+Man kann die Herstellung der Klassen-/Tabellen-Metainformationen unterdrücken, in dem man in der Section `["config"]` das Attribut `printClassDescription` auf `false` setzt. Dies ist zwingend notwendig für Rasterthemen und sinnvoll für Edit-Modelle.
+
+Das Publikationsdatum kann in der TOML-Datei definiert werden. Fehlt es, wird das aktuelle Datum verwendet.
 
 Regionen: Datenthemen, die in Regionen (Subunits, Datasets) unterteilt sind, benötigen eine GeoJSON-Datei, die Informationen über die einzelnen Regionen enthält (Geometrie, Name, Identifier, Nachführungs- resp. Publikationsdatum). Die GeoJSON-Datei wird vor der Datensuche-Anwendung direkt verwendet. Die GeoJSON-Datei ist entweder statisch oder dynamisch. Die statische GeoJSON-Datei muss nicht nachgeführt werden, bei dynamischen muss in der Regel das Publikationsdatum nachgeführt werden (z.B. amtliche Vermessung oder Nutzungsplanung). Im dynamischen Fall wird geprüft, ob die Datei bereits in der Datenablage publiziert wurde. Ist dies nicht der Fall, wird sie dorthin kopiert. Anschliessend werden die Publikationsdaten nachgeführt. Im statischen Fall wird ebenfalls geprüft, ob sie bereits bereitgestellt wird und gegebenenfalls dorthin kopiert. Ein Rückfluss in das Github-Repo findet nicht statt. D.h. die Datei im Repo ist eher als GeoJSON-Template zu betrachten und nicht als Daten-Master (im dynamischen Fall). Aus der GeoJSON-Datei werden beim Herstellen der XTF-Datei (für die Datensuche) Informationen gelesen. 
 
