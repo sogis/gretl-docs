@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="12" data-code-annotation="1">Mit der Anweisung <code>container</code> wird der Action mitgeteilt, dass die folgenden Steps <em>im</em> GRETL Dockerimage ausgeführt werden.</span>
+<span data-code-lines="12" data-code-annotation="1" data-code-cell="annotated-cell-2">Mit der Anweisung <code>container</code> wird der Action mitgeteilt, dass die folgenden Steps <em>im</em> GRETL Dockerimage ausgeführt werden.</span>
 </dd>
 </dl>
 <p>Eine leicht komplizierter Workflow könnte so aussehen:</p>
@@ -339,27 +339,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="1">Die Action wird entweder manuell gestartet oder durch einen API-Call.</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-3">Die Action wird entweder manuell gestartet oder durch einen API-Call.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="2">Es müssen zwei Input-Parameter übergeben werden: <code>directory</code> und <code>fileName</code>. Letzterer ist zwingend.</span>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-3">Es müssen zwei Input-Parameter übergeben werden: <code>directory</code> und <code>fileName</code>. Letzterer ist zwingend.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="17" data-code-annotation="3">Der GRETL-Job kommunziert mit AWS-S3 und benötigt Credentials. Diese werden <em>Gradle</em> als ENV-Variablen bekannt gemacht.</span>
+<span data-code-lines="17" data-code-annotation="3" data-code-cell="annotated-cell-3">Der GRETL-Job kommunziert mit AWS-S3 und benötigt Credentials. Diese werden <em>Gradle</em> als ENV-Variablen bekannt gemacht.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="26" data-code-annotation="4">Es wird eine PostGIS-Datenbank als Dockercontainer gestartet, die wir für den ETL-Prozess benötigen.</span>
+<span data-code-lines="26" data-code-annotation="4" data-code-cell="annotated-cell-3">Es wird eine PostGIS-Datenbank als Dockercontainer gestartet, die wir für den ETL-Prozess benötigen.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="45" data-code-annotation="5">Weitere Umgebungsvariablen für den GRETL-Job.</span>
+<span data-code-lines="45" data-code-annotation="5" data-code-cell="annotated-cell-3">Weitere Umgebungsvariablen für den GRETL-Job.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="52" data-code-annotation="6">Das Resultat des GRETL-Jobs (eine XTF-Datei) und Logfiles werden als Artefakt hochgeladen und stehen dem Benutzer zum Download zur Verfügung.</span>
+<span data-code-lines="52" data-code-annotation="6" data-code-cell="annotated-cell-3">Das Resultat des GRETL-Jobs (eine XTF-Datei) und Logfiles werden als Artefakt hochgeladen und stehen dem Benutzer zum Download zur Verfügung.</span>
 </dd>
 </dl>
 </section>

@@ -3015,8 +3015,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="xsltransformer-incubating" class="level3">
 <h3 class="anchored" data-anchor-id="xsltransformer-incubating">XslTransformer (incubating)</h3>
-<p><strong>TODO:</strong> Signatur des Tasks. Muss wohl noch andere Möglichkeiten unterstützen: z.B. ganzes Verzeichnis. Wie sieht es mit der Endung aus? Immer XTF (wohl auch nicht)</p>
-<p>Transformiert eine Datei mittels einer XSL-Transformation ein eine andere Datei. Die XSL-Transformation muss im <code>src/main/resources/xslt</code>-Verzeichnis vorliegen.</p>
+<p>Transformiert eine Datei mittels einer XSL-Transformation ein eine andere Datei. Ist der <code>xslFile</code>-Parameter ein String, wird erwartet, dass die Datei im GRETL-Verzeichnis im Ressourcenordner <code>src/main/resources/xslt</code>-Verzeichnis gespeichert ist. Falls der <code>xslFile</code>-Parameter ein File-Objekt ist, können lokale Dateien verwendet werden.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
