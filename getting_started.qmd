@@ -96,7 +96,7 @@ tasks.register('validateData', IliValidator) {
 Run the following Docker command in the directory where the _build.gradle_ file is stored:
 
 ```bash
-docker run -i --rm --name gretl --entrypoint="/bin/sh" -v $PWD:/home/gradle/project sogis/gretl:latest -c gretl
+docker run -i --rm --name gretl --entrypoint="/bin/sh" -v $PWD:/home/gradle/project sogis/gretl:latest -c 'gretl'
 ```
 
 The most important part is the bind mount of the working directory (`$PWD`) to _/home/gradle/project/_ in the image. The image expects the _build.gradle_ file in this specific directory.
