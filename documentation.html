@@ -2220,13 +2220,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">replaceData</span><span class="op">(</span>type<span class="op">:</span> Ili2pgReplace<span class="op">){</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>task <span class="fu">replaceData</span><span class="op">(</span>type<span class="op">:</span> Ili2pgReplace<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Die Parameter sind analog wie bei Ili2pgImport.</p>
+<p>Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt die den Import von Daten in einem ilidata-Repository. Der Dateinamen (<code>dataFile</code>) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss <code>ilidata:</code> vorangestellt werden.</p>
 </section>
 <section id="ili2pgdelete" class="level3">
 <h3 class="anchored" data-anchor-id="ili2pgdelete">Ili2pgDelete</h3>
