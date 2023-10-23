@@ -1073,14 +1073,14 @@ def db_uri = 'jdbc:postgresql://localhost/gretldemo'
 def db_user = "dmluser"
 def db_pass = "dmluser"
 
-task replaceData(type: Ili2pgReplace){
+task replaceData(type: Ili2pgReplace) {
     database = [db_uri, db_user, db_pass]
     dataFile = "lv03_254900.itf"
     dataset = "254900"
     logFile = "ili2pg.log"
 }
 ```
-Die Parameter sind analog wie bei Ili2pgImport.
+Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt die den Import von Daten in einem ilidata-Repository. Der Dateinamen (`dataFile`) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss `ilidata:` vorangestellt werden.
 
 ### Ili2pgDelete
 
