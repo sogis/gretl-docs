@@ -915,6 +915,8 @@ Falls man mehrere Dateien importieren will, diese jedoch erst zur Laufzeit eruie
 
 Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2pgReplace verwendet werden.
 
+Ili2pgImport unterstützt den Import von Daten in einem ilidata-Repository. Der Dateinamen (`dataFile`) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss `ilidata:` vorangestellt werden.
+
 Beispiel 1:
 
 ```groovy
@@ -1080,7 +1082,7 @@ task replaceData(type: Ili2pgReplace) {
     logFile = "ili2pg.log"
 }
 ```
-Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt die den Import von Daten in einem ilidata-Repository. Der Dateinamen (`dataFile`) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss `ilidata:` vorangestellt werden.
+Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt den Import von Daten in einem ilidata-Repository. Der Dateinamen (`dataFile`) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss `ilidata:` vorangestellt werden.
 
 ### Ili2pgDelete
 
