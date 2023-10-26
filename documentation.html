@@ -1806,6 +1806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Falls beim Import ein Datensatz-Identifikator (dataset) definiert wird, darf dieser Datensatz-Identifikator in der Datenbank noch nicht vorhanden sein.</p>
 <p>Falls man mehrere Dateien importieren will, diese jedoch erst zur Laufzeit eruiert werden können, muss der Parameter <code>dataFile</code> eine Gradle <code>FileCollection</code> resp. eine implementierende Klasse (z.B. <code>FileTree</code>) sein. Gleiches gilt für den <code>dataset</code>-Parameter. Als einzelner Wert für das Dataset wird in diesem Fall der Name der Datei <em>ohne</em> Extension und <em>ohne</em> Pfad verwendet. Leider kann nicht bereits in der Task-Definition aus dem Filetree eine Liste gemacht werden, z.B. <code>fileTree(pathToUnzipFolder) { include '*.itf' }.files.name</code>. Diese Liste ist leer.</p>
 <p>Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2pgReplace verwendet werden.</p>
+<p>Ili2pgImport unterstützt den Import von Daten in einem ilidata-Repository. Der Dateinamen (<code>dataFile</code>) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss <code>ilidata:</code> vorangestellt werden.</p>
 <p>Beispiel 1:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
@@ -2226,7 +2227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt die den Import von Daten in einem ilidata-Repository. Der Dateinamen (<code>dataFile</code>) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss <code>ilidata:</code> vorangestellt werden.</p>
+<p>Die Parameter sind analog wie bei Ili2pgImport. Ili2pgReplace unterstützt den Import von Daten in einem ilidata-Repository. Der Dateinamen (<code>dataFile</code>) entspricht dem Identifikator der Datei im Repository. Dem Identifikator muss <code>ilidata:</code> vorangestellt werden.</p>
 </section>
 <section id="ili2pgdelete" class="level3">
 <h3 class="anchored" data-anchor-id="ili2pgdelete">Ili2pgDelete</h3>

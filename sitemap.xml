@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gretl.app/development.html</loc>
-    <lastmod>2023-10-23T15:52:09.990Z</lastmod>
+    <loc>https://gretl.app/documentation.html</loc>
+    <lastmod>2023-10-26T12:42:23.101Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/getting_started.html</loc>
-    <lastmod>2023-10-23T15:52:09.282Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/deployment.html</loc>
-    <lastmod>2023-10-23T15:52:08.450Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/publisher.html</loc>
-    <lastmod>2023-10-23T15:52:02.530Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/documentation.html</loc>
-    <lastmod>2023-10-23T15:52:07.886Z</lastmod>
+    <lastmod>2023-10-26T12:42:18.093Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/help.html</loc>
-    <lastmod>2023-10-23T15:52:08.830Z</lastmod>
+    <lastmod>2023-10-26T12:42:17.301Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gretl.app/publisher.html</loc>
+    <lastmod>2023-10-26T12:42:16.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gretl.app/deployment.html</loc>
+    <lastmod>2023-10-26T12:42:16.933Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/index.html</loc>
-    <lastmod>2023-10-23T15:52:09.642Z</lastmod>
+    <lastmod>2023-10-26T12:42:17.653Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gretl.app/development.html</loc>
+    <lastmod>2023-10-26T12:42:18.433Z</lastmod>
   </url>
 </urlset>
