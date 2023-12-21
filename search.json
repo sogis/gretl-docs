@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "help.html",
+    "href": "help.html",
+    "title": "Help",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "help.html#gaga",
+    "href": "help.html#gaga",
+    "title": "Help",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "help.html#bubu",
+    "href": "help.html#bubu",
+    "title": "Help",
+    "section": "bubu",
+    "text": "bubu\nLorem Ipsum…."
+  },
+  {
+    "objectID": "development.html",
+    "href": "development.html",
+    "title": "Development",
+    "section": "",
+    "text": "tbd"
+  },
+  {
     "objectID": "documentation.html",
     "href": "documentation.html",
     "title": "Documentation",
@@ -39,7 +67,7 @@
     "href": "getting_started.html#java-flavour",
     "title": "Get Started",
     "section": "Java flavour",
-    "text": "Java flavour\nYou need Java 1.8 and Gradle &gt;= 5.1.1 (and &lt; 6) installed on your machine.\nCreate a build.gradle file and paste the following code into the file:\nimport java.nio.file.Paths\nimport ch.so.agi.gretl.tasks.*\nimport ch.so.agi.gretl.api.*\nimport de.undercouch.gradle.tasks.download.Download\n\nbuildscript {\n    repositories {\n        maven { url \"https://jars.interlis.ch\" }\n        maven { url \"https://repo.osgeo.org/repository/release/\" }\n        maven { url \"https://plugins.gradle.org/m2/\" }\n        maven { url \"https://s01.oss.sonatype.org/service/local/repositories/releases/content/\" }\n        maven { url \"https://s01.oss.sonatype.org/service/local/repositories/snapshots/content/\" }\n        mavenCentral()\n    }\n}\n\nplugins {\n  id \"de.undercouch.download\" version \"4.1.2\"\n  id \"ch.so.agi.gretl\" version \"2.2.+\"\n}\n\ndefaultTasks 'validateData'\n\ntasks.register('downloadFile', Download) {\n    src \"https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip\"\n    dest file(\"2549.ch.so.agi.av.dm01_ch.itf.zip\")\n    overwrite true\n}\n\ntasks.register('unzipFile', Copy) {\n    dependsOn 'downloadFile'\n    from zipTree(Paths.get(\"2549.ch.so.agi.av.dm01_ch.itf.zip\"))\n    into file(\".\")\n    include \"**/*.itf\"\n}\n\ntasks.register('validateData', IliValidator) {\n    dependsOn 'unzipFile'\n    dataFiles = [\"2549.ch.so.agi.av.dm01_ch.itf\"]\n}\nTo run your first GRETL job just type gradle in the terminal - in the same directory where you saved the build.gradle file - and hit enter. On the first run, it will download a lot of dependencies (external libraries). Be patient and after downloading everything it will actually run the job and should finish with BUILD SUCCESSFUL.\nIf you want some more logging output, use gradle -i and you should see e.g. the well known output from ilivalidator."
+    "text": "Java flavour\nYou need Java 1.8 and Gradle &gt;= 5.1.1 (and &lt; 6) installed on your machine.\nCreate a build.gradle file and paste the following code into the file:\nimport java.nio.file.Paths\nimport ch.so.agi.gretl.tasks.*\nimport ch.so.agi.gretl.api.*\nimport de.undercouch.gradle.tasks.download.Download\n\nbuildscript {\n    repositories {\n        maven { url \"https://jars.interlis.ch\" }\n        maven { url \"https://repo.osgeo.org/repository/release/\" }\n        maven { url \"https://plugins.gradle.org/m2/\" }\n        maven { url \"https://s01.oss.sonatype.org/service/local/repositories/releases/content/\" }\n        maven { url \"https://s01.oss.sonatype.org/service/local/repositories/snapshots/content/\" }\n        mavenCentral()\n    }\n}\n\nplugins {\n  id \"de.undercouch.download\" version \"4.1.2\"\n  id \"ch.so.agi.gretl\" version \"2.3.426\"\n}\n\ndefaultTasks 'validateData'\n\ntasks.register('downloadFile', Download) {\n    src \"https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip\"\n    dest file(\"2549.ch.so.agi.av.dm01_ch.itf.zip\")\n    overwrite true\n}\n\ntasks.register('unzipFile', Copy) {\n    dependsOn 'downloadFile'\n    from zipTree(Paths.get(\"2549.ch.so.agi.av.dm01_ch.itf.zip\"))\n    into file(\".\")\n    include \"**/*.itf\"\n}\n\ntasks.register('validateData', IliValidator) {\n    dependsOn 'unzipFile'\n    dataFiles = [\"2549.ch.so.agi.av.dm01_ch.itf\"]\n}\nTo run your first GRETL job just type gradle in the terminal - in the same directory where you saved the build.gradle file - and hit enter. On the first run, it will download a lot of dependencies (external libraries). Be patient and after downloading everything it will actually run the job and should finish with BUILD SUCCESSFUL.\nIf you want some more logging output, use gradle -i and you should see e.g. the well known output from ilivalidator."
   },
   {
     "objectID": "getting_started.html#docker-flavour",
@@ -47,27 +75,6 @@
     "title": "Get Started",
     "section": "Docker flavour",
     "text": "Docker flavour\nYou can build your very own image or just use docker.io/sogis/gretl:latest. Since the image makes use of an init.gradle file, the build.gradle file looks a little bit different:\nimport java.nio.file.Paths\nimport ch.so.agi.gretl.tasks.*\nimport ch.so.agi.gretl.api.*\nimport de.undercouch.gradle.tasks.download.Download\n\napply plugin: 'ch.so.agi.gretl'\napply plugin: 'de.undercouch.download'\n\ndefaultTasks 'validateData'\n\ntasks.register('downloadFile', Download) {\n    src \"https://files.geo.so.ch/ch.so.agi.av.dm01_ch/aktuell/2549.ch.so.agi.av.dm01_ch.itf.zip\"\n    dest file(\"2549.ch.so.agi.av.dm01_ch.itf.zip\")\n    overwrite true\n}\n\ntasks.register('unzipFile', Copy) {\n    dependsOn 'downloadFile'\n    from zipTree(Paths.get(\"2549.ch.so.agi.av.dm01_ch.itf.zip\"))\n    into file(\".\")\n    include \"**/*.itf\"\n}\n\ntasks.register('validateData', IliValidator) {\n    dependsOn 'unzipFile'\n    dataFiles = [\"2549.ch.so.agi.av.dm01_ch.itf\"]\n}\nRun the following Docker command in the directory where the build.gradle file is stored:\ndocker run -i --rm --name gretl --entrypoint=\"/bin/sh\" -v $PWD:/home/gradle/project sogis/gretl:latest -c 'gretl'\nThe most important part is the bind mount of the working directory ($PWD) to /home/gradle/project/ in the image. The image expects the build.gradle file in this specific directory.\nIf you want it a less verbose - especially if the run command gets more and more complex by adding more options - you can use e.g. a shell script."
-  },
-  {
-    "objectID": "help.html",
-    "href": "help.html",
-    "title": "Help",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "help.html#gaga",
-    "href": "help.html#gaga",
-    "title": "Help",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "help.html#bubu",
-    "href": "help.html#bubu",
-    "title": "Help",
-    "section": "bubu",
-    "text": "bubu\nLorem Ipsum…."
   },
   {
     "objectID": "publisher.html",
@@ -194,12 +201,5 @@
     "title": "Deployment",
     "section": "Gitlab Pipelines",
     "text": "Gitlab Pipelines"
-  },
-  {
-    "objectID": "development.html",
-    "href": "development.html",
-    "title": "Development",
-    "section": "",
-    "text": "tbd"
   }
 ]
