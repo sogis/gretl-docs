@@ -2539,15 +2539,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="postgisrasterexport" class="level3">
 <h3 class="anchored" data-anchor-id="postgisrasterexport">PostgisRasterExport</h3>
 <p>Exportiert eine PostGIS-Raster-Spalte in eine Raster-Datei mittels SQL-Query. Die SQL-Query darf nur einen Record zurückliefern, d.h. es muss unter Umständen <code>ST_Union()</code> verwendet werden. Es angenommen, dass die erste <em>bytea</em>-Spalte des Resultsets die Rasterdaten enthält. Weitere <em>bytea</em>-Spalten werden ignoriert. Das Outputformat und die Formatoptionen müssen in der SQL-Datei (in der Select-Query) angegeben werden, z.B.:</p>
-<pre><code>SELECT
-    1::int AS foo, ST_AsGDALRaster((ST_AsRaster(ST_Buffer(ST_Point(2607880,1228287),10),150, 150)), 'AAIGrid', ARRAY[''], 2056) AS raster
-;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>:<span class="ch">:int</span> <span class="kw">AS</span> foo, ST_AsGDALRaster((ST_AsRaster(ST_Buffer(ST_Point(<span class="dv">2607880</span>,<span class="dv">1228287</span>),<span class="dv">10</span>),<span class="dv">150</span>, <span class="dv">150</span>)), <span class="st">'AAIGrid'</span>, <span class="dt">ARRAY</span>[<span class="st">''</span>], <span class="dv">2056</span>) <span class="kw">AS</span> raster</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Beispiel:</p>
-<pre><code>task exportTiff(type: PostgisRasterExport) {
-    database = [db_uri, db_user, db_pass]
-    sqlFile = "raster.sql"
-    dataFile = "export.tif"
-}</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">exportTiff</span><span class="op">(</span>type<span class="op">:</span> PostgisRasterExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    sqlFile <span class="op">=</span> <span class="st">"raster.sql"</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"export.tif"</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 34%">
