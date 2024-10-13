@@ -26,7 +26,7 @@ jobs:
           path: gretl
           #ref: V3_0_doclet
           #ref: a5caad39483ee10f9aae5492a5946ca83193b1b7
-          ref: ${{ github.event.inputs.version }}
+          ref: ${{ github.event.inputs.commit }}
 
       - name: Debug
         working-directory: gretl
@@ -92,4 +92,6 @@ jobs:
           aws s3 ls --region fsn1
 
       - name: Publish to S3
-        run: aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --region fsn1
+        run: |
+          aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
+
