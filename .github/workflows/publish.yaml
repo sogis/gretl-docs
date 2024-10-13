@@ -3,7 +3,8 @@ on:
     inputs:
       commit:
         description: 'Commit SHA'
-        required: true
+        required: false
+        default: 'master'
   push:
     branches: main
 
@@ -24,7 +25,8 @@ jobs:
           repository: sogis/gretl
           path: gretl
           #ref: V3_0_doclet
-          ref: a5caad39483ee10f9aae5492a5946ca83193b1b7
+          #ref: a5caad39483ee10f9aae5492a5946ca83193b1b7
+          ref: ${{ github.event.inputs.version }}
 
       - name: Debug 1
         working-directory: gretl
