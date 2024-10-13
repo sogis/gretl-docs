@@ -47,7 +47,7 @@ jobs:
 
       - name: Zip quarto output
         run: |
-          zip -r ${{ github.event.inputs.version }}.zip _site
+          zip -r ${{ github.event.inputs.commit }}.zip _site
 
       - name: Debug 3
         run: |
