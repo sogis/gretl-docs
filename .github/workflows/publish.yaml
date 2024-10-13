@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
     inputs:
-      gretlbranch:
-        description: 'GRETL Branch'
+      commit:
+        description: 'Commit SHA'
         required: true
   push:
     branches: main
@@ -23,7 +23,8 @@ jobs:
         with:
           repository: sogis/gretl
           path: gretl
-          ref: V3_0_doclet
+          #ref: V3_0_doclet
+          ref: a5caad39483ee10f9aae5492a5946ca83193b1b7
 
       - name: Debug 1
         working-directory: gretl
@@ -31,13 +32,13 @@ jobs:
           pwd
           ls -la
 
-      - name: Get commit SHA from GRETL repo
-        working-directory: gretl
-        id: get_commit_sha
-        run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      # - name: Get commit SHA from GRETL repo
+      #   working-directory: gretl
+      #   id: get_commit_sha
+      #   run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
-      - name: Display Commit SHA
-        run: echo "The current commit SHA is ${{ env.COMMIT_SHA }}"
+      # - name: Display Commit SHA
+      #   run: echo "The current commit SHA is ${{ env.COMMIT_SHA }}"
 
 
 
