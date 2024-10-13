@@ -24,7 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Create s3 config file
+      - name: Create s3 config file
         run: |
           echo -e "[default]\nendpoint_url = ${{secrets.HETZNER_S3_ENDPOINT_URL}}" > ~/.aws/config
           echo -e "[default]\naws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}\naws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" > ~/.aws/credentials
