@@ -5,8 +5,8 @@ on:
         description: 'Commit SHA'
         required: false
         default: 'master'
-  push:
-    branches: main
+  # push:
+  #   branches: main
 
 name: Quarto Publish
 
