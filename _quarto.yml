@@ -16,7 +16,7 @@ website:
       - text: "Documentation"
         menu: 
           - text: "Reference"
-            href: documentation.qmd
+            href: reference.qmd
           - text: "Deployment"
             href: deployment.qmd
           - text: "Development"
@@ -41,7 +41,7 @@ website:
   #   style: floating
   #   contents: auto
   page-footer: 
-    left: "Copyright 2023, Amt für Geoinformation Kanton Solothurn" 
+    left: "Copyright 2024, Amt für Geoinformation Kanton Solothurn" 
     right: 
       - icon: github
         href: https://github.com/sogis
@@ -61,5 +61,5 @@ format:
     grid:
       sidebar-width: 300px
       margin-width: 300px
-      body-width: 1000px
+      body-width: 1200px
 

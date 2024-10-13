@@ -1,6 +1,7 @@
 ---
 title: "Publisher"
 order: 2
+search: false
 ---
 
 GRETL-Task, welcher für Vektordaten die aktuellen Geodaten-Dateien bereitstellt und das Archiv der vorherigen Zeitstände pflegt.

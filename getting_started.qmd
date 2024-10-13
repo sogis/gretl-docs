@@ -1,6 +1,7 @@
 ---
 title: "Get Started"
 order: 1
+search: false
 ---
 
 Let's start with a simple example: Download, unzip and validate an INTERLIS transfer file:

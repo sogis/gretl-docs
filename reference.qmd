@@ -1,9 +1,9 @@
 ---
-title: "Documentation"
-order: 2
+title: "Referenzdokumentation"
+order: 1
 ---
 
-Das Datenmanagement-Tool _GRETL_ ist ein Werkzeug, das für Datenimports, Datenumbauten (Modellumbau) und Datenexports eingesetzt wird. _GRETL_ führt Jobs ausy, wobei ein Job aus mehreren atomaren Tasks besteht. Damit ein Job als vollständig ausgeführt gilt, muss jeder zum Job gehörende Task vollständig ausgeführt worden sein. Schlägt ein Task fehl, gilt auch der Job als fehlgeschlagen.
+Das Datenmanagement-Tool _GRETL_ ist ein Werkzeug, das für Datenimports, Datenumbauten (Modellumbau) und Datenexports eingesetzt wird. _GRETL_ führt Jobs aus, wobei ein Job aus mehreren atomaren Tasks besteht. Damit ein Job als vollständig ausgeführt gilt, muss jeder zum Job gehörende Task vollständig ausgeführt worden sein. Schlägt ein Task fehl, gilt auch der Job als fehlgeschlagen.
 
 Ein Job besteht aus einem oder mehreren Tasks, die gemäss einem gerichteten Graphen (Directed Acyclic Graph; DAG) miteinander verknüpft sind.
 
@@ -38,8 +38,8 @@ Die Tasks eines Jobs werden per Konfigurationsfile konfiguriert.
 ## Systemanforderungen
 Um die aktuelle Version von _GRETL_ auszuführen, muss 
 
- - die Java-Laufzeitumgebung (JRE), Version 1.8 oder neuer, und 
- - _Gradle_, Version 5.1 oder neuer, auf dem System installiert sein.
+ - die Java-Laufzeitumgebung (JRE), Version 1.8, und 
+ - _Gradle_, Version 5.1 oder neuer, aber kleiner Version 6, auf dem System installiert sein.
  
 Die Java-Laufzeitumgebung (JRE) kann z.B. [hier](https://adoptium.net/temurin/releases/?version=8) gratis bezogen werden.
 
@@ -66,9 +66,15 @@ gradle
 
 ## Tasks
 
+<!--
+### DummyTask
+
+{{< include srcdoc/_ch.so.agi.gretl.doclet.test.DummyTask.md >}}
+-->
+
 ### Av2ch
 
-Transformiert eine INTERLIS1-Transferdatei im kantonalen AV-DM01-Modell in das Bundesmodell. Unterstützt werden die Sprachen _Deutsch_ und _Italienisch_ und der Bezugrahmen _LV95_. Getestet mit Daten aus den Kantonen Solothurn, Glarus und Tessin. Weitere Informationen sind in der Basisbibliothek zu finden: [https://github.com/sogis/av2ch](https://github.com/sogis/av2ch).
+Transformiert eine INTERLIS-1-Transferdatei im kantonalen AV-DM01-Modell in das Bundesmodell. Unterstützt werden die Sprachen _Deutsch_ und _Italienisch_ und der Bezugrahmen _LV95_. Getestet mit Daten aus den Kantonen Solothurn, Glarus und Tessin. Weitere Informationen sind in der Basisbibliothek zu finden: [https://github.com/sogis/av2ch](https://github.com/sogis/av2ch).
 
 Das Bundes-ITF hat denselben Namen wie das Kantons-ITF.
 
@@ -90,7 +96,7 @@ zip | `Boolean ` | Die zu erstellende Datei wird gezippt (Default: false).
 
 ### Av2geobau
 
-Av2geobau konvertiert eine Interlis-Transferdatei (itf) in eine DXF-Geobau Datei. 
+Av2geobau konvertiert eine INTERLIS-Transferdatei (itf) in eine DXF-Geobau Datei. 
 Av2geobau funktioniert ohne Datenbank.
 
 Die ITF-Datei muss dem Modell DM01AVCH24LV95D entsprechen. Die Daten werden nicht validiert.

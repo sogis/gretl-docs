@@ -1,5 +1,6 @@
 ---
 title: "Help"
+search: false
 ---
 
 ## gaga
