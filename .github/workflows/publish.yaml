@@ -23,3 +23,11 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.HETZNER_S3_SECRET_ACCESS_KEY}}
+          #aws_bucket: ${{ secrets.AWS_BUCKET }}
+          aws_bucket: ch-agi-geodaten-dev
+          source_dir: '_site'
