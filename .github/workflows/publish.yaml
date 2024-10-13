@@ -45,7 +45,7 @@ jobs:
           aws s3 ls --region fsn1
 
       - name: Publish to S3
-        run: aws s3 cp _site s3://ch-agi-geodaten-dev/V_X_Y_Z --recursive
+        run: aws s3 cp _site s3://ch-agi-geodaten-dev/V_X_Y_Z --recursive --region fsn1
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
