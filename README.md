@@ -39,3 +39,9 @@ javadoc {
 quarto preview 
 ```
 
+```
+### DummyTask
+
+{{< include srcdoc/_ch.so.agi.gretl.doclet.test.DummyTask.md >}}
+```
+
