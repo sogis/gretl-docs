@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Documentation – GRETL</title>
+<title>Referenzdokumentation – GRETL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
         <li>
-    <a class="dropdown-item" href="./documentation.html">
+    <a class="dropdown-item" href="./reference.html">
  <span class="dropdown-text">Reference</span></a>
   </li>  
         <li>
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Documentation</h1>
+<h1 class="title">Referenzdokumentation</h1>
 </div>
 
 
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Das Datenmanagement-Tool <em>GRETL</em> ist ein Werkzeug, das für Datenimports, Datenumbauten (Modellumbau) und Datenexports eingesetzt wird. <em>GRETL</em> führt Jobs ausy, wobei ein Job aus mehreren atomaren Tasks besteht. Damit ein Job als vollständig ausgeführt gilt, muss jeder zum Job gehörende Task vollständig ausgeführt worden sein. Schlägt ein Task fehl, gilt auch der Job als fehlgeschlagen.</p>
+<p>Das Datenmanagement-Tool <em>GRETL</em> ist ein Werkzeug, das für Datenimports, Datenumbauten (Modellumbau) und Datenexports eingesetzt wird. <em>GRETL</em> führt Jobs aus, wobei ein Job aus mehreren atomaren Tasks besteht. Damit ein Job als vollständig ausgeführt gilt, muss jeder zum Job gehörende Task vollständig ausgeführt worden sein. Schlägt ein Task fehl, gilt auch der Job als fehlgeschlagen.</p>
 <p>Ein Job besteht aus einem oder mehreren Tasks, die gemäss einem gerichteten Graphen (Directed Acyclic Graph; DAG) miteinander verknüpft sind.</p>
 <p>Ein Job kann aus z.B. aus einer linearen Kette von Tasks bestehen:</p>
 <pre><code>    Task 1 – Task 2 – Task 3 – Task n</code></pre>
@@ -281,8 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="systemanforderungen">Systemanforderungen</h2>
 <p>Um die aktuelle Version von <em>GRETL</em> auszuführen, muss</p>
 <ul>
-<li>die Java-Laufzeitumgebung (JRE), Version 1.8 oder neuer, und</li>
-<li><em>Gradle</em>, Version 5.1 oder neuer, auf dem System installiert sein.</li>
+<li>die Java-Laufzeitumgebung (JRE), Version 1.8, und</li>
+<li><em>Gradle</em>, Version 5.1 oder neuer, aber kleiner Version 6, auf dem System installiert sein.</li>
 </ul>
 <p>Die Java-Laufzeitumgebung (JRE) kann z.B. <a href="https://adoptium.net/temurin/releases/?version=8">hier</a> gratis bezogen werden.</p>
 <p>Die Gradle-Software kann auf der Website <a href="https://gradle.org/install/">https://gradle.org/</a> gratis bezogen werden.</p>
@@ -300,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <section id="av2ch" class="level3">
 <h3 class="anchored" data-anchor-id="av2ch">Av2ch</h3>
-<p>Transformiert eine INTERLIS1-Transferdatei im kantonalen AV-DM01-Modell in das Bundesmodell. Unterstützt werden die Sprachen <em>Deutsch</em> und <em>Italienisch</em> und der Bezugrahmen <em>LV95</em>. Getestet mit Daten aus den Kantonen Solothurn, Glarus und Tessin. Weitere Informationen sind in der Basisbibliothek zu finden: <a href="https://github.com/sogis/av2ch">https://github.com/sogis/av2ch</a>.</p>
+<p>Transformiert eine INTERLIS-1-Transferdatei im kantonalen AV-DM01-Modell in das Bundesmodell. Unterstützt werden die Sprachen <em>Deutsch</em> und <em>Italienisch</em> und der Bezugrahmen <em>LV95</em>. Getestet mit Daten aus den Kantonen Solothurn, Glarus und Tessin. Weitere Informationen sind in der Basisbibliothek zu finden: <a href="https://github.com/sogis/av2ch">https://github.com/sogis/av2ch</a>.</p>
 <p>Das Bundes-ITF hat denselben Namen wie das Kantons-ITF.</p>
 <p>Aufgrund der sehr vielen Logging-Messages einer verwendeten Bibliothek, wird der <code>System.err</code>-Ouput nach <code>dev/null</code> <a href="https://github.com/sogis/av2ch/blob/master/src/main/java/ch/so/agi/av/Av2ch.java#L75">gemappt</a> .</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>task <span class="fu">transform</span><span class="op">(</span>type<span class="op">:</span> Av2ch<span class="op">)</span> <span class="op">{</span></span>
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="av2geobau" class="level3">
 <h3 class="anchored" data-anchor-id="av2geobau">Av2geobau</h3>
-<p>Av2geobau konvertiert eine Interlis-Transferdatei (itf) in eine DXF-Geobau Datei. Av2geobau funktioniert ohne Datenbank.</p>
+<p>Av2geobau konvertiert eine INTERLIS-Transferdatei (itf) in eine DXF-Geobau Datei. Av2geobau funktioniert ohne Datenbank.</p>
 <p>Die ITF-Datei muss dem Modell DM01AVCH24LV95D entsprechen. Die Daten werden nicht validiert.</p>
 <p>Die Datenstruktur der DXF-Datei ist im Prinzip sehr einfach: Die verschiedenen Informationen aus dem Datenmodell DM01 werden in verschiedene DXF-Layer abgebildet, z.B. die begehbaren LFP1 werden in den Layer “01111” abgebildet. Oder die Gebäude in den Layer “01211”.</p>
 <p>Der Datenumbau ist nicht konfigurierbar.</p>
@@ -3506,7 +3506,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2023, Amt für Geoinformation Kanton Solothurn</p>
+<p>Copyright 2024, Amt für Geoinformation Kanton Solothurn</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
