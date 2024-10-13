@@ -17,12 +17,12 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      # - name: Render and Publish
-      #   uses: quarto-dev/quarto-actions/publish@v2
-      #   with:
-      #     target: gh-pages
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create s3 config and credentials file
         run: |
@@ -39,6 +39,9 @@ jobs:
         run: |
           cat ~/.aws/config
           cat ~/.aws/credentials
+
+      - name: Publish to S3
+        run: aws s3 sync _site s3://ch-agi-geodaten-dev/
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
