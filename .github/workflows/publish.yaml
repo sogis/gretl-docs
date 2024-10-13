@@ -34,6 +34,17 @@ jobs:
           pwd
           ls -la
 
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Debug 2
+        run: |
+          pwd
+          ls -la _site
+
       # - name: Get commit SHA from GRETL repo
       #   working-directory: gretl
       #   id: get_commit_sha
