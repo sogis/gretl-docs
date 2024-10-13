@@ -45,6 +45,14 @@ jobs:
           pwd
           ls -la _site
 
+      - name: Zip quarto output
+        run: |
+          zip -r ${{ github.event.inputs.version }}.zip _site
+
+      - name: Debug 3
+        run: |
+          ls -la
+
       # - name: Get commit SHA from GRETL repo
       #   working-directory: gretl
       #   id: get_commit_sha
