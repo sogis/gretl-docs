@@ -26,7 +26,9 @@ jobs:
 
       - name: Create s3 config and credentials file
         run: |
-          mkdir .aws
+          mkdir ~/.aws/
+          touch ~/.aws/config
+          touch ~/.aws/credentials
           echo "[default]\nendpoint_url = ${{secrets.HETZNER_S3_ENDPOINT_URL}}" > ~/.aws/config
           echo "[default]\naws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}\naws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" > ~/.aws/credentials
 
