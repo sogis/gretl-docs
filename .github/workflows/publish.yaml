@@ -30,10 +30,8 @@ jobs:
 
       - name: Debug
         run: |
-          echo foo 
+          echo Commit / Branch: 
           echo ${{ github.event.inputs.commit }}
-          echo bar
-
 
       - name: Debug
         working-directory: gretl
@@ -60,23 +58,13 @@ jobs:
         run: |
           ls -la
 
-      # - name: Get commit SHA from GRETL repo
-      #   working-directory: gretl
-      #   id: get_commit_sha
-      #   run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
-
-      # - name: Display Commit SHA
-      #   run: echo "The current commit SHA is ${{ env.COMMIT_SHA }}"
-
-      # - name: Set up Quarto
-      #   uses: quarto-dev/quarto-actions/setup@v2
-
-      # - name: Render and Publish
-      #   uses: quarto-dev/quarto-actions/publish@v2
-      #   with:
-      #     target: gh-pages
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Render and Publish (only on from GRETL master branch (tbd))
+        if: ${{ github.event.inputs.commit == 'master'}}
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create s3 config and credentials file
         run: |
@@ -98,7 +86,7 @@ jobs:
         run: |
           aws s3 ls --region fsn1
 
-      # - name: Publish to S3
-      #   run: |
-      #     aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
+      - name: Publish to S3
+        run: |
+          aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
 
