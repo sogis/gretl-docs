@@ -31,6 +31,7 @@ jobs:
           touch ~/.aws/credentials
           echo "[default]" > ~/.aws/config
           echo "endpoint_url = ${{secrets.HETZNER_S3_ENDPOINT_URL}}" >> ~/.aws/config
+          echo "s3 = addressing_style = virtual" >> ~/.aws/config
           echo "[default]" > ~/.aws/credentials
           echo "aws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}" >> ~/.aws/credentials
           echo "aws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" >> ~/.aws/credentials
@@ -46,7 +47,7 @@ jobs:
 
 
       - name: Publish to S3
-        run: aws s3 cp reference.qmd s3://ch-agi-geodaten-dev/
+        run: aws s3 cp reference.qmd s3://ch-agi-geodaten-dev/reference.qmd
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
