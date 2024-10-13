@@ -38,7 +38,7 @@ jobs:
 
       - name: Debug 2
         run: |
-          aws s3 ls
+          aws s3 ls --region fsn1
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.HETZNER_S3_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.HETZNER_S3_SECRET_ACCESS_KEY}}
