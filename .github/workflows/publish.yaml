@@ -1,5 +1,9 @@
 on:
   workflow_dispatch:
+    inputs:
+      gretlbranch:
+        description: 'GRETL Branch'
+        required: true
   push:
     branches: main
 
@@ -11,18 +15,41 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Checkout GRETL repo 
+      - uses: actions/checkout@v4
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repository: sogis/gretl
+          path: gretl
+          ref: V3_0_doclet
+
+      - name: Debug 1
+        working-directory: gretl
+        run: |
+          pwd
+          ls -la
+
+      - name: Get commit SHA from GRETL repo
+        working-directory: gretl
+        id: get_commit_sha
+        run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+      - name: Display Commit SHA
+        run: echo "The current commit SHA is ${{ env.COMMIT_SHA }}"
+
+
+
+      # - name: Set up Quarto
+      #   uses: quarto-dev/quarto-actions/setup@v2
+
+      # - name: Render and Publish
+      #   uses: quarto-dev/quarto-actions/publish@v2
+      #   with:
+      #     target: gh-pages
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create s3 config and credentials file
         run: |
@@ -45,7 +72,7 @@ jobs:
           aws s3 ls --region fsn1
 
       - name: Publish to S3
-        run: aws s3 cp _site s3://ch-agi-geodaten-dev/V_X_Y_Z --recursive --region fsn1
+        run: aws s3 cp _site s3://ch-agi-geodaten-dev/Vx_y_z --recursive --region fsn1
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
