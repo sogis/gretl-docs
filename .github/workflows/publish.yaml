@@ -29,6 +29,13 @@ jobs:
           ref: ${{ github.event.inputs.commit }}
 
       - name: Debug
+        run: |
+          echo foo 
+          echo ${{ github.event.inputs.commit }}
+          echo bar
+
+
+      - name: Debug
         working-directory: gretl
         run: |
           pwd
@@ -91,7 +98,7 @@ jobs:
         run: |
           aws s3 ls --region fsn1
 
-      - name: Publish to S3
-        run: |
-          aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
+      # - name: Publish to S3
+      #   run: |
+      #     aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
 
