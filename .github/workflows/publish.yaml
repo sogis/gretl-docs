@@ -40,8 +40,13 @@ jobs:
           cat ~/.aws/config
           cat ~/.aws/credentials
 
+      - name: Debug 2
+        run: |
+          aws s3 ls
+
+
       - name: Publish to S3
-        run: aws s3 sync _site s3://ch-agi-geodaten-dev/
+        run: aws s3 cp reference.qmd s3://ch-agi-geodaten-dev/
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
