@@ -17,12 +17,12 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Render and Publish
+      #   uses: quarto-dev/quarto-actions/publish@v2
+      #   with:
+      #     target: gh-pages
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create s3 config and credentials file
         run: |
@@ -31,11 +31,14 @@ jobs:
           touch ~/.aws/credentials
           echo "[default]" > ~/.aws/config
           echo "endpoint_url = ${{secrets.HETZNER_S3_ENDPOINT_URL}}" >> ~/.aws/config
-          echo "[default]\naws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}\naws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" > ~/.aws/credentials
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" >> ~/.aws/credentials
 
       - name: Debug 1
         run: |
           cat ~/.aws/config
+          cat ~/.aws/credentials
 
         # with:
         #   aws_key_id: ${{ secrets.HETZNER_S3_KEY_ID }}
