@@ -28,20 +28,21 @@ jobs:
         run: |
           mkdir ~/.aws/
           touch ~/.aws/config
+          touch ~/.aws/credentials
           echo "[default]" > ~/.aws/config
-          echo "endpoint_url = https://fsn1.your-objectstorage.com" >> ~/.aws/config
-
+          echo "endpoint_url = ${{secrets.HETZNER_S3_ENDPOINT_URL}}" >> ~/.aws/config
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{secrets.HETZNER_S3_KEY_ID}}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{secrets.HETZNER_S3_SECRET_ACCESS_KEY}}" >> ~/.aws/credentials
 
       - name: Debug 1
         run: |
           cat ~/.aws/config
+          cat ~/.aws/credentials
 
       - name: Debug 2
         run: |
           aws s3 ls --region fsn1
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.HETZNER_S3_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.HETZNER_S3_SECRET_ACCESS_KEY}}
 
 
       - name: Publish to S3
