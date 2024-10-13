@@ -1,0 +1,3502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>index – GRETL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">GRETL</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../getting_started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../../reference.html">
+ <span class="dropdown-text">Reference</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../deployment.html">
+ <span class="dropdown-text">Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../development.html">
+ <span class="dropdown-text">Development</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/discussions/"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Discussions</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis/gretl"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#gretl-benutzer-handbuch" id="toc-gretl-benutzer-handbuch" class="nav-link active" data-scroll-target="#gretl-benutzer-handbuch">GRETL-Benutzer-Handbuch</a>
+  <ul class="collapse">
+  <li><a href="#kleines-beispiel" id="toc-kleines-beispiel" class="nav-link" data-scroll-target="#kleines-beispiel">Kleines Beispiel</a></li>
+  <li><a href="#systemanforderungen" id="toc-systemanforderungen" class="nav-link" data-scroll-target="#systemanforderungen">Systemanforderungen</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#ausführen" id="toc-ausführen" class="nav-link" data-scroll-target="#ausführen">Ausführen</a></li>
+  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
+  <ul class="collapse">
+  <li><a href="#av2ch" id="toc-av2ch" class="nav-link" data-scroll-target="#av2ch">Av2ch</a></li>
+  <li><a href="#av2geobau" id="toc-av2geobau" class="nav-link" data-scroll-target="#av2geobau">Av2geobau</a></li>
+  <li><a href="#csv2excel-incubating" id="toc-csv2excel-incubating" class="nav-link" data-scroll-target="#csv2excel-incubating">Csv2Excel (incubating)</a></li>
+  <li><a href="#csv2parquet-incubating" id="toc-csv2parquet-incubating" class="nav-link" data-scroll-target="#csv2parquet-incubating">Csv2Parquet (incubating)</a></li>
+  <li><a href="#csvexport" id="toc-csvexport" class="nav-link" data-scroll-target="#csvexport">CsvExport</a></li>
+  <li><a href="#csvimport" id="toc-csvimport" class="nav-link" data-scroll-target="#csvimport">CsvImport</a></li>
+  <li><a href="#csvvalidator" id="toc-csvvalidator" class="nav-link" data-scroll-target="#csvvalidator">CsvValidator</a></li>
+  <li><a href="#curl" id="toc-curl" class="nav-link" data-scroll-target="#curl">Curl</a></li>
+  <li><a href="#databasedocumentexport-experimental" id="toc-databasedocumentexport-experimental" class="nav-link" data-scroll-target="#databasedocumentexport-experimental">DatabaseDocumentExport (Experimental)</a></li>
+  <li><a href="#db2db" id="toc-db2db" class="nav-link" data-scroll-target="#db2db">Db2Db</a></li>
+  <li><a href="#ftpdelete" id="toc-ftpdelete" class="nav-link" data-scroll-target="#ftpdelete">FtpDelete</a></li>
+  <li><a href="#ftpdownload" id="toc-ftpdownload" class="nav-link" data-scroll-target="#ftpdownload">FtpDownload</a></li>
+  <li><a href="#ftplist" id="toc-ftplist" class="nav-link" data-scroll-target="#ftplist">FtpList</a></li>
+  <li><a href="#gpkg2dxf" id="toc-gpkg2dxf" class="nav-link" data-scroll-target="#gpkg2dxf">Gpkg2Dxf</a></li>
+  <li><a href="#gpkgexport" id="toc-gpkgexport" class="nav-link" data-scroll-target="#gpkgexport">GpkgExport</a></li>
+  <li><a href="#gpkgimport" id="toc-gpkgimport" class="nav-link" data-scroll-target="#gpkgimport">GpkgImport</a></li>
+  <li><a href="#gpkg2shp" id="toc-gpkg2shp" class="nav-link" data-scroll-target="#gpkg2shp">Gpkg2Shp</a></li>
+  <li><a href="#gpkgvalidator" id="toc-gpkgvalidator" class="nav-link" data-scroll-target="#gpkgvalidator">GpkgValidator</a></li>
+  <li><a href="#gzip" id="toc-gzip" class="nav-link" data-scroll-target="#gzip">Gzip</a></li>
+  <li><a href="#ili2gpkgimport" id="toc-ili2gpkgimport" class="nav-link" data-scroll-target="#ili2gpkgimport">Ili2gpkgImport</a></li>
+  <li><a href="#ili2pgexport" id="toc-ili2pgexport" class="nav-link" data-scroll-target="#ili2pgexport">Ili2pgExport</a></li>
+  <li><a href="#ili2pgimport" id="toc-ili2pgimport" class="nav-link" data-scroll-target="#ili2pgimport">Ili2pgImport</a></li>
+  <li><a href="#ili2pgimportschema" id="toc-ili2pgimportschema" class="nav-link" data-scroll-target="#ili2pgimportschema">Ili2pgImportSchema</a></li>
+  <li><a href="#ili2pgreplace" id="toc-ili2pgreplace" class="nav-link" data-scroll-target="#ili2pgreplace">Ili2pgReplace</a></li>
+  <li><a href="#ili2pgdelete" id="toc-ili2pgdelete" class="nav-link" data-scroll-target="#ili2pgdelete">Ili2pgDelete</a></li>
+  <li><a href="#ili2pgupdate" id="toc-ili2pgupdate" class="nav-link" data-scroll-target="#ili2pgupdate">Ili2pgUpdate</a></li>
+  <li><a href="#ili2pgvalidate" id="toc-ili2pgvalidate" class="nav-link" data-scroll-target="#ili2pgvalidate">Ili2pgValidate</a></li>
+  <li><a href="#ilivalidator" id="toc-ilivalidator" class="nav-link" data-scroll-target="#ilivalidator">IliValidator</a></li>
+  <li><a href="#jsonimport" id="toc-jsonimport" class="nav-link" data-scroll-target="#jsonimport">JsonImport</a></li>
+  <li><a href="#metapublisher-incubating" id="toc-metapublisher-incubating" class="nav-link" data-scroll-target="#metapublisher-incubating">MetaPublisher (incubating)</a></li>
+  <li><a href="#ogdmetapublisher-incubating" id="toc-ogdmetapublisher-incubating" class="nav-link" data-scroll-target="#ogdmetapublisher-incubating">OgdMetaPublisher (incubating)</a></li>
+  <li><a href="#postgisrasterexport" id="toc-postgisrasterexport" class="nav-link" data-scroll-target="#postgisrasterexport">PostgisRasterExport</a></li>
+  <li><a href="#publisher" id="toc-publisher" class="nav-link" data-scroll-target="#publisher">Publisher</a></li>
+  <li><a href="#s3download" id="toc-s3download" class="nav-link" data-scroll-target="#s3download">S3Download</a></li>
+  <li><a href="#s3upload" id="toc-s3upload" class="nav-link" data-scroll-target="#s3upload">S3Upload</a></li>
+  <li><a href="#s3bucket2bucket" id="toc-s3bucket2bucket" class="nav-link" data-scroll-target="#s3bucket2bucket">S3Bucket2Bucket</a></li>
+  <li><a href="#shpexport" id="toc-shpexport" class="nav-link" data-scroll-target="#shpexport">ShpExport</a></li>
+  <li><a href="#shpimport" id="toc-shpimport" class="nav-link" data-scroll-target="#shpimport">ShpImport</a></li>
+  <li><a href="#shpvalidator" id="toc-shpvalidator" class="nav-link" data-scroll-target="#shpvalidator">ShpValidator</a></li>
+  <li><a href="#sqlexecutor" id="toc-sqlexecutor" class="nav-link" data-scroll-target="#sqlexecutor">SqlExecutor</a></li>
+  <li><a href="#xsltransformer-incubating" id="toc-xsltransformer-incubating" class="nav-link" data-scroll-target="#xsltransformer-incubating">XslTransformer (incubating)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="gretl-benutzer-handbuch" class="level1">
+<h1>GRETL-Benutzer-Handbuch</h1>
+<p>Das Datenmanagement-Tool <em>GRETL</em> ist ein Werkzeug, das für Datenimports, Datenumbauten (Modellumbau) und Datenexports eingesetzt wird. <em>GRETL</em> führt Jobs aus, wobei ein Job aus mehreren atomaren Tasks besteht. Damit ein Job als vollständig ausgeführt gilt, muss jeder zum Job gehörende Task vollständig ausgeführt worden sein. Schlägt ein Task fehl, gilt auch der Job als fehlgeschlagen.</p>
+<p>Ein Job besteht aus einem oder mehreren Tasks, die gemäss einem gerichteten Graphen (Directed Acyclic Graph; DAG) miteinander verknüpft sind.</p>
+<p>Ein Job kann aus z.B. aus einer linearen Kette von Tasks bestehen:</p>
+<pre><code>Task 1 – Task 2 – Task 3 – Task n</code></pre>
+<p>Beispiel: Datenimport aus INTERLIS-Datei – Datenumbau – Datenexport nach Shapefile.</p>
+<p>Ein Job kann sich nach einem Task aber auch auf zwei oder mehr verschiedene weitere Tasks verzweigen:</p>
+<pre><code>      - Task 2 – Task 3 – Task n
+Task 1 –
+      – Task 4 – Task 5 – Task m</code></pre>
+<p>Beispiel: Datenimport aus INTERLIS-Datei – Datenumbau in Zielschema 1 und ein zweiter Datenumbau in Zielschema 2.</p>
+<p>Es ist auch möglich, dass zuerst zwei oder mehr Tasks unabhängig voneinander ausgeführt werden müssen, bevor ein einzelner weiterer Task ausgeführt wird.</p>
+<pre><code>Task 1 –
+       – Task 3 – Task 4 – Task n
+Task 2 –</code></pre>
+<p>Die Tasks eines Jobs werden per Konfigurationsfile konfiguriert.</p>
+<section id="kleines-beispiel" class="level2">
+<h2 class="anchored" data-anchor-id="kleines-beispiel">Kleines Beispiel</h2>
+<p>Erstellen sie in einem neuen Verzeichnis <code>gretldemo</code> eine neue Datei <code>build.gradle</code>:</p>
+<pre><code>import ch.so.agi.gretl.tasks.*
+import ch.so.agi.gretl.api.*
+
+apply plugin: 'ch.so.agi.gretl'
+
+buildscript {
+    repositories {
+        maven { url "http://jars.interlis.ch" }
+        maven { url "http://jars.umleditor.org" }
+        maven { url "https://repo.osgeo.org/repository/release/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'ch.so.agi', name: 'gretl',  version: '2.2.+'
+    }
+}
+
+defaultTasks 'validate'
+
+
+task validate(type: IliValidator){
+    dataFiles = ["BeispielA.xtf"]
+}</code></pre>
+<p>Die Datei <code>build.gradle</code> ist die Job-Konfiguration. Dieser kleine Beispiel-Job besteht nur aus einem einzigen Task: <code>validate</code>.</p>
+<p>Erstellen Sie nun noch die Datei <code>BeispielA.xtf</code> (damit danach der Job erfolgreich ausgeführt werden kann).</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3"&gt;
+    &lt;HEADERSECTION SENDER="gretldemo" VERSION="2.3"&gt;
+    &lt;/HEADERSECTION&gt;
+    &lt;DATASECTION&gt;
+        &lt;OeREBKRMtrsfr_V1_1.Transferstruktur BID="B01"&gt;
+        &lt;/OeREBKRMtrsfr_V1_1.Transferstruktur&gt;
+    &lt;/DATASECTION&gt;
+&lt;/TRANSFER&gt;</code></pre>
+<p>Um den Job auszuführen, wechseln Sie ins Verzeichnis mit der Job-Konfiguration, und geben da das Kommando <code>gradle</code> ohne Argument ein:</p>
+<pre><code>cd gretldemo
+gradle</code></pre>
+<p>Sie sollten etwa folgende Ausgabe erhalten:</p>
+<pre><code>Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+Download http://jars.umleditor.org/ch/so/agi/gretl/maven-metadata.xml
+Download http://jars.umleditor.org/ch/so/agi/gretl/1.0.4-SNAPSHOT/maven-metadata.xml
+Download http://jars.umleditor.org/ch/so/agi/gretl/1.0.4-SNAPSHOT/gretl-1.0.4-20180104.152357-34.jar
+
+BUILD SUCCESSFUL in 21s</code></pre>
+<p><code>BUILD SUCCESSFUL</code> zeigt an, dass der Job (die Validierung der Datei <code>BeispielA.xtf</code>) erfolgreich ausgeführt wurde.</p>
+<p>Um dieselbe Job-Konfiguration für verschiedene Datensätze verwenden zu können, muss es parametrisierbar sein. Die Jobs/Tasks können so generisch konfiguriert werden, dass dieselbe Konfiguration z.B. für Daten aus verschiedenen Gemeinden benutzt werden kann. Parameter für die Job Konfiguration können z.B. mittels gradle-Properties (<a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_properties_and_system_properties">Gradle properties and system properties</a>) dem Job mitgegeben werden, also z.B.</p>
+<pre><code>cd gretldemo
+gradle -Pdataset=Olten</code></pre>
+</section>
+<section id="systemanforderungen" class="level2">
+<h2 class="anchored" data-anchor-id="systemanforderungen">Systemanforderungen</h2>
+<p>Um die aktuelle Version von gretl auszuführen, muss</p>
+<ul>
+<li>die Java-Laufzeitumgebung (JRE), Version 1.8 oder neuer, und</li>
+<li>gradle, Version 5.1 oder neuer, auf Ihrem System installiert sein.</li>
+</ul>
+<p>Die Java-Laufzeitumgebung (JRE) kann auf der Website http://www.java.com/ gratis bezogen werden.</p>
+<p>Die gradle-Software kann auf der Website http://www.gradle.org/ gratis bezogen werden.</p>
+<p>Um <em>GRETL</em> laufen zu lassen, benötigen sie typischerweise eine Internetverbindung (Ein Installation, die keine Internetverbindung benötigt ist auch möglich, aber aufwendig).</p>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p><em>GRETL</em> selbst muss nicht explizit installiert werden, sondern wird dynamisch durch das Internet bezogen.</p>
+</section>
+<section id="ausführen" class="level2">
+<h2 class="anchored" data-anchor-id="ausführen">Ausführen</h2>
+<p>Um gretl auszuführen, geben Sie auf der Kommandozeile folgendes Kommando ein (wobei <code>jobfolder</code> der absolute Pfad zu ihrem Verzeichnis mit der Job Konfiguration ist.)</p>
+<pre><code>gradle --project-dir jobfolder</code></pre>
+<p>Alternativ können Sie auch ins Verzeichnis mit der Job Konfiguration wechseln, und da das Kommando <code>gradle</code> ohne Argument verwenden:</p>
+<pre><code>cd jobfolder
+gradle</code></pre>
+</section>
+<section id="tasks" class="level2">
+<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<section id="av2ch" class="level3">
+<h3 class="anchored" data-anchor-id="av2ch">Av2ch</h3>
+<p>Transformiert eine INTERLIS1-Transferdatei im kantonalen AV-DM01-Modell in das Bundesmodell. Unterstützt werden die Sprachen <em>Deutsch</em> und <em>Italienisch</em> und der Bezugrahmen <em>LV95</em>. Getestet mit Daten aus den Kantonen Solothurn, Glarus und Tessin. Weitere Informationen sind in der Basisbibliothek zu finden: <a href="https://github.com/sogis/av2ch">https://github.com/sogis/av2ch</a>.</p>
+<p>Das Bundes-ITF hat denselben Namen wie das Kantons-ITF.</p>
+<p>Aufgrund der sehr vielen Logging-Messages einer verwendeten Bibliothek, wird der <code>System.err</code>-Ouput nach <code>dev/null</code> <a href="gemappt">https://github.com/sogis/av2ch/blob/master/src/main/java/ch/so/agi/av/Av2ch.java#L75</a>.</p>
+<pre><code>task transform(type: Av2ch) {
+    inputFile = file("254900.itf")
+    outputDirectory = file("output")
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>inputFile</td>
+<td>Name der zu transformierenden ITF-Datei.</td>
+</tr>
+<tr class="even">
+<td>outputDirectory</td>
+<td>Name des Verzeichnisses in das die zu erstellende Datei geschrieben wird.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>INTERLIS-Modellablage. String separiert mit Semikolon (analog ili2db, ilivalidator).</td>
+</tr>
+<tr class="even">
+<td>zip</td>
+<td>Die zu erstellende Datei wird gezippt (Default: false).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="av2geobau" class="level3">
+<h3 class="anchored" data-anchor-id="av2geobau">Av2geobau</h3>
+<p>Av2geobau konvertiert eine Interlis-Transferdatei (itf) in eine DXF-Geobau Datei. Av2geobau funktioniert ohne Datenbank.</p>
+<p>Die ITF-Datei muss dem Modell DM01AVCH24LV95D entsprechen. Die Daten werden nicht validiert.</p>
+<p>Die Datenstruktur der DXF-Datei ist im Prinzip sehr einfach: Die verschiedenen Informationen aus dem Datenmodell DM01 werden in verschiedene DXF-Layer abgebildet, z.B. die begehbaren LFP1 werden in den Layer “01111” abgebildet. Oder die Gebäude in den Layer “01211”.</p>
+<p>Der Datenumbau ist nicht konfigurierbar.</p>
+<pre><code>task av2geobau(type: Av2geobau){
+    itfFiles = "ch_254900.itf"
+    dxfDirectory = "./out/"
+}</code></pre>
+<p>Es können auch mehrere Dateien angegeben werden.</p>
+<pre><code>task av2geobau(type: Av2geobau){
+    itfFiles = fileTree(".").matching {
+        include"*.itf"
+    }
+    dxfDirectory = "./out/"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>itfFiles</td>
+<td>ITF-Datei, die nach DXF transformiert werden soll. Es können auch mehrere Dateien angegeben werden.</td>
+</tr>
+<tr class="even">
+<td>dxfDirectory</td>
+<td>Verzeichnis, in das die DXF-Dateien gespeichert werden.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%ITF_DIR;http://models.interlis.ch/</code>. <code>%ITF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der ITF-Datei.</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td>Schreibt die log-Meldungen der Konvertierung in eine Text-Datei.</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>zip</td>
+<td>Die zu erstellende Datei wird gezippt und es werden zusätzliche Dateien (Musterplan, Layerbeschreibung, Hinweise) hinzugefügt (Default: false).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv2excel-incubating" class="level3">
+<h3 class="anchored" data-anchor-id="csv2excel-incubating">Csv2Excel (incubating)</h3>
+<p>Konvertiert eine CSV-Datei in eine Excel-Datei (*.xlsx). Datentypen werden anhand eines INTERLIS-Modelles eruiert. Fehlt das Modell, wird alles als Text gespeichert. Die Daten werden vollständig im Speicher vorgehalten. Falls grosse Dateien geschrieben werden müssen, kann das zu Problemen führen. Dann müsste die Apache POI SXSSF Implementierung (Streaming) verwendet werden.</p>
+<p>Beispiel:</p>
+<pre><code>task convertData(type: Csv2Excel) {
+    csvFile = file("./20230124_sap_Gebaeude.csv")
+    firstLineIsHeader = true
+    valueDelimiter = null
+    valueSeparator = ";"
+    encoding = "ISO-8859-1";
+    models = "SO_HBA_Gebaeude_20230111";
+    outputDir = file(".");
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>csvFile</td>
+<td>CSV-Datei, die konvertiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob eine Headerzeile geschrieben werden soll, oder nicht. Default: true</td>
+</tr>
+<tr class="odd">
+<td>valueDelimiter</td>
+<td>Zeichen, das am Anfang und Ende jeden Wertes geschrieben werden soll. Default <code>"</code></td>
+</tr>
+<tr class="even">
+<td>valueSeparator</td>
+<td>Zeichen, das als Trennzeichen zwischen den Werten verwendet werden soll. Default: <code>,</code></td>
+</tr>
+<tr class="odd">
+<td>encoding</td>
+<td>Zeichencodierung der CSV-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>INTERLIS-Modell für Definition der Datentypen in der Excel-Datei.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon “;” getrennt werden. Es sind auch URLs von Modell-Repositories möglich.</td>
+</tr>
+<tr class="even">
+<td>outputDir</td>
+<td>Verzeichnis, in das die Excel-Datei gespeichert wird. Default: Verzeichnis, in dem die CSV-Datei vorliegt.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv2parquet-incubating" class="level3">
+<h3 class="anchored" data-anchor-id="csv2parquet-incubating">Csv2Parquet (incubating)</h3>
+<p>Konvertiert eine CSV-Datei in eine Parquet-Datei. Datentypen werden anhand eines INTERLIS-Modelles eruiert. Fehlt das Modell, wird alles als Text gespeichert.</p>
+<p>Beispiel:</p>
+<pre><code>task convertData(type: Csv2Parquet) {
+    csvFile = file("./20230124_sap_Gebaeude.csv")
+    firstLineIsHeader = true
+    valueDelimiter = null
+    valueSeparator = ";"
+    encoding = "ISO-8859-1";
+    models = "SO_HBA_Gebaeude_20230111";
+    outputDir = file(".");
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>csvFile</td>
+<td>CSV-Datei, die konvertiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob eine Headerzeile geschrieben werden soll, oder nicht. Default: true</td>
+</tr>
+<tr class="odd">
+<td>valueDelimiter</td>
+<td>Zeichen, das am Anfang und Ende jeden Wertes geschrieben werden soll. Default <code>"</code></td>
+</tr>
+<tr class="even">
+<td>valueSeparator</td>
+<td>Zeichen, das als Trennzeichen zwischen den Werten verwendet werden soll. Default: <code>,</code></td>
+</tr>
+<tr class="odd">
+<td>encoding</td>
+<td>Zeichencodierung der CSV-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>INTERLIS-Modell für Definition der Datentypen in der Parquet-Datei.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon “;” getrennt werden. Es sind auch URLs von Modell-Repositories möglich.</td>
+</tr>
+<tr class="even">
+<td>outputDir</td>
+<td>Verzeichnis, in das die Parquet-Datei gespeichert wird. Default: Verzeichnis, in dem die CSV-Datei vorliegt.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csvexport" class="level3">
+<h3 class="anchored" data-anchor-id="csvexport">CsvExport</h3>
+<p>Daten aus einer bestehenden Datenbanktabelle werden in eine CSV-Datei exportiert.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task csvexport(type: CsvExport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "csvexport"
+    tableName = "exportdata"
+    firstLineIsHeader=true
+    attributes = [ "t_id","Aint"]
+    dataFile = "data.csv"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der exportiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der CSV-Datei, die erstellt werden soll.</td>
+</tr>
+<tr class="odd">
+<td>tableName</td>
+<td>Name der DB-Tabelle, die exportiert werden soll</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob eine Headerzeile geschrieben werden soll, oder nicht. Default: true</td>
+</tr>
+<tr class="even">
+<td>valueDelimiter</td>
+<td>Zeichen, das am Anfang und Ende jeden Wertes geschrieben werden soll. Default <code>"</code></td>
+</tr>
+<tr class="odd">
+<td>valueSeparator</td>
+<td>Zeichen, das als Trennzeichen zwischen den Werten verwendet werden soll. Default: <code>,</code></td>
+</tr>
+<tr class="even">
+<td>attributes</td>
+<td>Spalten der DB-Tabelle, die exportiert werden sollen. Definiert die Reihenfolge der Spalten in der CSV-Datei. Default: alle Spalten</td>
+</tr>
+<tr class="odd">
+<td>encoding</td>
+<td>Zeichencodierung der CSV-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+</tbody>
+</table>
+<p>Geometriespalten können nicht exportiert werden.</p>
+</section>
+<section id="csvimport" class="level3">
+<h3 class="anchored" data-anchor-id="csvimport">CsvImport</h3>
+<p>Daten aus einer CSV-Datei werden in eine bestehende Datenbanktabelle importiert.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task csvimport(type: CsvImport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "csvimport"
+    tableName = "importdata"
+    firstLineIsHeader=true
+    dataFile = "data1.csv"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der CSV-Datei, die gelesen werden soll</td>
+</tr>
+<tr class="odd">
+<td>tableName</td>
+<td>Name der DB-Tabelle, in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob die CSV-Datei einer Headerzeile hat, oder nicht. Default: true</td>
+</tr>
+<tr class="even">
+<td>valueDelimiter</td>
+<td>Zeichen, das am Anfang und Ende jeden Wertes vorhanden ist. Default <code>"</code></td>
+</tr>
+<tr class="odd">
+<td>valueSeparator</td>
+<td>Zeichen, das als Trennzeichen zwischen den Werten interpretiert werden soll. Default: <code>,</code></td>
+</tr>
+<tr class="even">
+<td>encoding</td>
+<td>Zeichencodierung der CSV-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+<tr class="odd">
+<td>batchSize</td>
+<td>Anzahl der Records, die pro Batch in die Ziel-Datenbank geschrieben werden (Standard: 5000).</td>
+</tr>
+</tbody>
+</table>
+<p>Die Tabelle kann weitere Spalten enthalten, die in der CSV-Datei nicht vorkommen. Sie müssen aber NULLable sein, oder einen Default-Wert definiert haben.</p>
+<p>Geometriepalten können nicht importiert werden.</p>
+<p>Die Gross-/Kleinschreibung der CSV-Spaltennamen wird für die Zuordnung zu den DB-Spalten ignoriert.</p>
+</section>
+<section id="csvvalidator" class="level3">
+<h3 class="anchored" data-anchor-id="csvvalidator">CsvValidator</h3>
+<p>Prüft eine CSV-Datei gegenüber einem INTERLIS-Modell. Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>. Das Datenmodell darf die OID nicht als UUID modellieren (<code>OID AS INTERLIS.UUIDOID</code>).</p>
+<p>Beispiel:</p>
+<pre><code>task validate(type: CsvValidator){
+    models = "CsvModel"
+    firstLineIsHeader=true
+    dataFiles = ["data1.csv"]
+}</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFiles</td>
+<td>Liste der CSV-Dateien, die validiert werden sollen. Eine leere Liste ist kein Fehler.</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>INTERLIS-Modell, gegen das die Dateien geprüft werden sollen (mehrere Modellnamen durch Semikolon trennen). Default: Der Name der CSV-Datei.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%XTF_DIR;http://models.interlis.ch/</code>. <code>%XTF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der CSV-Datei.</td>
+</tr>
+<tr class="even">
+<td>configFile</td>
+<td>Konfiguriert die Datenprüfung mit Hilfe einer TOML-Datei (um z.B. die Prüfung von einzelnen Constraints auszuschalten). siehe https://github.com/claeis/ilivalidator/blob/master/docs/ilivalidator.rst#konfiguration</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td>Ignoriert die Konfiguration der Typprüfung aus der TOML-Datei, d.h. es kann nur die Multiplizität aufgeweicht werden. Default: false</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td>Schaltet die AREA-Topologieprüfung aus. Default: false</td>
+</tr>
+<tr class="odd">
+<td>multiplicityOff</td>
+<td>Schaltet die Prüfung der Multiplizität generell aus. Default: false</td>
+</tr>
+<tr class="even">
+<td>allObjectsAccessible</td>
+<td>Mit der Option nimmt der Validator an, dass er Zugriff auf alle Objekte hat. D.h. es wird z.B. auch die Multiplizität von Beziehungen auf externe Objekte geprüft. Default: false</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td>Schaltet die Bildung der Polygone aus (nur ITF). Default: false</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td>Schreibt die log-Meldungen der Validierung in eine Text-Datei.</td>
+</tr>
+<tr class="odd">
+<td>xtflogFile</td>
+<td>Schreibt die log-Meldungen in eine INTERLIS 2-Datei. Die Datei result.xtf entspricht dem Modell <a href="http://models.interlis.ch/models/tools/IliVErrors.ili">IliVErrors</a>.</td>
+</tr>
+<tr class="even">
+<td>pluginFolder</td>
+<td>Verzeichnis mit JAR-Dateien, die Zusatzfunktionen enthalten.</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>failOnError</td>
+<td>Steuert, ob der Task bei einem Validierungsfehler fehlschlägt. Default: true</td>
+</tr>
+<tr class="even">
+<td>validationOk</td>
+<td>OUTPUT: Ergebnis der Validierung. Nur falls failOnError=false</td>
+</tr>
+<tr class="odd">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob die CSV-Datei einer Headerzeile hat, oder nicht. Default: true</td>
+</tr>
+<tr class="even">
+<td>valueDelimiter</td>
+<td>Zeichen, das am Anfang und Ende jeden Wertes vorhanden ist. Default <code>"</code></td>
+</tr>
+<tr class="odd">
+<td>valueSeparator</td>
+<td>Zeichen, das als Trennzeichen zwischen den Werten interpretiert werden soll. Default: <code>,</code></td>
+</tr>
+<tr class="even">
+<td>encoding</td>
+<td>Zeichencodierung der CSV-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+</tbody>
+</table>
+<p>Falls die CSV-Datei eine Header-Zeile enthält (mit den Spaltennamen), wird im gegebenen Modell eine Klasse gesucht, welche die Header-Spaltennamen enthält (Gross-/Kleinschreibung sowie optionale “Spalten” der Modell-Klasse werden ignoriert). Wird keine solche Klasse gefunden, gilt das als Validierungsfehler.</p>
+<p>Falls die CSV-Datei keine Header-Zeile enthält (mit den Spaltennamen), wird im gegebenen Modell eine Klasse gesucht, die die selbe Anzahl Attribute hat. Wird keine solche Klasse gefunden, gilt das als Validierungsfehler.</p>
+<p>Die Prüfung von gleichzeitig mehreren CSV-Dateien führt zu Fehlermeldungen wie <code>OID o3158 of object &lt;Modelname&gt;.&lt;Topicname&gt;.&lt;Klassenname&gt; already exists in ...</code>. Beim Öffnen und Lesen einer CSV-Datei wird immer der Zähler, der die interne (in der CSV-Datei nicht vorhandene) <code>OID</code> generiert, zurückgesetzt. Somit kann immer nur eine CSV-Datei pro Task geprüft werden.</p>
+</section>
+<section id="curl" class="level3">
+<h3 class="anchored" data-anchor-id="curl">Curl</h3>
+<p>Simuliert mit einem HttpClient einige Curl-Befehle.</p>
+<p>Beispiele:</p>
+<pre><code>import ch.so.agi.gretl.tasks.Curl.MethodType;
+
+task uploadData(type: Curl) {
+    serverUrl = "https://geodienste.ch/data_agg/interlis/import"
+    method = MethodType.POST
+    formData = ["topic": "npl_waldgrenzen", "lv95_file": file("./test.xtf.zip"), "publish": "true", "replace_all": "true"]
+    user = "fooUser"
+    password = "barPwd"
+    expectedStatusCode = 200
+    expectedBody = "\"success\":true"
+}</code></pre>
+<pre><code>import ch.so.agi.gretl.tasks.Curl.MethodType;
+
+task uploadData(type: Curl) {
+    serverUrl = "https://testweb.so.ch/typo3/api/digiplan"
+    method = MethodType.POST
+    headers = ["Content-Type": "application/xml", "Content-Encoding": "gzip"]
+    dataBinary = file("./planregister.xml.gz")
+    user = "fooUser"
+    password = "barPwd"
+    expectedStatusCode = 202
+}</code></pre>
+<pre><code>import ch.so.agi.gretl.tasks.Curl.MethodType;
+
+task downloadData(type: Curl) {
+    serverUrl = "https://raw.githubusercontent.com/sogis/gretl/master/README.md"
+    method = MethodType.GET
+    outputFile = file("./README.md")
+    expectedStatusCode = 200
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>serverUrl</td>
+<td>Die URL des Servers inklusive Pfad und Queryparameter.</td>
+</tr>
+<tr class="even">
+<td>method</td>
+<td>HTTP-Request-Methode. Unterstützt werden <code>GET</code> und <code>POST</code>.</td>
+</tr>
+<tr class="odd">
+<td>expectedStatusCode</td>
+<td>Erwarteter Status Code, der vom Server zurückgeliefert wird.</td>
+</tr>
+<tr class="even">
+<td>expectedBody</td>
+<td>Erwarteter Text, der vom Server als Body zurückgelieferd wird. (optional)</td>
+</tr>
+<tr class="odd">
+<td>formData</td>
+<td>Form data parameters. Entspricht <code>curl [URL] -F key1=value1 -F file1=@my_file.xtf</code>. (optional)</td>
+</tr>
+<tr class="even">
+<td>dataBinary</td>
+<td>Datei, die hochgeladen werden soll. Entspricht <code>curl [URL] --data-binary</code>. (optional)</td>
+</tr>
+<tr class="odd">
+<td>headers</td>
+<td>Request-Header. Entspricht <code>curl [URL] -H ... -H ...</code>. (optional)</td>
+</tr>
+<tr class="even">
+<td>user</td>
+<td>Benutzername. Wird zusammen mit <code>password</code> in einen Authorization-Header umgewandelt. Entspricht <code>curl [URL] -u user:password</code>. (optional)</td>
+</tr>
+<tr class="odd">
+<td>password</td>
+<td>Passwort. Wird zusammen mit <code>user</code> in einen Authorization-Header umgewandelt. Entspricht <code>curl [URL] -u user:password</code>. (optional)</td>
+</tr>
+<tr class="even">
+<td>outputFile</td>
+<td>Datei, in die der Output gespeichert wird. Entspricht <code>curl [URL] -o</code>. (optional)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="databasedocumentexport-experimental" class="level3">
+<h3 class="anchored" data-anchor-id="databasedocumentexport-experimental">DatabaseDocumentExport (Experimental)</h3>
+<p>Speichert Dokumente, deren URL in einer Spalte einer Datenbanktabelle gespeichert sind, in einem lokalen Verzeichnis. Zukünftig und bei Bedarf kann der Task so erweitert werden, dass auch BLOBs aus der Datenbank gespeichert werden können.</p>
+<p>Redirect von HTTP nach HTTPS funktionieren nicht. Dies <a href="https://stackoverflow.com/questions/1884230/httpurlconnection-doesnt-follow-redirect-from-http-to-https">korrekterweise</a> (?) wegen der verwendeten Java-Bibliothek.</p>
+<p>Wegen der vom Kanton Solothurn eingesetzten self-signed Zertifikate muss ein unschöner Handstand gemacht werden. Leider kann dieser Usecase schlecht getestet werden, da die Links nur in der privaten Zone verfügbar sind und die zudem noch häufig ändern können. Manuell getestet wurde es jedoch.</p>
+<p>Als Dateiname wird der letzte Teil des URL-Pfades verwendet, z.B. <code>https://artplus.verw.rootso.org/MpWeb-apSolothurnDenkmal/download/2W8v0qRZQBC0ahDnZGut3Q?mode=gis</code> wird mit den Prefix und Extension zu <code>ada_2W8v0qRZQBC0ahDnZGut3Q.pdf</code>.</p>
+<p>Es wird <code>DISTINCT ON (&lt;documentColumn&gt;)</code> und ein Filter <code>WHERE &lt;documentColumn&gt; IS NOT NULL</code> verwendet.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task exportDocuments(type: DatabaseDocumentExport){
+    database = [db_uri, db_user, db_pass]
+    qualifiedTableName = "ada_denkmalschutz.fachapplikation_rechtsvorschrift_link"
+    documentColumn = "multimedia_link"
+    targetDir = file(".")
+    fileNamePrefix = "ada_"
+    fileNameExtension = "pdf"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der die Dokumente exportiert werden sollen.</td>
+</tr>
+<tr class="even">
+<td>qualifiedTableName</td>
+<td>Qualifizierter Tabellenname</td>
+</tr>
+<tr class="odd">
+<td>documentColumn</td>
+<td>DB-Tabellenspalte mit dem Dokument resp. der URL zum Dokument.</td>
+</tr>
+<tr class="even">
+<td>targetDir</td>
+<td>Verzeichnis in das die Dokumente exportiert werden sollen.</td>
+</tr>
+<tr class="odd">
+<td>fileNamePrefix</td>
+<td>Prefix für Dateinamen (optional)</td>
+</tr>
+<tr class="even">
+<td>fileNameExtension</td>
+<td>Dateinamen-Extension (optional)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="db2db" class="level3">
+<h3 class="anchored" data-anchor-id="db2db">Db2Db</h3>
+<p>Dies ist prinzipiell ein 1:1-Datenkopie, d.h. es findet kein Datenumbau statt, die Quell- und die Ziel- Tabelle hat jeweils identische Attribute. Es werden auf Seite Quelle in der Regel also simple SELECT-Queries ausgeführt und die Resultate dieser Queries in Tabellen der Ziel-DB eingefügt. Unter bestimmten Bedingungen (insbesondere wenn es sich um einen wenig komplexen Datenumbau handelt), kann dieser Task aber auch zum Datenumbau benutzt werden.</p>
+<p>Die Queries können auf mehrere .sql-Dateien verteilt werden, d.h. der Task muss die Queries mehrerer .sql-Dateien zu einer Transaktion kombinieren können. Jede .sql-Datei gibt genau eine Resultset (RAM-Tabelle) zurück. Das Resultset wird in die konfigurierte Zieltabelle geschrieben. Die Beziehungen sind: Eine bis mehrere Quelltabellen ergeben ein Resultset; das Resultset entspricht bezüglich den Attributen genau der Zieltabelle und wird 1:1 in diese geschrieben. Der Db2Db- Task verarbeitet innerhalb einer Transaktion 1-n Resultsets und wird entsprechend auch mit 1-n SQL-Dateien konfiguriert.</p>
+<p>Die Reihenfolge der .sql-Dateien ist relevant. Dies bedeutet, dass die SQL-Befehle der zuerst angegebenen .sql-Datei zuerst ausgeführt werden müssen, danach die SQL-Befehle der an zweiter Stelle angegebenen .sql-Datei, usw.</p>
+<p>Es ist auch möglich, in den .sql-Dateien mehr als nur ein SELECT-Query zu formulieren, z.B. ein vorgängiges DELETE.</p>
+<p>Alle SELECT-Statements werden in einer Transaktion ausgeführt werden, damit ein konsistenter Datenstand gelesen wird. Alle INSERT-Statements werden in einer Transaktion ausgeführt werden, damit bei einem Fehler der bisherige Datenstand bestehen bleibt und also kein unvollständiger Import zurückgelassen wird.</p>
+<p>Damit dieselbe .sql-Datei für verschiedene Datensätze benutzt werden kann, ist es möglich innerhalb der .sql-Datei Parameter zu verwenden und diesen Parametern beim Task einen konkreten Wert zuzuweisen. Innerhalb der .sql-Datei werden Paramter mit folgender Syntax verwendet: <code>${paramName}</code>.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task transferSomeData(type: Db2Db) {
+    sourceDb = [db_uri, db_user, db_pass]
+    targetDb = ['jdbc:sqlite:gretldemo.sqlite',null,null]
+    sqlParameters = [dataset:'Olten']
+    transferSets = [
+        new TransferSet('some.sql', 'albums_dest', true)
+    ];
+}</code></pre>
+<p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Parametern angegeben werden.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task transferSomeData(type: Db2Db) {
+    sourceDb = [db_uri, db_user, db_pass]
+    targetDb = ['jdbc:sqlite:gretldemo.sqlite',null,null]
+    sqlParameters = [[dataset:'Olten'],[dataset:'Grenchen']]
+    transferSets = [
+        new TransferSet('some.sql', 'albums_dest', true)
+    ];
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sourceDb</td>
+<td>Datenbank aus der gelesen werden soll</td>
+</tr>
+<tr class="even">
+<td>targetDb</td>
+<td>Datenbank in die geschrieben werden soll</td>
+</tr>
+<tr class="odd">
+<td>transferSets</td>
+<td>Eine Liste von <code>TransferSet</code>s.</td>
+</tr>
+<tr class="even">
+<td>sqlParameters</td>
+<td>Eine Map mit Paaren von Parameter-Name und Parameter-Wert (<code>Map&lt;String,String&gt;</code>). Oder eine Liste mit Paaren von Parameter-Name und Parameter-Wert (<code>List&lt;Map&lt;String,String&gt;&gt;</code>).</td>
+</tr>
+<tr class="odd">
+<td>batchSize</td>
+<td>Anzahl der Records, die pro Batch in die Ziel-Datenbank geschrieben werden (Standard: 5000). Für sehr grosse Tabellen muss ein kleinerer Wert gewählt werden.</td>
+</tr>
+<tr class="even">
+<td>fetchSize</td>
+<td>Anzahl der Records, die auf einmal vom Datenbank-Cursor von der Quell-Datenbank zurückgeliefert werden (Standard: 5000). Für sehr grosse Tabellen muss ein kleinerer Wert gewählt werden.</td>
+</tr>
+</tbody>
+</table>
+<p>Eine <code>TransferSet</code> ist</p>
+<ul>
+<li>eine SQL-Datei (mit SQL-Anweisungen zum Lesen der Daten aus der sourceDb),</li>
+<li>dem Namen der Ziel-Tabelle in der targetDb, und</li>
+<li>der Angabe ob in der Ziel-Tabelle vor dem INSERT zuerst alle Records gelöscht werden sollen.</li>
+<li>einem optionalen vierten Parameter, der verwendet werden kann um den zu erzeugenden SQL-Insert-String zu beeinflussen, u.a. um einen WKT-Geometrie-String in eine PostGIS-Geometrie umzuwandeln</li>
+</ul>
+<p>Beispiel, Umwandlung Rechtswert/Hochwertspalten in eine PostGIS-Geometrie (siehe auch Gretl-Job <a href="https://github.com/sogis/gretljobs/tree/main/afu_onlinerisk_transfer">afu_onlinerisk_transfer</a> der eine Punktgeometriespalten aus einer Nicht-Postgis-DB übernimmt):</p>
+<pre><code>new TransferSet('untersuchungseinheit.sql', 'afu_qrcat_v1.onlinerisk_untersuchungseinheit', true, (String[])["geom:wkt:2056"])</code></pre>
+<p>“geom” ist der Geometrie-Spalten-Name der verwendet wird.</p>
+<p>Dazugehöriger Auszug aus SQL-Datei zur Erzeugung des WKT-Strings mit Hilfe von concatenation:</p>
+<pre><code>'Point(' || ue.koordinate_x::text || ' ' || ue.koordinate_y::text || ')' AS geom</code></pre>
+<p>Unterstützte Datenbanken: PostgreSQL, SQLite und Oracle. Der Oracle-JDBC-Treiber muss jedoch selber installiert werden (Ausgenommen vom Docker-Image).</p>
+</section>
+<section id="ftpdelete" class="level3">
+<h3 class="anchored" data-anchor-id="ftpdelete">FtpDelete</h3>
+<p>Löscht Daten auf einem FTP-Server.</p>
+<p>Beispiel, löscht alle Daten in einem Verzeichnis:</p>
+<pre><code>task ftpdelete(type: FtpDelete) {
+    server= "ftp.server.org"
+    user= "Hans"
+    password= "dummy"
+    remoteDir = "\\dm01avso24lv95\\itf"
+    remoteFile = fileTree(pathToTempFolder) { include '*.zip' } 
+    //remoteFile = "*.zip"
+}</code></pre>
+<p>Um bestimmte Dateien zu löschen:</p>
+<pre><code>task ftpdownload(type: FtpDownload){
+    server= "ftp.server.org"
+    user= "Hans"
+    password= "dummy"
+    remoteDir = "\\dm01avso24lv95\\itf"
+    remoteFile = "*.zip"
+}</code></pre>
+<p>Um heruntergeladene Daten zu löschen:</p>
+<pre><code>task ftpdownload(type: FtpDownload){
+    server= "ftp.server.org"
+    user= "Hans"
+    password= "dummy"
+    remoteDir = "\\dm01avso24lv95\\itf"
+    remoteFile = fileTree(pathToDownloadFolder) { include '*.zip' } 
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>server</td>
+<td>Name des Servers (ohne ftp://)</td>
+</tr>
+<tr class="even">
+<td>user</td>
+<td>Benutzername auf dem Server</td>
+</tr>
+<tr class="odd">
+<td>password</td>
+<td>Passwort für den Zugriff auf dem Server</td>
+</tr>
+<tr class="even">
+<td>remoteDir</td>
+<td>Verzeichnis auf dem Server</td>
+</tr>
+<tr class="odd">
+<td>remoteFile</td>
+<td>Dateiname oder Liste der Dateinamen auf dem Server (kann auch ein Muster sein (* oder ?)). Ohne diesen Parameter werden alle Dateien aus dem Remoteverzeichnis gelöscht.</td>
+</tr>
+<tr class="even">
+<td>systemType</td>
+<td>UNIX oder WINDOWS. Default ist UNIX.</td>
+</tr>
+<tr class="odd">
+<td>fileSeparator</td>
+<td>Default ist ‘/’. (Falls systemType Windows ist, ist der Default ‘\’.</td>
+</tr>
+<tr class="even">
+<td>passiveMode</td>
+<td>Aktiv oder Passiv Verbindungsmodus. Default ist Passiv (true)</td>
+</tr>
+<tr class="odd">
+<td>controlKeepAliveTimeout</td>
+<td>Timeout bis ein NOOP über den Kontroll-Kanal versendet wird. Default ist 300s (=5 Minuten)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ftpdownload" class="level3">
+<h3 class="anchored" data-anchor-id="ftpdownload">FtpDownload</h3>
+<p>Lädt alle Dateien aus dem definierten Verzeichnis des Servers in ein lokales Verzeichnis herunter.</p>
+<p>Beispiel:</p>
+<pre><code>task ftpdownload(type: FtpDownload){
+    server= "ftp.server.org"
+    user= "Hans"
+    password= "dummy"
+    localDir= "downloads"
+    remoteDir= ""
+}</code></pre>
+<p>Um eine bestimmte Datei herunterzuladen:</p>
+<pre><code>task ftpdownload(type: FtpDownload){
+    server="ftp.infogrips.ch"
+    user= "Hans"
+    password= "dummy"
+    systemType="WINDOWS"
+    localDir= "downloads"
+    remoteDir="\\dm01avso24lv95\\itf"
+    remoteFile="240100.zip"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>server</td>
+<td>Name des Servers (ohne ftp://)</td>
+</tr>
+<tr class="even">
+<td>user</td>
+<td>Benutzername auf dem Server</td>
+</tr>
+<tr class="odd">
+<td>password</td>
+<td>Passwort für den Zugriff auf dem Server</td>
+</tr>
+<tr class="even">
+<td>localDir</td>
+<td>Lokales Verzeichnis indem die Dateien gespeichert werden</td>
+</tr>
+<tr class="odd">
+<td>remoteDir</td>
+<td>Verzeichnis auf dem Server</td>
+</tr>
+<tr class="even">
+<td>remoteFile</td>
+<td>Dateiname oder Liste der Dateinamen auf dem Server (kann auch ein Muster sein (* oder ?)). Ohne diesen Parameter werden alle Dateien aus dem Remoteverzeichnis heruntergeladen.</td>
+</tr>
+<tr class="odd">
+<td>systemType</td>
+<td>UNIX oder WINDOWS. Default ist UNIX.</td>
+</tr>
+<tr class="even">
+<td>fileType</td>
+<td>ASCII oder BINARY. Default ist ASCII.</td>
+</tr>
+<tr class="odd">
+<td>fileSeparator</td>
+<td>Default ist ‘/’. (Falls systemType Windows ist, ist der Default ‘\’.</td>
+</tr>
+<tr class="even">
+<td>passiveMode</td>
+<td>Aktiv oder Passiv Verbindungsmodus. Default ist Passiv (true)</td>
+</tr>
+<tr class="odd">
+<td>controlKeepAliveTimeout</td>
+<td>Timeout bis ein NOOP über den Kontroll-Kanal versendet wird. Default ist 300s (=5 Minuten)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ftplist" class="level3">
+<h3 class="anchored" data-anchor-id="ftplist">FtpList</h3>
+<p>Liefert eine Liste der Dateien aus dem definierten Verzeichnis des Servers.</p>
+<p>Beispiel:</p>
+<pre><code>task ftplist(type: FtpList){
+    server= "ftp.server.org"
+    user= "Hans"
+    password= "dummy"
+    remoteDir= ""
+    doLast {
+        println files
+    }
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>server</td>
+<td>Name des Servers (ohne ftp://)</td>
+</tr>
+<tr class="even">
+<td>user</td>
+<td>Benutzername auf dem Server</td>
+</tr>
+<tr class="odd">
+<td>password</td>
+<td>Passwort für den Zugriff auf dem Server</td>
+</tr>
+<tr class="even">
+<td>remoteDir</td>
+<td>Verzeichnis auf dem Server</td>
+</tr>
+<tr class="odd">
+<td>files</td>
+<td>Liste der Dateinamen auf dem Server</td>
+</tr>
+<tr class="even">
+<td>systemType</td>
+<td>UNIX oder WINDOWS. Default ist UNIX.</td>
+</tr>
+<tr class="odd">
+<td>fileSeparator</td>
+<td>Default ist ‘/’. (Falls systemType Windows ist, ist der Default ‘\’.</td>
+</tr>
+<tr class="even">
+<td>passiveMode</td>
+<td>Aktiv oder Passiv Verbindungsmodus. Default ist Passiv (true)</td>
+</tr>
+<tr class="odd">
+<td>controlKeepAliveTimeout</td>
+<td>Timeout bis ein NOOP über den Kontroll-Kanal versendet wird. Default ist 300s (=5 Minuten)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gpkg2dxf" class="level3">
+<h3 class="anchored" data-anchor-id="gpkg2dxf">Gpkg2Dxf</h3>
+<p>Exportiert alle Tabellen einer GeoPackage-Datei in DXF-Dateien. Als Input wird eine von <em>ili2gpkg</em> erzeugte GeoPackage-Datei benötigt.</p>
+<p>Es werden alle INTERLIS-Klassen exportier (<code>SELECT tablename FROM T_ILI2DB_TABLE_PROP WHERE setting = 'CLASS'</code>). Der eigentliche SELECT-Befehl ist komplizierter weil für das Layern der einzelnen DXF-Objekte das INTERLIS-Metaattribut <code>!!@dxflayer="true"</code> ausgelesen wird. Gibt es kein solches Metaattribut wird alles in den gleichen DXF-Layer (<code>default</code>) geschrieben.</p>
+<p><strong>Encoding</strong>: Die DXF-Dateien sind <code>ISO-8859-1</code> encodiert.</p>
+<p><strong>Achtung</strong>: Task sollte verbessert werden (siehe E-Mail Claude im Rahmen des Publisher-Projektes).</p>
+<pre><code>task gpkg2dxf(type: Gpkg2Dxf) {
+    dataFile = file("data.gpkg")
+    outputDir = file("./out/")
+}</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFile</td>
+<td>GeoPackage-Datei, die nach DXF transformiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>outputDir</td>
+<td>Verzeichnis, in das die DXF-Dateien gespeichert werden.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gpkgexport" class="level3">
+<h3 class="anchored" data-anchor-id="gpkgexport">GpkgExport</h3>
+<p>Daten aus einer bestehenden Datenbanktabelle werden in eine GeoPackage-Datei exportiert.</p>
+<p>Beispiele:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task gpkgexport(type: GpkgExport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "gpkgexport"
+    srcTableName = "exportdata"
+    dataFile = "data.gpkg"
+    dstTableName = "exportdata"
+}</code></pre>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task gpkgexport(type: GpkgExport) {
+    database = [db_uri, db_user, db_pass]
+    schemaName = "gpkgexport"
+    srcTableName = ["exportTable1", "exportTable2"]
+    dataFile = "data.gpkg"
+    dstTableName = ["exportTable1", "exportTable2"]
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der exportiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der GeoPackage-Datei, die erstellt werden soll</td>
+</tr>
+<tr class="odd">
+<td>srcTableName</td>
+<td>Name der DB-Tabelle(n), die exportiert werden soll(en). String oder List.</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>dstTableName</td>
+<td>Name der Tabelle(n) in der GeoPackage-Datei. String oder List.</td>
+</tr>
+<tr class="even">
+<td>batchSize</td>
+<td>Anzahl der Records, die pro Batch in die Ziel-Datenbank (GeoPackage) geschrieben werden (Standard: 5000).</td>
+</tr>
+<tr class="odd">
+<td>fetchSize</td>
+<td>Anzahl der Records, die pro Fetch aus der Quell-Datenbank gelesen werden (Standard: 5000).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gpkgimport" class="level3">
+<h3 class="anchored" data-anchor-id="gpkgimport">GpkgImport</h3>
+<p>Daten aus einer GeoPackage-Datei in eine bestehende Datenbanktabelle importieren.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task gpkgimport(type: GpkgImport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "gpkgimport"
+    srcTableName = "Point"
+    dstTableName = "importdata"
+    dataFile = "point.gpkg"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der GeoPackage-Datei, die gelesen werden soll</td>
+</tr>
+<tr class="odd">
+<td>srcTableName</td>
+<td>Name der GeoPackage-Tabelle, die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>dstTableName</td>
+<td>Name der DB-Tabelle, in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td><del>encoding</del></td>
+<td><del>Zeichencodierung der SHP-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</del></td>
+</tr>
+<tr class="odd">
+<td>batchSize</td>
+<td>Anzahl der Records, die pro Batch in die Ziel-Datenbank geschrieben werden (Standard: 5000).</td>
+</tr>
+<tr class="even">
+<td>fetchSize</td>
+<td>Anzahl der Records, die pro Fetch aus der Quell-Datenbank gelesen werden (Standard: 5000).</td>
+</tr>
+</tbody>
+</table>
+<p>Die Tabelle kann weitere Spalten enthalten, die in der GeoPackage-Datei nicht vorkommen. Sie müssen aber NULLable sein, oder einen Default-Wert definiert haben.</p>
+<p>Die Gross-/Kleinschreibung der GeoPckage-Spaltennamen wird für die Zuordnung zu den DB-Spalten ignoriert.</p>
+</section>
+<section id="gpkg2shp" class="level3">
+<h3 class="anchored" data-anchor-id="gpkg2shp">Gpkg2Shp</h3>
+<p>Exportiert alle Tabellen einer GeoPackage-Datei in Shapefiles. Als Input wird eine von <em>ili2gpkg</em> erzeugte GeoPackage-Datei benötigt.</p>
+<p>Es werden alle INTERLIS-Klassen exportiert (<code>SELECT tablename FROM T_ILI2DB_TABLE_PROP WHERE setting = 'CLASS'</code>). Je nach, bei der Erstellung der GeoPackage-Datei, verwendeten Parametern, muss die Query angepasst werden. Es muss jedoch darauf geachtet werden, dass es nur eine Query gibt (für alle Datensätze). Für den vorgesehenen Anwendungsfall (sehr einfache, flache Modelle) dürfte das kein Problem darstellen.</p>
+<p><strong>Encoding</strong>: Die Shapefiles sind neu <code>UTF-8</code> encodiert. Standard ist <code>ISO-8859-1</code>, scheint aber v.a. in QGIS nicht standardmässig zu funktionieren (keine Umlaute).</p>
+<p><strong>Achtung</strong>: Task sollte verbessert werden (siehe E-Mail Claude im Rahmen des Publisher-Projektes).</p>
+<pre><code>task gpkg2shp(type: Gpkg2Shp) {
+    dataFile = file("data.gpkg")
+    outputDir = file("./out/")
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFile</td>
+<td>GeoPackage-Datei, die nach Shapefile transformiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>outputDir</td>
+<td>Verzeichnis, in das die Shapefile gespeichert werden.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gpkgvalidator" class="level3">
+<h3 class="anchored" data-anchor-id="gpkgvalidator">GpkgValidator</h3>
+<p>Prüft eine GeoPackage-Datei gegenüber einem INTERLIS-Modell. Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>.</p>
+<p>Beispiel:</p>
+<pre><code>task validate(type: GpkgValidator){
+    models = "GpkgModel"
+    dataFiles = ["attributes.gpkg"]
+    tableName = "Attributes"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFiles</td>
+<td>Liste der GeoPackage-Dateien, die validiert werden sollen. Eine leere Liste ist kein Fehler.</td>
+</tr>
+<tr class="even">
+<td>tableName</td>
+<td>Name der Tabelle in den GeoPackage-Dateien.</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td>INTERLIS-Modell, gegen das die die Dateien geprüft werden sollen (mehrere Modellnamen durch Semikolon trennen). Default: Der Name der CSV-Datei.</td>
+</tr>
+<tr class="even">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%XTF_DIR;http://models.interlis.ch/</code>. <code>%XTF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der SHP-Datei.</td>
+</tr>
+<tr class="odd">
+<td>configFile</td>
+<td>Konfiguriert die Datenprüfung mit Hilfe einer TOML-Datei (um z.B. die Prüfung von einzelnen Constraints auszuschalten). siehe https://github.com/claeis/ilivalidator/blob/master/docs/ilivalidator.rst#konfiguration</td>
+</tr>
+<tr class="even">
+<td>forceTypeValidation</td>
+<td>Ignoriert die Konfiguration der Typprüfung aus der TOML-Datei, d.h. es kann nur die Multiplizität aufgeweicht werden. Default: false</td>
+</tr>
+<tr class="odd">
+<td>disableAreaValidation</td>
+<td>Schaltet die AREA Topologieprüfung aus. Default: false</td>
+</tr>
+<tr class="even">
+<td>multiplicityOff</td>
+<td>Schaltet die Prüfung der Multiplizität generell aus. Default: false</td>
+</tr>
+<tr class="odd">
+<td>allObjectsAccessible</td>
+<td>Mit der Option nimmt der Validator an, dass er Zugriff auf alle Objekte hat. D.h. es wird z.B. auch die Multiplizität von Beziehungen auf externe Objekte geprüft. Default: false</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td>Schreibt die log-Meldungen der Validierung in eine Text-Datei.</td>
+</tr>
+<tr class="odd">
+<td>xtflogFile</td>
+<td>Schreibt die log-Meldungen in eine INTERLIS 2-Datei. Die Datei result.xtf entspricht dem Modell IliVErrors.</td>
+</tr>
+<tr class="even">
+<td>pluginFolder</td>
+<td>Verzeichnis mit JAR-Dateien, die Zusatzfunktionen enthalten.</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>failOnError</td>
+<td>Steuert, ob der Task bei einem Validierungsfehler fehlschlägt. Default: true</td>
+</tr>
+<tr class="even">
+<td>validationOk</td>
+<td>OUTPUT: Ergebnis der Validierung. Nur falls failOnError=false</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gzip" class="level3">
+<h3 class="anchored" data-anchor-id="gzip">Gzip</h3>
+<p>Gzipped eine einzelne Datei. Es gibt einen eingebauten Tar-Task, der - nomen est omen - aber immer zuerst eine Tar-Datei erstellt.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFile</td>
+<td>Datei, die gezipped werden soll.</td>
+</tr>
+<tr class="even">
+<td>gzipFile</td>
+<td>Output-Datei</td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel:</p>
+<pre><code>task compressFile(type: Gzip) {
+    dataFile = file("./planregister.xml");
+    gzipFile = file("./planregister.xml.gz");
+}</code></pre>
+</section>
+<section id="ili2gpkgimport" class="level3">
+<h3 class="anchored" data-anchor-id="ili2gpkgimport">Ili2gpkgImport</h3>
+<p>Importiert Daten aus einer INTERLIS-Transferdatei in eine GeoPackage-Datei.</p>
+<p>Die Tabellen werden implizit auch angelegt, falls sie noch nicht vorhanden sind. Falls die Tabellen in der Datenbank schon vorhanden sind, können sie zusätzliche Spalten enthalten (z.B. bfsnr, datum etc.), welche beim Import leer bleiben.</p>
+<p>Falls beim Import ein Datensatz-Identifikator (dataset) definiert wird, darf dieser Datensatz-Identifikator in der Datenbank noch nicht vorhanden sein.</p>
+<p>Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2gpkgReplace (<strong>not yet implemented</strong>) verwendet werden.</p>
+<p>Die Option <code>--doSchemaImport</code> wird automatisch gesetzt.</p>
+<p>Beispiel:</p>
+<pre><code>task importData(type: Ili2gpkgImport) {
+    models = "SO_AGI_AV_GB_Administrative_Einteilungen_20180613"
+    dataFile = file("data.xtf");
+    dbfile = file("data.gpkg")    
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dbfile</td>
+<td>GeoPackage-Datei in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der XTF-/ITF-Datei, die gelesen werden soll. Es können auch mehrere Dateien sein.</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Entspricht der ili2gpkg Option –proxy</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Entspricht der ili2gpkg Option –proxyPort</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Entspricht der ili2gpkg Option –modeldir</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>Entspricht der ili2gpkg Option –models</td>
+</tr>
+<tr class="odd">
+<td>dataset</td>
+<td>Entspricht der ili2gpkg Option –dataset</td>
+</tr>
+<tr class="even">
+<td>baskets</td>
+<td>Entspricht der ili2gpkg Option –baskets</td>
+</tr>
+<tr class="odd">
+<td>topics</td>
+<td>Entspricht der ili2gpkg Option –topics</td>
+</tr>
+<tr class="even">
+<td>preScript</td>
+<td>Entspricht der ili2gpkg Option –preScript</td>
+</tr>
+<tr class="odd">
+<td>postScript</td>
+<td>Entspricht der ili2gpkg Option –postScript</td>
+</tr>
+<tr class="even">
+<td>deleteData</td>
+<td>Entspricht der ili2gpkg Option –deleteData</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td>Entspricht der ili2gpkg Option –logFile</td>
+</tr>
+<tr class="even">
+<td>validConfigFile</td>
+<td>Entspricht der ili2gpkg Option –validConfigFile</td>
+</tr>
+<tr class="odd">
+<td>disableValidation</td>
+<td>Entspricht der ili2gpkg Option –disableValidation</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td>Entspricht der ili2gpkg Option –disableAreaValidation</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td>Entspricht der ili2gpkg Option –forceTypeValidation</td>
+</tr>
+<tr class="even">
+<td>strokeArcs</td>
+<td>Entspricht der ili2gpkg Option –strokeArcs</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td>Entspricht der ili2gpkg Option –skipPolygonBuilding</td>
+</tr>
+<tr class="even">
+<td>skipGeometryErrors</td>
+<td>Entspricht der ili2gpkg Option –skipGeometryErrors</td>
+</tr>
+<tr class="odd">
+<td>iligml20</td>
+<td>Entspricht der ili2gpkg Option –iligml20</td>
+</tr>
+<tr class="even">
+<td>coalesceJson</td>
+<td>Entspricht der ili2gpkg Option –coalesceJson</td>
+</tr>
+<tr class="odd">
+<td>nameByTopic</td>
+<td>Entspricht der ili2gpkg Option –nameByTopic</td>
+</tr>
+<tr class="even">
+<td>defaultSrsCode</td>
+<td>Entspricht der ili2gpkg Option –defaultSrsCode</td>
+</tr>
+<tr class="odd">
+<td>createEnumTabs</td>
+<td>Entspricht der ili2gpkg Option –createEnumTabs</td>
+</tr>
+<tr class="even">
+<td>createMetaInfo</td>
+<td>Entspricht der ili2gpkg Option –createMetaInfo</td>
+</tr>
+</tbody>
+</table>
+<p>Für die Beschreibung der einzenen ili2gpkg Optionen: https://github.com/claeis/ili2db/blob/master/docs/ili2db.rst#aufruf-syntax</p>
+</section>
+<section id="ili2pgexport" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgexport">Ili2pgExport</h3>
+<p>Exportiert Daten aus der PostgreSQL-Datenbank in eine INTERLIS-Transferdatei.</p>
+<p>Mit dem Parameter <code>models</code>, <code>topics</code>, <code>baskets</code> oder <code>dataset</code> wird definiert, welche Daten exportiert werden.</p>
+<p>Ob die Daten im INTERLIS 1-, INTERLIS 2- oder GML-Format geschrieben werden, ergibt sich aus der Dateinamenserweiterung der Ausgabedatei. Für eine INTERLIS 1-Transferdatei muss die Erweiterung .itf verwendet werden. Für eine GML-Transferdatei muss die Erweiterung .gml verwendet werden.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task exportData(type: Ili2pgExport){
+    database = [db_uri, db_user, db_pass]
+    dataFile = "lv03_254900-out.itf"
+    dataset = "254900"
+    logFile = "ili2pg.log"
+}</code></pre>
+<p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Dateinamen und Datensätzen angegeben werden.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task exportData(type: Ili2pgExport){
+    database = [db_uri, db_user, db_pass]
+    dataFile = ["lv03_254900-out.itf","lv03_255000-out.itf"]
+    dataset = ["254900","255000"]
+    logFile = "ili2pg.log"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der exportiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der XTF-/ITF-Datei, die erstellt werden soll</td>
+</tr>
+<tr class="odd">
+<td>dbschema</td>
+<td>Entspricht der ili2pg Option –dbschema</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td>Entspricht der ili2pg Option –proxy</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td>Entspricht der ili2pg Option –proxyPort</td>
+</tr>
+<tr class="even">
+<td>modeldir</td>
+<td>Entspricht der ili2pg Option –modeldir</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td>Entspricht der ili2pg Option –models</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td>Entspricht der ili2pg Option –dataset</td>
+</tr>
+<tr class="odd">
+<td>baskets</td>
+<td>Entspricht der ili2pg Option –baskets</td>
+</tr>
+<tr class="even">
+<td>topics</td>
+<td>Entspricht der ili2pg Option –topics</td>
+</tr>
+<tr class="odd">
+<td>preScript</td>
+<td>Entspricht der ili2pg Option –preScript</td>
+</tr>
+<tr class="even">
+<td>postScript</td>
+<td>Entspricht der ili2pg Option –postScript</td>
+</tr>
+<tr class="odd">
+<td>deleteData</td>
+<td>Entspricht der ili2pg Option –deleteData</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td>Entspricht der ili2pg Option –logFile</td>
+</tr>
+<tr class="odd">
+<td>validConfigFile</td>
+<td>Entspricht der ili2pg Option –validConfigFile</td>
+</tr>
+<tr class="even">
+<td>disableValidation</td>
+<td>Entspricht der ili2pg Option –disableValidation</td>
+</tr>
+<tr class="odd">
+<td>disableAreaValidation</td>
+<td>Entspricht der ili2pg Option –disableAreaValidation</td>
+</tr>
+<tr class="even">
+<td>forceTypeValidation</td>
+<td>Entspricht der ili2pg Option –forceTypeValidation</td>
+</tr>
+<tr class="odd">
+<td>strokeArcs</td>
+<td>Entspricht der ili2pg Option –strokeArcs</td>
+</tr>
+<tr class="even">
+<td>skipPolygonBuilding</td>
+<td>Entspricht der ili2pg Option –skipPolygonBuilding</td>
+</tr>
+<tr class="odd">
+<td>skipGeometryErrors</td>
+<td>Entspricht der ili2pg Option –skipGeometryErrors</td>
+</tr>
+<tr class="even">
+<td>export3</td>
+<td>Entspricht der ili2pg Option –export3</td>
+</tr>
+<tr class="odd">
+<td>iligml20</td>
+<td>Entspricht der ili2pg Option –iligml20</td>
+</tr>
+<tr class="even">
+<td>disableRounding</td>
+<td>Entspricht der ili2pg Option –disableRounding</td>
+</tr>
+<tr class="odd">
+<td>failOnException</td>
+<td>Task wirft Exception, falls ili2db-Prozess fehlerhaft ist (= Ili2dbException). Default: true.</td>
+</tr>
+</tbody>
+</table>
+<p>Für die Beschreibung der einzenen ili2pg Optionen: https://github.com/claeis/ili2db/blob/master/docs/ili2db.rst#aufruf-syntax</p>
+</section>
+<section id="ili2pgimport" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgimport">Ili2pgImport</h3>
+<p>Importiert Daten aus einer INTERLIS-Transferdatei in die PostgreSQL-Datenbank.</p>
+<p>Die Tabellen werden implizit auch angelegt, falls sie noch nicht vorhanden sind. Falls die Tabellen in der Datenbank schon vorhanden sind, können sie zusätzliche Spalten enthalten (z.B. bfsnr, datum etc.), welche beim Import leer bleiben.</p>
+<p>Falls beim Import ein Datensatz-Identifikator (dataset) definiert wird, darf dieser Datensatz-Identifikator in der Datenbank noch nicht vorhanden sein.</p>
+<p>Falls man mehrere Dateien importieren will, diese jedoch erst zur Laufzeit eruiert werden können, muss der Parameter <code>dataFile</code> eine Gradle <code>FileCollection</code> resp. eine implementierende Klasse (z.B. <code>FileTree</code>) sein. Gleiches gilt für den <code>dataset</code>-Parameter. Als einzelner Wert für das Dataset wird in diesem Fall der Name der Datei <em>ohne</em> Extension und <em>ohne</em> Pfad verwendet. Leider kann nicht bereits in der Task-Definition aus dem Filetree eine Liste gemacht werden, z.B. <code>fileTree(pathToUnzipFolder) { include '*.itf' }.files.name</code>. Diese Liste ist leer.</p>
+<p>Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2pgReplace verwendet werden.</p>
+<p>Beispiel 1:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task importData(type: Ili2pgImport){
+    database = [db_uri, db_user, db_pass]
+    dataFile = "lv03_254900.itf"
+    logFile = "ili2pg.log"
+}</code></pre>
+<p>Beispiel 2:</p>
+<p>Import der AV-Daten. In der <code>t_datasetname</code>-Spalte soll die BFS-Nummer stehen. Die BFS-Nummer entspricht den ersten vier Zeichen des Filenamens.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task importData(type: Ili2pgImport){
+    database = [db_uri, db_user, db_pass]
+    dataFile = fileTree(pathToUnzipFolder) { include '*.itf' }
+    dataset = dataFile
+    datasetSubstring = 0..4
+    logFile = "ili2pg.log"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der XTF-/ITF-Datei, die gelesen werden soll. Es können auch mehrere Dateien sein.</td>
+</tr>
+<tr class="odd">
+<td>dbschema</td>
+<td>Entspricht der ili2pg Option –dbschema</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td>Entspricht der ili2pg Option –proxy</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td>Entspricht der ili2pg Option –proxyPort</td>
+</tr>
+<tr class="even">
+<td>modeldir</td>
+<td>Entspricht der ili2pg Option –modeldir</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td>Entspricht der ili2pg Option –models</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td>Entspricht der ili2pg Option –dataset</td>
+</tr>
+<tr class="odd">
+<td>datasetSubstring</td>
+<td>Range für das Extrahieren eines Substrings von Datasets</td>
+</tr>
+<tr class="even">
+<td>baskets</td>
+<td>Entspricht der ili2pg Option –baskets</td>
+</tr>
+<tr class="odd">
+<td>topics</td>
+<td>Entspricht der ili2pg Option –topics</td>
+</tr>
+<tr class="even">
+<td>preScript</td>
+<td>Entspricht der ili2pg Option –preScript</td>
+</tr>
+<tr class="odd">
+<td>postScript</td>
+<td>Entspricht der ili2pg Option –postScript</td>
+</tr>
+<tr class="even">
+<td>deleteData</td>
+<td>Entspricht der ili2pg Option –deleteData</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td>Entspricht der ili2pg Option –logFile</td>
+</tr>
+<tr class="even">
+<td>importTid</td>
+<td>Entspricht der ili2pg Option –importTid</td>
+</tr>
+<tr class="odd">
+<td>importBid</td>
+<td>Entspricht der lii2pg Option –importBid</td>
+</tr>
+<tr class="even">
+<td>validConfigFile</td>
+<td>Entspricht der ili2pg Option –validConfigFile</td>
+</tr>
+<tr class="odd">
+<td>disableValidation</td>
+<td>Entspricht der ili2pg Option –disableValidation</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td>Entspricht der ili2pg Option –disableAreaValidation</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td>Entspricht der ili2pg Option –forceTypeValidation</td>
+</tr>
+<tr class="even">
+<td>strokeArcs</td>
+<td>Entspricht der ili2pg Option –strokeArcs</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td>Entspricht der ili2pg Option –skipPolygonBuilding</td>
+</tr>
+<tr class="even">
+<td>skipGeometryErrors</td>
+<td>Entspricht der ili2pg Option –skipGeometryErrors</td>
+</tr>
+<tr class="odd">
+<td>iligml20</td>
+<td>Entspricht der ili2pg Option –iligml20</td>
+</tr>
+<tr class="even">
+<td>disableRounding</td>
+<td>Entspricht der ili2pg Option –disableRounding</td>
+</tr>
+<tr class="odd">
+<td>failOnException</td>
+<td>Task wirft Exception, falls ili2db-Prozess fehlerhaft ist (= Ili2dbException). Default: true.</td>
+</tr>
+</tbody>
+</table>
+<p>Für die Beschreibung der einzenen ili2pg Optionen: https://github.com/claeis/ili2db/blob/master/docs/ili2db.rst#aufruf-syntax</p>
+</section>
+<section id="ili2pgimportschema" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgimportschema">Ili2pgImportSchema</h3>
+<p>Erstellt die Tabellenstruktur in der PostgreSQL-Datenbank anhand eines INTERLIS-Modells.</p>
+<p>Der Parameter <code>iliFile</code> oder <code>models</code> muss gesetzt werden.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task importSchema(type: Ili2pgImportSchema){
+    database = [db_uri, db_user, db_pass]
+    models = "DM01AVSO24"
+    dbschema = "gretldemo"
+    logFile = "ili2pg.log"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>iliFile</td>
+<td>Name der ili-Datei die gelesen werden soll</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td>Name des ili-Modells, das gelesen werden soll</td>
+</tr>
+<tr class="even">
+<td>dbschema</td>
+<td>Entspricht der ili2pg Option –dbschema</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Entspricht der ili2pg Option –proxy</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Entspricht der ili2pg Option –proxyPort</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Entspricht der ili2pg Option –modeldir</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td>Entspricht der ili2pg Option –dataset</td>
+</tr>
+<tr class="odd">
+<td>baskets</td>
+<td>Entspricht der ili2pg Option –baskets</td>
+</tr>
+<tr class="even">
+<td>topics</td>
+<td>Entspricht der ili2pg Option –topics</td>
+</tr>
+<tr class="odd">
+<td>preScript</td>
+<td>Entspricht der ili2pg Option –preScript</td>
+</tr>
+<tr class="even">
+<td>postScript</td>
+<td>Entspricht der ili2pg Option –postScript</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td>Entspricht der ili2pg Option –logFile</td>
+</tr>
+<tr class="even">
+<td>strokeArcs</td>
+<td>Entspricht der ili2pg Option –strokeArcs</td>
+</tr>
+<tr class="odd">
+<td>oneGeomPerTable</td>
+<td>Entspricht der ili2pg Option –oneGeomPerTable</td>
+</tr>
+<tr class="even">
+<td>setupPgExt</td>
+<td>Entspricht der ili2pg Option –setupPgExt</td>
+</tr>
+<tr class="odd">
+<td>dropscript</td>
+<td>Entspricht der ili2pg Option –dropscript</td>
+</tr>
+<tr class="even">
+<td>createscript</td>
+<td>Entspricht der ili2pg Option –createscript</td>
+</tr>
+<tr class="odd">
+<td>defaultSrsAuth</td>
+<td>Entspricht der ili2pg Option –defaultSrsAuth</td>
+</tr>
+<tr class="even">
+<td>defaultSrsCode</td>
+<td>Entspricht der ili2pg Option –defaultSrsCode</td>
+</tr>
+<tr class="odd">
+<td>createSingleEnumTab</td>
+<td>Entspricht der ili2pg Option –createSingleEnumTab</td>
+</tr>
+<tr class="even">
+<td>createEnumTabs</td>
+<td>Entspricht der ili2pg Option –createEnumTabs</td>
+</tr>
+<tr class="odd">
+<td>createEnumTxtCol</td>
+<td>Entspricht der ili2pg Option –createEnumTxtCol</td>
+</tr>
+<tr class="even">
+<td>createEnumColAsItfCode</td>
+<td>Entspricht der ili2pg Option –createEnumColAsItfCode</td>
+</tr>
+<tr class="odd">
+<td>beautifyEnumDispName</td>
+<td>Entspricht der ili2pg Option –beautifyEnumDispName</td>
+</tr>
+<tr class="even">
+<td>noSmartMapping</td>
+<td>Entspricht der ili2pg Option –noSmartMapping</td>
+</tr>
+<tr class="odd">
+<td>smart1Inheritance</td>
+<td>Entspricht der ili2pg Option –smart1Inheritance</td>
+</tr>
+<tr class="even">
+<td>smart2Inheritance</td>
+<td>Entspricht der ili2pg Option –smart2Inheritance</td>
+</tr>
+<tr class="odd">
+<td>coalesceCatalogueRef</td>
+<td>Entspricht der ili2pg Option –coalesceCatalogueRef</td>
+</tr>
+<tr class="even">
+<td>coalesceMultiSurface</td>
+<td>Entspricht der ili2pg Option –coalesceMultiSurface</td>
+</tr>
+<tr class="odd">
+<td>coalesceMultiLine</td>
+<td>Entspricht der ili2pg Option –coalesceMultiLine</td>
+</tr>
+<tr class="even">
+<td>expandMultilingual</td>
+<td>Entspricht der ili2pg Option –expandMultilingual</td>
+</tr>
+<tr class="odd">
+<td>coalesceJson</td>
+<td>Entspricht der ili2pg Option –coalesceJson</td>
+</tr>
+<tr class="even">
+<td>createFk</td>
+<td>Entspricht der ili2pg Option –createFk</td>
+</tr>
+<tr class="odd">
+<td>createFkIdx</td>
+<td>Entspricht der ili2pg Option –createFkIdx</td>
+</tr>
+<tr class="even">
+<td>createUnique</td>
+<td>Entspricht der ili2pg Option –createUnique</td>
+</tr>
+<tr class="odd">
+<td>createNumChecks</td>
+<td>Entspricht der ili2pg Option –createNumChecks</td>
+</tr>
+<tr class="even">
+<td>createStdCols</td>
+<td>Entspricht der ili2pg Option –createStdCols</td>
+</tr>
+<tr class="odd">
+<td>t_id_Name</td>
+<td>Entspricht der ili2pg Option –t_id_Name</td>
+</tr>
+<tr class="even">
+<td>idSeqMin</td>
+<td>Entspricht der ili2pg Option –idSeqMin</td>
+</tr>
+<tr class="odd">
+<td>idSeqMax</td>
+<td>Entspricht der ili2pg Option –idSeqMax</td>
+</tr>
+<tr class="even">
+<td>createTypeDiscriminator</td>
+<td>Entspricht der ili2pg Option –createTypeDiscriminator</td>
+</tr>
+<tr class="odd">
+<td>createGeomIdx</td>
+<td>Entspricht der ili2pg Option –createGeomIdx</td>
+</tr>
+<tr class="even">
+<td>disableNameOptimization</td>
+<td>Entspricht der ili2pg Option –disableNameOptimization</td>
+</tr>
+<tr class="odd">
+<td>nameByTopic</td>
+<td>Entspricht der ili2pg Option –nameByTopic</td>
+</tr>
+<tr class="even">
+<td>maxNameLength</td>
+<td>Entspricht der ili2pg Option –maxNameLength</td>
+</tr>
+<tr class="odd">
+<td>sqlEnableNull</td>
+<td>Entspricht der ili2pg Option –sqlEnableNull</td>
+</tr>
+<tr class="even">
+<td>sqlColsAsText</td>
+<td>Entspricht der ili2pg Option –sqlColsAsText</td>
+</tr>
+<tr class="odd">
+<td>sqlExtRefCols</td>
+<td>Entspricht der ili2pg Option –sqlExtRefCols</td>
+</tr>
+<tr class="even">
+<td>keepAreaRef</td>
+<td>Entspricht der ili2pg Option –keepAreaRef</td>
+</tr>
+<tr class="odd">
+<td>createTidCol</td>
+<td>Entspricht der ili2pg Option –createTidCol</td>
+</tr>
+<tr class="even">
+<td>createBasketCol</td>
+<td>Entspricht der ili2pg Option –createBasketCol</td>
+</tr>
+<tr class="odd">
+<td>createDatasetCol</td>
+<td>Entspricht der ili2pg Option –createDatasetCol</td>
+</tr>
+<tr class="even">
+<td>ver4_translation</td>
+<td>Entspricht der ili2pg Option –ver4_translation</td>
+</tr>
+<tr class="odd">
+<td>translation</td>
+<td>Entspricht der ili2pg Option –translation</td>
+</tr>
+<tr class="even">
+<td>createMetaInfo</td>
+<td>Entspricht der ili2pg Option –createMetaInfo</td>
+</tr>
+<tr class="odd">
+<td>failOnException</td>
+<td>Task wirft Exception, falls ili2db-Prozess fehlerhaft ist (= Ili2dbException). Default: true.</td>
+</tr>
+</tbody>
+</table>
+<p>Für die Beschreibung der einzenen ili2pg Optionen: https://github.com/claeis/ili2db/blob/master/docs/ili2db.rst#aufruf-syntax</p>
+</section>
+<section id="ili2pgreplace" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgreplace">Ili2pgReplace</h3>
+<p>Ersetzt die Daten in der PostgreSQL-Datenbank anhand eines Datensatz-Identifikators (dataset) mit den Daten aus einer INTERLIS-Transferdatei. Diese Funktion bedingt, dass das Datenbankschema mit der Option createBasketCol erstellt wurde (via Task Ili2pgImportSchema).</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task replaceData(type: Ili2pgReplace){
+    database = [db_uri, db_user, db_pass]
+    dataFile = "lv03_254900.itf"
+    dataset = "254900"
+    logFile = "ili2pg.log"
+}</code></pre>
+<p>Die Parameter sind analog wie bei Ili2pgImport.</p>
+</section>
+<section id="ili2pgdelete" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgdelete">Ili2pgDelete</h3>
+<p>Löscht einen Datensatz in der PostgreSQL-Datenbank anhand eines Datensatz-Identifikators. Diese Funktion bedingt, dass das Datenbankschema mit der Option createBasketCol erstellt wurde (via Task Ili2pgImportSchema). Der Parameter <code>failOnException</code> muss <code>false</code> sein, ansonsten bricht der Job ab.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task deleteDataset(type: Ili2pgDelete){
+    database = [db_uri, db_user, db_pass]
+    models = "DM01AVSO24LV95"
+    dbschema = "dm01"
+    dataset = "kammersrohr"
+}</code></pre>
+<p>Es können auch mehrere Datensätze pro Task gelöscht werden:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task deleteDataset(type: Ili2pgDelete){
+    database = [db_uri, db_user, db_pass]
+    dbschema = "dm01"
+    dataset = ["Olten","Grenchen"]
+}</code></pre>
+</section>
+<section id="ili2pgupdate" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgupdate">Ili2pgUpdate</h3>
+<p>Aktualisiert die Daten in der PostgreSQL-Datenbank anhand einer INTERLIS-Transferdatei, d.h. neue Objekte werden eingefügt, bestehende Objekte werden aktualisiert und in der Transferdatei nicht mehr vorhandene Objekte werden gelöscht.</p>
+<p>Diese Funktion bedingt, dass das Datenbankschema mit der Option <code>createBasketCol</code> erstellt wurde (via Task Ili2pgImportSchema), und dass die Klassen und Topics eine stabile OID haben.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task updateData(type: Ili2pgUpdate){
+    database = [db_uri, db_user, db_pass]
+    dataFile = "lv03_254900.itf"
+    dataset = "254900"
+    logFile = "ili2pg.log"
+}</code></pre>
+<p>Die Parameter sind analog wie bei Ili2pgImport.</p>
+</section>
+<section id="ili2pgvalidate" class="level3">
+<h3 class="anchored" data-anchor-id="ili2pgvalidate">Ili2pgValidate</h3>
+<p>Prüft die Daten ohne diese in eine Datei zu exportieren. Der Task ist erfolgreich, wenn keine Fehler gefunden werden und ist nicht erfolgreich, wenn Fehler gefunden werden. Mit der Option <code>failOnException=false</code> ist der Task erfolgreich, auch wenn Fehler gefunden werden.</p>
+<p>Mit dem Parameter <code>--models</code>, <code>--topics</code>, <code>--baskets</code> oder <code>--dataset</code> wird definiert, welche Daten geprüft werden. Parameter <code>--dataset</code> akzeptiert auch eine Liste von Datasets.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+tasks.register('validate', Ili2pgValidate) {
+    database = [db_uri, db_user, db_pass]
+    models = "SO_AGI_AV_GB_Administrative_Einteilungen_20180613"
+    modeldir = rootProject.projectDir.toString() + ";http://models.interlis.ch"
+    dbschema = "agi_av_gb_admin_einteilungen_fail"
+    logFile = file("fubar.log")
+}</code></pre>
+</section>
+<section id="ilivalidator" class="level3">
+<h3 class="anchored" data-anchor-id="ilivalidator">IliValidator</h3>
+<p>Prüft eine INTERLIS-Datei (.itf oder .xtf) gegenüber einem INTERLIS-Modell (.ili). Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>.</p>
+<p>Beispiel:</p>
+<pre><code>task validate(type: IliValidator){
+    dataFiles = ["Beispiel2a.xtf"]
+    logFile = "ilivalidator.log"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFiles</td>
+<td>Liste der XTF- oder ITF-Dateien, die validiert werden sollen. Eine leere Liste ist kein Fehler.</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>INTERLIS-Modell, gegen das die die Dateien geprüft werden sollen (mehrere Modellnamen durch Semikolon trennen). Default: Wird anhand der dataFiles ermittelt.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%XTF_DIR;http://models.interlis.ch/</code>. <code>%XTF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der CSV-Datei.</td>
+</tr>
+<tr class="even">
+<td>configFile</td>
+<td>Konfiguriert die Datenprüfung mit Hilfe einer TOML-Datei (um z.B. die Prüfung von einzelnen Constraints auszuschalten). siehe https://github.com/claeis/ilivalidator/blob/master/docs/ilivalidator.rst#konfiguration</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td>Ignoriert die Konfiguration der Typprüfung aus der TOML-Datei, d.h. es kann nur die Multiplizität aufgeweicht werden. Default: false</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td>Schaltet die AREA Topologieprüfung aus. Default: false</td>
+</tr>
+<tr class="odd">
+<td>multiplicityOff</td>
+<td>Schaltet die Prüfung der Multiplizität generell aus. Default: false</td>
+</tr>
+<tr class="even">
+<td>allObjectsAccessible</td>
+<td>Mit der Option nimmt der Validator an, dass er Zugriff auf alle Objekte hat. D.h. es wird z.B. auch die Multiplizität von Beziehungen auf externe Objekte geprüft. Default: false</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td>Schaltet die Bildung der Polygone aus (nur ITF). Default: false</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td>Schreibt die log-Meldungen der Validierung in eine Text-Datei.</td>
+</tr>
+<tr class="odd">
+<td>xtflogFile</td>
+<td>Schreibt die log-Meldungen in eine INTERLIS 2-Datei. Die Datei result.xtf entspricht dem Modell IliVErrors.</td>
+</tr>
+<tr class="even">
+<td><del>pluginFolder</del></td>
+<td><del>Verzeichnis mit JAR-Dateien, die Zusatzfunktionen enthalten.</del></td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>failOnError</td>
+<td>Steuert, ob der Task bei einem Validierungsfehler fehlschlägt. Default: true</td>
+</tr>
+<tr class="even">
+<td>validationOk</td>
+<td>OUTPUT: Ergebnis der Validierung. Nur falls failOnError=false</td>
+</tr>
+</tbody>
+</table>
+<p>Zusatzfunktionen (Custom Functions): Die <code>pluginFolder</code>-Option ist zum jetzigen Zeitpunkt ohne Wirkung. Die Zusatzfunktionen werden als normale Abhängigkeit definiert und in der ilivalidator-Task-Implementierung registriert. Das Laden der Klassen zur Laufzeit in <em>iox-ili</em> hat nicht funktioniert (<code>NoClassDefFoundError</code>…). Der Plugin-Mechanismus von <em>ilivalidator</em> wird momentan ohnehin geändert (“Ahead-Of-Time-tauglich” gemacht).</p>
+</section>
+<section id="jsonimport" class="level3">
+<h3 class="anchored" data-anchor-id="jsonimport">JsonImport</h3>
+<p>Daten aus einer Json-Datei in eine Datenbanktabelle importieren. Die gesamte Json-Datei (muss UTF-8 encoded sein) wird als Text in eine Spalte importiert. Ist das Json-Objekt in der Datei ein Top-Level-Array wird für jedes Element des Arrays ein Record in der Datenbanktabelle erzeugt.</p>
+<p>Beispiel:</p>
+<pre><code>task importJson(type: JsonImport){
+    database = [db_uri, db_user, db_pass]
+    jsonFile = "data.json"
+    qualifiedTableName = "jsonimport.jsonarray"
+    columnName = "json_text_col"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>jsonFile</td>
+<td>Json-Datei, die importiert werden soll</td>
+</tr>
+<tr class="odd">
+<td>qualifiedTableName</td>
+<td>Qualifizierter Tabellennamen (“schema.tabelle”) in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>columnName</td>
+<td>Spaltenname der Tabelle in die importiert werden soll</td>
+</tr>
+<tr class="odd">
+<td>deleteAllRows</td>
+<td>Inhalt der Tabelle vorgängig löschen?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metapublisher-incubating" class="level3">
+<h3 class="anchored" data-anchor-id="metapublisher-incubating">MetaPublisher (incubating)</h3>
+<p>Der MetaPublisher dient zum Publizieren von Metadaten/-dateien. Er erstellt eine INTERLIS-Transferdatei pro Themenpublikation für die Datensuche, falls nötig eine GeoJSON-Datei und die Geocat-XML-Datei. Die GeoJSON-Datei ist entweder statisch (für Raster o.ä.) oder dynamisch (z.B. amtliche Vermessung). Bei einer dynamischen GeoJSON-Datei wird das Datum nachgeführt.</p>
+<p>Pro Themenpublikation (also pro Publisher-Task) kann resp. muss es auch einen MetaPublisher-Task geben. Informationen zum Thema sind in einer Toml-Datei gespeichert. Diese dient auch zum Überschreiben von Klassen- und Attributbeschreibungen, die aus der Modelldatei gelesen werden. Die GeoJSON-Datei muss im gleichen Verzeichnis wie die Toml-Datei vorliegen.</p>
+<p>Momentan werden die erzeugen Meta-Dateien im jeweiligen Ordner der Themenpublikation im <em>meta</em>-Verzeichnis gespeicher und zusätzlich (damit es für die Datensuche leichter fällt) in einem übergeordneten <em>config</em>-Verzeichnis.</p>
+<p>Beispiele:</p>
+<pre><code>tasks.register('publishMetaFile', MetaPublisher){
+    metaConfigFile = file("meta.toml")
+    target = ["sftp://foo.bar.ch", "user", "pwd"]      
+    geocatTarget = [Paths.get(project.buildDir.getAbsolutePath(), "geocat").toFile()]
+}</code></pre>
+<pre><code>tasks.register('publishMetaFiles', MetaPublisher) {
+    dependsOn 'publishFiles'
+    metaConfigFile = file("meta-dm01_so.toml")
+    target = [project.buildDir]  
+    regions = publishFiles.publishedRegions
+}</code></pre>
+<p>Im zweiten Beispiel werden die Regionen aus dem vorausgegangenen Publisher-Task als Input verwendet.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>metaConfigFile</td>
+<td>Toml-Datei mit Metainformationen zur Themenpublikation</td>
+</tr>
+<tr class="even">
+<td>target</td>
+<td>Zielverzeichnis der Metadateien (sftp oder Filesystem)</td>
+</tr>
+<tr class="odd">
+<td>regions</td>
+<td>Liste (resp. ListProperty) mit den durch den PublisherTask publizierten Regionen.</td>
+</tr>
+<tr class="even">
+<td>geocatTarget</td>
+<td>Zielverzeichnis für Geocat-Output (sftp oder Filesystem)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ogdmetapublisher-incubating" class="level3">
+<h3 class="anchored" data-anchor-id="ogdmetapublisher-incubating">OgdMetaPublisher (incubating)</h3>
+<p>Publiziert die Metadaten eines OGD-Datensatzes. Im Gegensatz zum “MetaPublisher” ist es weniger als Publisher (mit viel Konvention), sondern eher ein Generator, der aus dem Toml-File und der INTERLIS-Modelldatei die Metainfo-Datei erstellt. Beim Resultat handelt es sich um eine INTERLIS-Transferdatei (mit eigenem OgdMeta-Modell).</p>
+<p>Mit dem “MetaPublisher” teilt er sich einiges an Copy/Paste-Code. Man könnte gewissen Aspekte wohl zusammenlegen (z.B. Infos aus INTERLIS-Modell lesen).</p>
+<p>Die INTERLIS-Modelldatei muss entweder in einem (bekannten) Repo sein oder im Verzeichnis der Toml-Datei vorliegen.</p>
+<p>Beispiel:</p>
+<pre><code>task publishMeta(type: OgdMetaPublisher) {
+    configFile = file("./ch.so.hba.kantonale_gebaeude.toml")
+    outputDir = file(".")
+}</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>configFile</td>
+<td>Toml-Datei mit Metainformationen zum Datensatz.</td>
+</tr>
+<tr class="even">
+<td>outputDir</td>
+<td>Verzeichnis, in das die Metainfo-Datei gespeichert wird.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="postgisrasterexport" class="level3">
+<h3 class="anchored" data-anchor-id="postgisrasterexport">PostgisRasterExport</h3>
+<p>Exportiert eine PostGIS-Raster-Spalte in eine Raster-Datei mittels SQL-Query. Die SQL-Query darf nur einen Record zurückliefern, d.h. es muss unter Umständen <code>ST_Union()</code> verwendet werden. Es angenommen, dass die erste <em>bytea</em>-Spalte des Resultsets die Rasterdaten enthält. Weitere <em>bytea</em>-Spalten werden ignoriert. Das Outputformat und die Formatoptionen müssen in der SQL-Datei (in der Select-Query) angegeben werden, z.B.:</p>
+<pre><code>SELECT
+    1::int AS foo, ST_AsGDALRaster((ST_AsRaster(ST_Buffer(ST_Point(2607880,1228287),10),150, 150)), 'AAIGrid', ARRAY[''], 2056) AS raster
+;</code></pre>
+<p>Beispiel:</p>
+<pre><code>task exportTiff(type: PostgisRasterExport) {
+    database = [db_uri, db_user, db_pass]
+    sqlFile = "raster.sql"
+    dataFile = "export.tif"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der exportiert werden soll.</td>
+</tr>
+<tr class="even">
+<td>sqlFile</td>
+<td>Name der SQL-Datei aus das SQL-Statement gelesen und ausgeführt wird.</td>
+</tr>
+<tr class="odd">
+<td>sqlParameters</td>
+<td>Eine Map mit Paaren von Parameter-Name und Parameter-Wert.</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der Rasterdatei, die erstellt werden soll.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="publisher" class="level3">
+<h3 class="anchored" data-anchor-id="publisher">Publisher</h3>
+<p>Stellt für Vektordaten die aktuellsten Geodaten-Dateien bereit und pflegt das Archiv der vorherigen Zeitstände.</p>
+<p><a href="../../../gretl/docs/user/Publisher.html">Details</a></p>
+</section>
+<section id="s3download" class="level3">
+<h3 class="anchored" data-anchor-id="s3download">S3Download</h3>
+<p>Lädt eine Datei aus einem S3-Bucket herunter.</p>
+<pre><code>task downloadFile(type: S3Download) {
+    accessKey = abcdefg
+    secretKey = hijklmnopqrstuvwxy
+    downloadDir = file("./path/to/dir/")
+    bucketName = "ch.so.ada.denkmalschutz"
+    key = "foo.pdf"
+    endPoint = "https://s3.eu-central-1.amazonaws.com" 
+    region = "eu-central-1"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>accessKey</td>
+<td>AccessKey</td>
+</tr>
+<tr class="even">
+<td>secretKey</td>
+<td>SecretKey</td>
+</tr>
+<tr class="odd">
+<td>downloadDir</td>
+<td>Verzeichnis in das die Datei heruntergeladen werden soll.</td>
+</tr>
+<tr class="even">
+<td>bucketName</td>
+<td>Name des Buckets, in dem die Datei gespeichert ist.</td>
+</tr>
+<tr class="odd">
+<td>key</td>
+<td>Name der Datei</td>
+</tr>
+<tr class="even">
+<td>endPoint</td>
+<td>S3-Endpunkt (default: <code>https://s3.eu-central-1.amazonaws.com/</code>)</td>
+</tr>
+<tr class="odd">
+<td>region</td>
+<td>S3-Region (default: <code>eu-central-1</code>).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="s3upload" class="level3">
+<h3 class="anchored" data-anchor-id="s3upload">S3Upload</h3>
+<p>Lädt ein Dokument (<code>sourceFile</code>) oder alle Dokumente in einem Verzeichnis (<code>sourceDir</code>) in einen S3-Bucket (<code>bucketName</code>) hoch.</p>
+<p>Mit dem passenden Content-Typ kann man das Verhalten des Browsers steuern. Default ist ‘application/octect-stream’, was dazu führt, dass die Datei immer heruntergeladen wird. Soll z.B. ein PDF oder ein Bild im Browser direkt angezeigt werden, muss der korrekte Content-Typ gewählt werden.</p>
+<pre><code>task uploadDirectory(type: S3Upload) {
+    accessKey = abcdefg
+    secretKey = hijklmnopqrstuvwxy
+    sourceDir = file("./docs")
+    bucketName = "ch.so.ada.denkmalschutz"
+    endPoint = "https://s3.eu-central-1.amazonaws.com" 
+    region = "eu-central-1"
+    acl = "public-read"
+    contentType = "application/pdf"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>accessKey</td>
+<td>AccessKey</td>
+</tr>
+<tr class="even">
+<td>secretKey</td>
+<td>SecretKey</td>
+</tr>
+<tr class="odd">
+<td>sourceDir</td>
+<td>Verzeichnis mit den Dateien, die hochgeladen werden sollen.</td>
+</tr>
+<tr class="even">
+<td>sourceFile</td>
+<td>Datei, die hochgeladen werden soll.</td>
+</tr>
+<tr class="odd">
+<td>sourceFiles</td>
+<td>FileCollection mit den Dateien, die hochgeladen werden sollen, z.B. <code>fileTree("/path/to/directoy/") { include "*.itf" }</code></td>
+</tr>
+<tr class="even">
+<td>bucketName</td>
+<td>Name des Buckets, in dem die Dateien gespeichert werden sollen.</td>
+</tr>
+<tr class="odd">
+<td>endPoint</td>
+<td>S3-Endpunkt (default: <code>https://s3.eu-central-1.amazonaws.com/</code>)</td>
+</tr>
+<tr class="even">
+<td>region</td>
+<td>S3-Region (default: <code>eu-central-1</code>).</td>
+</tr>
+<tr class="odd">
+<td>acl</td>
+<td>Access Control Layer <code>[private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control]</code></td>
+</tr>
+<tr class="even">
+<td>contentType</td>
+<td>Content-Type</td>
+</tr>
+<tr class="odd">
+<td>metaData</td>
+<td>Metadaten des Objektes resp. der Objekte, z.B. <code>["lastModified":"2020-08-28"]</code>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="s3bucket2bucket" class="level3">
+<h3 class="anchored" data-anchor-id="s3bucket2bucket">S3Bucket2Bucket</h3>
+<p>Kopiert Objekte von einem Bucket in einen anderen. Die Buckets müssen in der gleichen Region sein. Die Permissions werden nicht mitkopiert und müssen explizit gesetzt werden.</p>
+<pre><code>task copyFiles(type: S3Bucket2Bucket, dependsOn:'directoryupload') {
+    accessKey = s3AccessKey
+    secretKey = s3SecretKey
+    sourceBucket = s3SourceBucket
+    targetBucket = s3TargetBucket
+    acl = "public-read"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>accessKey</td>
+<td>AccessKey</td>
+</tr>
+<tr class="even">
+<td>secretKey</td>
+<td>SecretKey</td>
+</tr>
+<tr class="odd">
+<td>sourceBucket</td>
+<td>Bucket aus dem die Objekte kopiert werden.</td>
+</tr>
+<tr class="even">
+<td>targetBucket</td>
+<td>Bucket in den die Objekte kopiert werden.</td>
+</tr>
+<tr class="odd">
+<td>acl</td>
+<td>Access Control Layer <code>[private, public-read, public-read-write, authenticated-read, aws-exec-read, bucket-owner-read, bucket-owner-full-control]</code></td>
+</tr>
+<tr class="even">
+<td>metaData</td>
+<td>Metadaten des Objektes resp. der Objekte, z.B. <code>["lastModified":"2020-08-28"]</code>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shpexport" class="level3">
+<h3 class="anchored" data-anchor-id="shpexport">ShpExport</h3>
+<p>Daten aus einer bestehenden Datenbanktabelle werden in eine Shp-Datei exportiert.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task shpexport(type: ShpExport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "shpexport"
+    tableName = "exportdata"
+    dataFile = "data.shp"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank aus der exportiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der SHP Datei, die erstellt werden soll</td>
+</tr>
+<tr class="odd">
+<td>tableName</td>
+<td>Name der DB-Tabelle, die exportiert werden soll</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>firstLineIsHeader</td>
+<td>Definiert, ob eine Headerzeile geschrieben werden soll, oder nicht. Default: true</td>
+</tr>
+<tr class="even">
+<td>encoding</td>
+<td>Zeichencodierung der SHP-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+</tbody>
+</table>
+<p>Die Tabelle darf eine Geometriespalte enthalten.</p>
+</section>
+<section id="shpimport" class="level3">
+<h3 class="anchored" data-anchor-id="shpimport">ShpImport</h3>
+<p>Daten aus einer Shp-Datei in eine bestehende Datenbanktabelle importieren.</p>
+<p>Beispiel:</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task shpimport(type: ShpImport){
+    database = [db_uri, db_user, db_pass]
+    schemaName = "shpimport"
+    tableName = "importdata"
+    dataFile = "data.shp"
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td>Name der SHP-Datei, die gelesen werden soll</td>
+</tr>
+<tr class="odd">
+<td>tableName</td>
+<td>Name der DB-Tabelle, in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>schemaName</td>
+<td>Name des DB-Schemas, in dem die DB-Tabelle ist.</td>
+</tr>
+<tr class="odd">
+<td>encoding</td>
+<td>Zeichencodierung der SHP-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+<tr class="even">
+<td>batchSize</td>
+<td>Anzahl der Records, die pro Batch in die Ziel-Datenbank geschrieben werden (Standard: 5000).</td>
+</tr>
+</tbody>
+</table>
+<p>Die Tabelle kann weitere Spalten enthalten, die in der Shp-Datei nicht vorkommen. Sie müssen aber NULLable sein, oder einen Default-Wert definiert haben.</p>
+<p>Die Tabelle muss eine Geometriespalte enthalten. Der Name der Geometriespalte kann beliebig gewählt werden.</p>
+<p>Die Gross-/Kleinschreibung der Shp-Spaltennamen wird für die Zuordnung zu den DB-Spalten ignoriert.</p>
+</section>
+<section id="shpvalidator" class="level3">
+<h3 class="anchored" data-anchor-id="shpvalidator">ShpValidator</h3>
+<p>Prüft eine SHP-Datei gegenüber einem INTERLIS-Modell. Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>.</p>
+<p>Beispiel:</p>
+<pre><code>task validate(type: ShpValidator){
+    models = "ShpModel"
+    dataFiles = ["data.shp"]
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataFiles</td>
+<td>Liste der SHP-Dateien, die validiert werden sollen. Eine leere Liste ist kein Fehler.</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td>INTERLIS-Modell, gegen das die Dateien geprüft werden sollen (mehrere Modellnamen durch Semikolon trennen). Default: Der Name der SHP-Datei.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%XTF_DIR;http://models.interlis.ch/</code>. <code>%XTF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der SHP-Datei.</td>
+</tr>
+<tr class="even">
+<td>configFile</td>
+<td>Konfiguriert die Datenprüfung mit Hilfe einer TOML-Datei (um z.B. die Prüfung von einzelnen Constraints auszuschalten). siehe https://github.com/claeis/ilivalidator/blob/master/docs/ilivalidator.rst#konfiguration</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td>Ignoriert die Konfiguration der Typprüfung aus der TOML-Datei, d.h. es kann nur die Multiplizität aufgeweicht werden. Default: false</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td>Schaltet die AREA Topologieprüfung aus. Default: false</td>
+</tr>
+<tr class="odd">
+<td>multiplicityOff</td>
+<td>Schaltet die Prüfung der Multiplizität generell aus. Default: false</td>
+</tr>
+<tr class="even">
+<td>allObjectsAccessible</td>
+<td>Mit der Option nimmt der Validator an, dass er Zugriff auf alle Objekte hat. D.h. es wird z.B. auch die Multiplizität von Beziehungen auf externe Objekte geprüft. Default: false</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td>Schreibt die log-Meldungen der Validierung in eine Text-Datei.</td>
+</tr>
+<tr class="even">
+<td>xtflogFile</td>
+<td>Schreibt die log-Meldungen in eine INTERLIS 2-Datei. Die Datei result.xtf entspricht dem Modell IliVErrors.</td>
+</tr>
+<tr class="odd">
+<td>pluginFolder</td>
+<td>Verzeichnis mit JAR-Dateien, die Zusatzfunktionen enthalten.</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="even">
+<td>failOnError</td>
+<td>Steuert, ob der Task bei einem Validierungsfehler fehlschlägt. Default: true</td>
+</tr>
+<tr class="odd">
+<td>validationOk</td>
+<td>OUTPUT: Ergebnis der Validierung. Nur falls failOnError=false</td>
+</tr>
+<tr class="even">
+<td>encoding</td>
+<td>Zeichencodierung der SHP-Datei, z.B. <code>"UTF-8"</code>. Default: Systemeinstellung</td>
+</tr>
+</tbody>
+</table>
+<p>Im gegebenen Modell wird eine Klasse gesucht, die genau die Attributenamen wie in der Shp-Datei enthält (wobei die Gross-/Kleinschreibung ignoriert wird); die Attributtypen werden ignoriert. Wird keine solche Klasse gefunden, gilt das als Validierungsfehler.</p>
+<p>Die Prüfung von gleichzeitig mehreren Shapefiles führt zu Fehlermeldungen wie <code>OID o3158 of object &lt;Modelname&gt;.&lt;Topicname&gt;.&lt;Klassenname&gt; already exists in ...</code>. Beim Öffnen und Lesen eines Shapefiles wird immer der Zähler, der die interne (im Shapefile nicht vorhandene) <code>OID</code> generiert, zurückgesetzt. Somit kann immer nur ein Shapefile pro Task geprüft werden.</p>
+</section>
+<section id="sqlexecutor" class="level3">
+<h3 class="anchored" data-anchor-id="sqlexecutor">SqlExecutor</h3>
+<p>Der SqlExecutor-Task dient dazu, Datenumbauten auszuführen.</p>
+<p>Er wird im Allgemeinen dann benutzt, wenn</p>
+<ol type="1">
+<li>der Datenumbau komplex ist und deshalb nicht im Db2Db-Task erledigt werden kann</li>
+<li>oder wenn die Quell-DB keine PostgreSQL-DB ist (weil bei komplexen Queries für den Datenumbau möglicherweise fremdsystemspezifische SQL-Syntax verwendet werden müsste)</li>
+<li>oder wenn Quell- und Zielschema in derselben Datenbank liegen</li>
+</ol>
+<p>In den Fällen 1 und 2 werden Stagingtabellen bzw. ein Stagingschema benötigt, in welche der Db2Db-Task die Daten zuerst 1:1 hineinschreibt. Der SqlExecutor-Task liest danach die Daten von dort, baut sie um und schreibt sie dann ins Zielschema. Die Queries für den SqlExecutor-Task können alle in einem einzelnen .sql-File sein oder (z.B. aus Gründen der Strukturierung oder Organisation) auf mehrere .sql-Dateien verteilt sein. Die Reihenfolge der .sql-Dateien ist relevant. Dies bedeutet, dass die SQL-Befehle des zuerst angegebenen .sql-Datei zuerst ausgeführt werden müssen, danach dies SQL-Befehle des an zweiter Stelle angegebenen .sql-Datei, usw.</p>
+<p>Der SqlExecutor-Task muss neben Updates ganzer Tabellen (d.h. Löschen des gesamten Inhalts einer Tabelle und gesamter neuer Stand in die Tabelle schreiben) auch Updates von Teilen von Tabellen zulassen. D.h. es muss z.B. möglich sein, innerhalb einer Tabelle nur die Objekte einer bestimmten Gemeinde zu aktualisieren. Darum ist es möglich innerhalb der .sql-Datei Paramater zu verwenden und diesen Parametern beim Task einen konkreten Wert zuzuweisen. Innerhalb der .sql-Datei werden Paramter mit folgender Syntax verwendet: <code>${paramName}</code>.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task executeSomeSql(type: SqlExecutor){
+    database = [db_uri, db_user, db_pass]
+    sqlParameters = [dataset:'Olten']
+    sqlFiles = ['demo.sql']
+}</code></pre>
+<p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Parametern angegeben werden.</p>
+<pre><code>def db_uri = 'jdbc:postgresql://localhost/gretldemo'
+def db_user = "dmluser"
+def db_pass = "dmluser"
+
+task executeSomeSql(type: SqlExecutor){
+    database = [db_uri, db_user, db_pass]
+    sqlParameters = [[dataset:'Olten'],[dataset:'Grenchen']]
+    sqlFiles = ['demo.sql']
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>Datenbank in die importiert werden soll</td>
+</tr>
+<tr class="even">
+<td>sqlFiles</td>
+<td>Name der SQL-Datei aus der SQL-Statements gelesen und ausgeführt werden</td>
+</tr>
+<tr class="odd">
+<td>sqlParameters</td>
+<td>Eine Map mit Paaren von Parameter-Name und Parameter-Wert (<code>Map&lt;String,String&gt;</code>). Oder eine Liste mit Paaren von Parameter-Name und Parameter-Wert (<code>List&lt;Map&lt;String,String&gt;&gt;</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Unterstützte Datenbanken: PostgreSQL, SQLite und Oracle. Der Oracle-JDBC-Treiber muss jedoch selber installiert werden (Ausgenommen vom Docker-Image).</p>
+</section>
+<section id="xsltransformer-incubating" class="level3">
+<h3 class="anchored" data-anchor-id="xsltransformer-incubating">XslTransformer (incubating)</h3>
+<p><strong>TODO:</strong> Wie sieht es mit der Endung aus? Immer XTF (wohl auch nicht)</p>
+<p>Transformiert eine Datei mittels einer XSL-Transformation ein eine andere Datei. Ist der <code>xslFile</code>-Parameter ein String, wird erwartet, dass die Datei im GRETL-Verzeichnis im Ressourcenordner <code>src/main/resources/xslt</code>-Verzeichnis gespeichert ist. Falls der <code>xslFile</code>-Parameter ein File-Objekt ist, können lokale Dateien verwendet werden.</p>
+<pre><code>task transform(type: XslTransformer) {
+    xslFile = "eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"
+    xmlFile = file("MeldungAnGeometer_G-0111102_20221103_145001.xml")
+    outDirectory = file(".")
+}</code></pre>
+<pre><code>task transform(type: XslTransformer) {
+    xslFile = file("path/to/eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl")
+    xmlFile = file("MeldungAnGeometer_G-0111102_20221103_145001.xml")
+    outDirectory = file(".")
+}</code></pre>
+<pre><code>task transform(type: XslTransformer) {
+    xslFile = "eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"
+    xmlFile = fileTree(".").matching {
+        include "*.xml"
+    }
+    outDirectory = file(".")
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>xslFile</td>
+<td>Name der XSLT-Datei, die im <code>src/main/resources/xslt</code>-Verzeichnis liegen muss oder File-Objekt (beliebier Pfad).</td>
+</tr>
+<tr class="even">
+<td>xmlFile</td>
+<td>Datei oder FileTree, die/der transformiert werden soll.</td>
+</tr>
+<tr class="odd">
+<td>outDirectory</td>
+<td>Verzeichnis, in das die transformierte Datei gespeichert wird. Der Name der transformierten Datei entspricht dem Namen der Inpuzt-Datei mit Endung <code>.xtf</code>.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/gretl\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Amt für Geoinformation Kanton Solothurn</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/_sogis">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

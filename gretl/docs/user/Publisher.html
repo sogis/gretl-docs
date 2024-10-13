@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>publisher – GRETL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">GRETL</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../getting_started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Documentation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
+        <li>
+    <a class="dropdown-item" href="../../../reference.html">
+ <span class="dropdown-text">Reference</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../deployment.html">
+ <span class="dropdown-text">Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../development.html">
+ <span class="dropdown-text">Development</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/sogis/gretl/discussions/"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Discussions</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis/gretl"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#publisher-task" id="toc-publisher-task" class="nav-link active" data-scroll-target="#publisher-task">Publisher-Task</a>
+  <ul class="collapse">
+  <li><a href="#einbindung-in-einen-typischen-gretl-publikationsjob" id="toc-einbindung-in-einen-typischen-gretl-publikationsjob" class="nav-link" data-scroll-target="#einbindung-in-einen-typischen-gretl-publikationsjob">Einbindung in einen typischen GRETL-Publikationsjob</a></li>
+  <li><a href="#parameter" id="toc-parameter" class="nav-link" data-scroll-target="#parameter">Parameter</a></li>
+  <li><a href="#xtf---xtf" id="toc-xtf---xtf" class="nav-link" data-scroll-target="#xtf---xtf">XTF -&gt; XTF</a></li>
+  <li><a href="#db---xtf" id="toc-db---xtf" class="nav-link" data-scroll-target="#db---xtf">DB -&gt; XTF</a></li>
+  <li><a href="#regionen" id="toc-regionen" class="nav-link" data-scroll-target="#regionen">Regionen</a>
+  <ul class="collapse">
+  <li><a href="#beispiele-für-die-verwendung-von-regionen" id="toc-beispiele-für-die-verwendung-von-regionen" class="nav-link" data-scroll-target="#beispiele-für-die-verwendung-von-regionen">Beispiele für die Verwendung von Regionen</a></li>
+  </ul></li>
+  <li><a href="#verkettung-von-publishern" id="toc-verkettung-von-publishern" class="nav-link" data-scroll-target="#verkettung-von-publishern">Verkettung von Publishern</a></li>
+  <li><a href="#validierung" id="toc-validierung" class="nav-link" data-scroll-target="#validierung">Validierung</a></li>
+  <li><a href="#benutzer-formate-gpkg-dxf-shp" id="toc-benutzer-formate-gpkg-dxf-shp" class="nav-link" data-scroll-target="#benutzer-formate-gpkg-dxf-shp">Benutzer-Formate (GPKG, DXF, SHP)</a></li>
+  <li><a href="#kgdi-service" id="toc-kgdi-service" class="nav-link" data-scroll-target="#kgdi-service">KGDI-Service</a>
+  <ul class="collapse">
+  <li><a href="#beipackzettel-beziehen" id="toc-beipackzettel-beziehen" class="nav-link" data-scroll-target="#beipackzettel-beziehen">Beipackzettel beziehen</a></li>
+  <li><a href="#publikationsdatum-nachführen" id="toc-publikationsdatum-nachführen" class="nav-link" data-scroll-target="#publikationsdatum-nachführen">Publikationsdatum nachführen</a></li>
+  </ul></li>
+  <li><a href="#archiv-aufräumen" id="toc-archiv-aufräumen" class="nav-link" data-scroll-target="#archiv-aufräumen">Archiv aufräumen</a></li>
+  <li><a href="#ablauf" id="toc-ablauf" class="nav-link" data-scroll-target="#ablauf">Ablauf</a></li>
+  <li><a href="#ordnerstruktur-im-ziel-verzeichnis" id="toc-ordnerstruktur-im-ziel-verzeichnis" class="nav-link" data-scroll-target="#ordnerstruktur-im-ziel-verzeichnis">Ordnerstruktur im Ziel-Verzeichnis</a>
+  <ul class="collapse">
+  <li><a href="#gängiger-fall-zwei-modelle-keine-regionen" id="toc-gängiger-fall-zwei-modelle-keine-regionen" class="nav-link" data-scroll-target="#gängiger-fall-zwei-modelle-keine-regionen">Gängiger Fall: Zwei Modelle, keine Regionen</a></li>
+  <li><a href="#abbildung-von-regionen-einteilungen" id="toc-abbildung-von-regionen-einteilungen" class="nav-link" data-scroll-target="#abbildung-von-regionen-einteilungen">Abbildung von Regionen-Einteilungen</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="publisher-task" class="level1">
+<h1>Publisher-Task</h1>
+<p>GRETL-Task, welcher für Vektordaten die aktuellen Geodaten-Dateien bereitstellt und das Archiv der vorherigen Zeitstände pflegt.</p>
+<section id="einbindung-in-einen-typischen-gretl-publikationsjob" class="level2">
+<h2 class="anchored" data-anchor-id="einbindung-in-einen-typischen-gretl-publikationsjob">Einbindung in einen typischen GRETL-Publikationsjob</h2>
+<p>In den heute vorliegenden Publikationsjobs werden häufig die Daten vom relational aufgebauten Edit-Schema mittels SQL-Queries “flachgewalzt” und ins Pub-Schema kopiert. Die Schema-Struktur wird automatisch mittels ili2pg aus Edit- und Pub-Modell generiert.</p>
+<p>Für den Datenbezug wird das build.gradle mit zwei Aufrufen des Publisher-Task ergänzt:</p>
+<pre><code>defaultTasks 'pubProduct'
+
+task pubEdit(type: Publisher){
+  dataIdent = "ch.so.avt.verkehrszaehlstellen.edit"
+  ...
+}
+
+task transferVZS(type: Db2Db, dependsOn: pubEdit){
+  ...
+}
+
+task pubProduct(type: Publisher, dependsOn: transferDenkmal){
+  dataIdent = "ch.so.avt.verkehrszaehlstellen"
+  ...
+}</code></pre>
+<p>Bei Problemen mit der Datenqualität der Originaldaten schlägt der Task “pubEdit” fehl. Der Job bricht mit Fehler ab, bevor die Daten irgendwo landen.</p>
+</section>
+<section id="parameter" class="level2">
+<h2 class="anchored" data-anchor-id="parameter">Parameter</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dataIdent</td>
+<td>Identifikator der Daten z.B. “ch.so.agi.vermessung.edit”</td>
+</tr>
+<tr class="even">
+<td>target</td>
+<td>Zielverzeichnis z.B. [ “sftp://ftp.server.ch/data”, “user”, “password” ] oder einfach ein Pfad [file(“/out”)]</td>
+</tr>
+<tr class="odd">
+<td>sourcePath</td>
+<td>Quelldatei z.B. file(“/path/file.xtf”)</td>
+</tr>
+<tr class="even">
+<td>database</td>
+<td>Datenbank mit Quelldaten z.B. [“uri”,“user”,“password”]. Alternative zu sourcePath</td>
+</tr>
+<tr class="odd">
+<td>dbSchema</td>
+<td>Schema in der Datenbank z.B. “av”</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td>ili2db-Datasetname der Quelldaten “dataset” (Das ili2db-Schema muss also immer mit –createBasketCol erstellt werden)</td>
+</tr>
+<tr class="odd">
+<td>modelsToPublish</td>
+<td>Interlis-Modellnamen der Quelldaten in der DB (Nur für “einfache” Modelle, deren ili2db-Schema ohne –createBasketCol erstellt werden kann)</td>
+</tr>
+<tr class="even">
+<td>region</td>
+<td>Muster (Regular Expression) der Dateinamen oder Datasetnamen, falls die Publikation Regionen-weise erfolgt z.B. “[0-9][0-9][0-9][0-9]”. Alternative zum Parameter regions,<br><br>Bei Quelle “Datei” ist die Angabe einer “stellvertretenden” Transferdatei mittels “sourcePath” zwingend. Bsp.: Bei sourcePath “file(”/transferfiles/dummy.xtf”)” werden alle im Ordner “transferfiles” enthaltenen Transferdateien mit dem Muster verglichen und bei “match” selektiert und verarbeitet.</td>
+</tr>
+<tr class="odd">
+<td>regions</td>
+<td>Liste der zu publizierenden Regionen (Dateinamen oder Datasetnamen), falls die Publikation Regionen-weise erfolgen soll. Alternative zum Parameter region</td>
+</tr>
+<tr class="even">
+<td>publishedRegions</td>
+<td>Liste der effektiv publizierten Regionen</td>
+</tr>
+<tr class="odd">
+<td>validationConfig</td>
+<td>Konfiguration für die Validierung (eine ilivalidator-config-Datei) z.B. “validationConfig.ini”</td>
+</tr>
+<tr class="even">
+<td>userFormats</td>
+<td>Benutzerformat (Geopackage, Shapefile, Dxf) erstellen. Default ist false</td>
+</tr>
+<tr class="odd">
+<td>kgdiTokenService</td>
+<td>Endpunkt des Authentifizierung-Services, z.B. [“http://api.kgdi.ch/metadata”,“user”,“pwd”]. Publisher ergänzt die URL mit /v2/oauth/token.</td>
+</tr>
+<tr class="even">
+<td>kgdiService</td>
+<td>Endpunkt des SIMI-Services für die Rückmeldung des Publikationsdatums und die Erstellung des Beipackzettels, z.B. [“http://api.kgdi.ch/metadata”,“user”,“pwd”]. Publisher ergänzt die URL fallabhängig mit /pubsignal respektive /doc.</td>
+</tr>
+<tr class="odd">
+<td>grooming</td>
+<td>Konfiguration für die Ausdünnung z.B. “grooming.json”. Ohne Angabe wird nicht aufgeräumt.</td>
+</tr>
+<tr class="even">
+<td>exportModels</td>
+<td>Das Export-Modell, indem die Daten exportiert werden. Der Parameter wird nur bei der Ausdünnung benötigt. Als Export-Modelle sind Basis-Modelle zulässig.</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td>Dateipfade, die Modell-Dateien (ili-Dateien) enthalten. Mehrere Pfade können durch Semikolon ‚;‘ getrennt werden. Es sind auch URLs von Modell-Repositories möglich. Default: <code>%ITF_DIR;http://models.interlis.ch/</code>. <code>%ITF_DIR</code> ist ein Platzhalter für das Verzeichnis mit der ITF-Datei.</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td>Proxy Server für den Zugriff auf Modell Repositories</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td>Proxy Port für den Zugriff auf Modell Repositories</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xtf---xtf" class="level2">
+<h2 class="anchored" data-anchor-id="xtf---xtf">XTF -&gt; XTF</h2>
+<p>Falls die Daten bereits als XTF-/ITF-Datei vorliegen, muss die Quelldatei angegeben werden.</p>
+<pre><code>task publishFile(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  sourcePath = file("/path/file.xtf")
+}</code></pre>
+<p>Die Daten können alternativ zu SFTP in ein lokales Verzeichnis publiziert werden:</p>
+<pre><code>task publishFile(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [file("/out")]  
+  sourcePath = file("/path/file.xtf")
+}</code></pre>
+</section>
+<section id="db---xtf" class="level2">
+<h2 class="anchored" data-anchor-id="db---xtf">DB -&gt; XTF</h2>
+<p>Falls die Daten in einer ili2db konformen PostgreSQL Datenbank vorliegen, muss die Datenbank angegeben werden und welche Daten (Parameter dataset, modelsToPublish, regions, region) aus der Datenbank exportiert werden sollen.</p>
+<pre><code>task publishFromDb(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  database = ["uri","user","password"]
+  dbSchema "av"
+  dataset = "dataset"
+}</code></pre>
+<p>Nur bei einfachen Modellen (falls das DB Schema ohne createBasketCol erstellt worden ist), kann der Export alternativ mit dem Parameter modelsToPublish mit Angabe des INTERLIS-Modellnamens erfolgen:</p>
+<pre><code>task publishFromDb(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  database = ["uri","user","password"]
+  dbSchema "av"
+  modelsToPublish = "DM01AVCH24LV95D"
+}</code></pre>
+</section>
+<section id="regionen" class="level2">
+<h2 class="anchored" data-anchor-id="regionen">Regionen</h2>
+<p>Falls die Daten bereits als XTF-/ITF-Dateien vorliegen, muss zusätzlich zu einer möglichen Quelldatei (sourcePath) das Dateinamens-Muster (ohne Nameserweiterung (.xtf oder .itf) der Regionen (region) angegeben werden.</p>
+<pre><code>task publishFile(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  sourcePath = file("/transferfiles/file.xtf")
+  region = "[0-9][0-9][0-9][0-9]"  // regex; ersetzt den filename im sourcePath
+}</code></pre>
+<p>Der sourcePath ist wie bei der Verarbeitung eines XTF (ohne Regionen) ein Datei- und nicht ein Ordner-Pfad. Mittels Parameter “region” werden aus allem im Ordner “transferfiles” enthaltenen Transfer-Dateien die zu verarbeitenden selektiert.</p>
+<p>Falls die Daten in einer ili2db konformen PostgreSQL Datenbank vorliegen, muss das Muster der Datensatz-Namen (dataset) angegeben werden (= ein Datensatz pro Region (region)).</p>
+<pre><code>task publishFromDb(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  database = ["uri","user","password"]
+  dbSchema "av"
+  region = "[0-9][0-9][0-9][0-9]"  // regex; ersetzt das dataset
+}</code></pre>
+<p>Verarbeitet werden alle Datensätze, deren Dateiname (Quelle Transferdatei) oder dataset Name (Quelle DB) auf das in Parameter “region” definierte Muster (regular Expression) zutreffen.</p>
+<section id="beispiele-für-die-verwendung-von-regionen" class="level3">
+<h3 class="anchored" data-anchor-id="beispiele-für-die-verwendung-von-regionen">Beispiele für die Verwendung von Regionen</h3>
+<p>Es können eindeutige Namen oder auch regular expressions verwendet werden.</p>
+<p>Export mit region aus lokaler DB (Nutzungsplanung mit 3 Datasets: 2580, 2581, 2582)</p>
+<pre><code>task publishFromDb2(type: Publisher){
+  dataIdent = "ch.so.arp.nutzungsplanung.publishFromDb2"
+  database = [dbUriPub, dbUserPub, dbPwdPub]
+  dbSchema = "arp_nutzungsplanung_pub_v1"
+  target = [project.buildDir]
+
+  region = "[2][5][8][0]"         //exportiert Dataset 2580
+  region = "2580"                 //exportiert Dataset 2580
+  region = 2580                   //exportiert Dataset 2580
+  region = "[0-9][0-9][0-9][0-9]" //exportiert alle 3 Datasets
+  region = ".*"                   //exportiert alle 3 Datasets
+  userFormats = true
+  kgdiService = ["http://localhost:8080/app/rest","admin","admin"]
+}</code></pre>
+<p>4 xtf-Files: a2581.xtf, c2582.xtf, b2583.xtf, d2584.xtf, lokal im Job-Verzeichnis</p>
+<pre><code>task publishFile2(type: Publisher){
+  dataIdent = "publishFile2"
+  sourcePath = file("a2581.xtf")                                        Angabe zum Ablageort eines der zu publizierenden Files
+  target = [project.buildDir]
+  
+  region = "[a-d][0-9][0-9][0-9][0-9]"  //alle 4 Files werden publiziert
+  region = "[2][5][8][4]"               //d2584.xtf wird publiziert
+  kgdiService = ["http://localhost:8080/app/rest","admin","admin"]
+}</code></pre>
+</section>
+</section>
+<section id="verkettung-von-publishern" class="level2">
+<h2 class="anchored" data-anchor-id="verkettung-von-publishern">Verkettung von Publishern</h2>
+<p>Damit nachfolgende Tasks die Liste der tatsächlich publizierten Regionen auswerten können, kann der Parameter publishedRegions des Tasks Publisher verwendet werden.</p>
+<pre><code>task publishFile(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  sourcePath = file("/path/file.xtf")
+  region = "[0-9][0-9][0-9][0-9]"
+}
+task printPublishedRegions(dependsOn: publishFile){
+  doLast(){
+    println publishFile.publishedRegions
+  }
+}</code></pre>
+<p>Der Publisher lässt sich somit auch über die zu publizierenden Regionen verketten.</p>
+<pre><code>task publishFile0(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [project.buildDir]
+  sourcePath = file("../../../../src/test/resources/data/publisher/files/av_test.itf")
+  modeldir= file("../../../../src/test/resources/data/publisher/ili")
+  region="[0-9][0-9][0-9][0-9]"
+}
+task publishFile1(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.pub"
+  target = [project.buildDir]
+  sourcePath = file("../../../../src/test/resources/data/publisher/files/av_test.itf")
+  modeldir= file("../../../../src/test/resources/data/publisher/ili")
+  regions=publishFile0.publishedRegions
+}</code></pre>
+<p>Enthält das aktuelle Verzeichnis schon Daten (von Regionen), werden diese (wie sonst auch historisiert), und danach mit den neuen Regionen ergänzt. Der Parameter publishedRegions enthält nur die neu publizierten Regionen (und nicht alle publizierten Regionen). Auch an den KGDI-Service werden nur die neu publizierten Regionen notifiziert (und nicht alle publizierten Regionen). Die Dateien im meta Unterverzeichnis werden neu erstellt.</p>
+</section>
+<section id="validierung" class="level2">
+<h2 class="anchored" data-anchor-id="validierung">Validierung</h2>
+<p>Die Validierung kann mit einer ilivalidator Konfigurationsdatei konfiguriert werden.</p>
+<pre><code>task publishFile(type: Publisher){
+  ...
+  validationConfig =  "validationConfig.ini"
+}</code></pre>
+</section>
+<section id="benutzer-formate-gpkg-dxf-shp" class="level2">
+<h2 class="anchored" data-anchor-id="benutzer-formate-gpkg-dxf-shp">Benutzer-Formate (GPKG, DXF, SHP)</h2>
+<p>Optional können Benutzerformate (Geopackage, Shapefile, Dxf) erstellt werden. Die Daten müssen in einer entsprechend flachen Struktur vorliegen.</p>
+<pre><code>task publishFromDb(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung"
+  target = [ "sftp://ftp.server.ch/data", "user", "password" ]
+  database = ["uri","user","password"]
+  dbSchema "av"
+  dataset = "dataset"
+  userFormats = true
+}
+
+task publishFromFile(type: Publisher){
+  dataIdent = "ch.so.agi.vermessung.edit"
+  target = [file("/out")]  
+  sourcePath = file("/path/file.xtf")
+  userFormats = true
+}</code></pre>
+<p>Falls das Datenmodell der Quelldaten <code>DM01AVCH24LV95D</code> ist, wird das DXF automatisch in der Geobau-Struktur erstellt und kein Geopackage und kein Shapefile erstellt.</p>
+<p>Die Benutzerformate werden beim Verschieben in den Archiv-Ordner entfernt.</p>
+</section>
+<section id="kgdi-service" class="level2">
+<h2 class="anchored" data-anchor-id="kgdi-service">KGDI-Service</h2>
+<p>Der Service wird benutzt, um:</p>
+<ul>
+<li><p>den Beipackzettel (im Unterordner meta) zu erstellen/beziehen</p></li>
+<li><p>das Publikationsdatum in den Metadaten nachzuführen</p>
+<p>task publishFile(type: Publisher){ … kgdiTokenService = [“http://api.kgdi.ch/metadata”,“superuser”,“superpwd”] kgdiService = [“http://api.kgdi.ch/metadata”,“user”,“pwd”] }</p></li>
+</ul>
+<section id="beipackzettel-beziehen" class="level3">
+<h3 class="anchored" data-anchor-id="beipackzettel-beziehen">Beipackzettel beziehen</h3>
+<pre><code>HTTP GET: endpoint+"/doc?dataident="+dataIdent+"&amp;published="+versionTag</code></pre>
+</section>
+<section id="publikationsdatum-nachführen" class="level3">
+<h3 class="anchored" data-anchor-id="publikationsdatum-nachführen">Publikationsdatum nachführen</h3>
+<pre><code>HTTP PUT: endpoint+"/pubsignal",request</code></pre>
+<p>Der Request-Body “Ohne Regionen”:</p>
+<pre><code>{
+    "dataIdent": "ch.so.afu.gewaesserschutz",
+    "published": "2021-12-23T14:54:49.050062",
+    "publishedBaskets": [{
+        "model": "SO_AGI_MOpublic_20201009",
+        "topic": "Bodenbedeckung",
+        "basket": "oltenBID"
+    }, {
+        "model": "DM01",
+        "topic": "Liegenschaften",
+        "basket": "wangenBID"
+    }]
+}</code></pre>
+<p>Der Request-Body “Mit Regionen”:</p>
+<pre><code>{
+    "dataIdent": "ch.so.afu.gewaesserschutz",
+    "published": "2021-12-23T14:54:49.050062",
+    "publishedRegions": [{
+        "region": "olten",
+        "publishedBaskets": [{
+            "model": "SO_AGI_MOpublic_20201009",
+            "topic": "Bodenbedeckung",
+            "basket": "oltenBID"
+        }]
+    }, {
+        "region": "wangen",
+        "publishedBaskets": [{
+            "model": "SO_AGI_MOpublic_20201009",
+            "topic": "Bodenbedeckung",
+            "basket": "wangenBID"
+        }]
+    }]
+}</code></pre>
+</section>
+</section>
+<section id="archiv-aufräumen" class="level2">
+<h2 class="anchored" data-anchor-id="archiv-aufräumen">Archiv aufräumen</h2>
+<pre><code>task publishFile(type: Publisher){
+  ...
+  grooming = "grooming.json"
+}</code></pre>
+<p>In der Datei grooming.json wird konfiguriert, wie ausgedünnt wird.</p>
+<pre><code>{
+  "grooming": {
+    "daily": {
+       "from": 0,
+       "to": 1
+    },
+    "weekly": {
+       "from": 1,
+       "to": 4
+    },
+    "monthly": {
+       "from": 4,
+       "to": 52
+    },
+    "yearly": {
+       "from": 52,
+       "to": null
+    }
+  }
+}</code></pre>
+<p>Die <code>to</code> Angabe muss mit der <code>from</code> Angabe der nächsthöheren Stufe identisch sein (also z.B daily.to=weekly.from). Alle <code>from</code> und <code>to</code> Angaben sind in Tagen. Einzelne Stufen können weggelassen werden. Bei der niedrigsten Stufe (i.d.R. <code>daily</code>) muss <code>from=0</code> sein. Bei der höchsten Stufe (i.d.R. <code>yearly</code>) kann <code>to</code> definiert oder <code>null</code> sein. Falls <code>to</code> definiert ist, wird der älteste Stand beim Erreichen des <code>to</code> Alters gelöscht. Falls bei der höchsten Stufe <code>to=null</code>, wird der älteste Stand nicht gelöscht.</p>
+<p>Siehe Repo <a href="http://github.com/sogis/publisher_test">publisher_test</a> bzgl. Doku der Grooming “Corner-Cases”, Testfälle und Testskript.</p>
+</section>
+<section id="ablauf" class="level2">
+<h2 class="anchored" data-anchor-id="ablauf">Ablauf</h2>
+<p>Der Publisher arbeitet die folgenden Hauptschritte ab:</p>
+<ol type="1">
+<li>Verstecktes Verzeichnis für den Datenstand via FTPS erstellen (.yyyy-MM-dd-UUID/). Kein Abbruch, falls das Verzeichnis vorhanden ist.</li>
+<li>XTFs in Verzeichnis ablegen.
+<ol type="1">
+<li>Für Datenthemen mit Quelle=Datenbank: XTF-Transferdateien exportieren.
+<ol type="1">
+<li>Mit ili2pg das xtf erzeugen</li>
+<li>Prüfung des xtf gegen das Modell. Abbruch bei fatalen Fehlern</li>
+<li>Prüf-Bericht (und evtl. Prüf-Konfiguartion) muss auch mit in die ZIP Datei</li>
+<li>ZIP-Datei publizieren</li>
+</ol></li>
+<li>Für Datenthemen mit Quelle=XTF: XTF in Verzeichnis kopieren.
+<ol type="1">
+<li>Prüfung des xtf gegen das Modell. Abbruch bei fatalen Fehlern</li>
+<li>Prüf-Bericht (und evtl. Prüf-Konfiguartion) muss auch mit in die ZIP Datei</li>
+<li>ZIP-Datei publizieren<br>
+</li>
+</ol></li>
+</ol></li>
+<li>Aus dem Publikations-xtf die Benutzerformate (Geopackage, Shapefile, Dxf) ableiten und ablegen.</li>
+<li>Metadaten sammeln und im Unterordner meta/ ablegen.
+<ol type="1">
+<li>Publikationsdatum</li>
+<li>ili-Dateien</li>
+<li>Beipackzettel (HTML via REST-API vom SIMI-Service beziehen)</li>
+</ol></li>
+<li>Neue Ordnernamen setzen.
+<ol type="1">
+<li>“aktuell” umbenennen auf Ordnername gemäss Datum in publishdate.json und verschieben in “hist”.</li>
+<li>Verstecktes Verzeichnis umbenennen auf aktuell.</li>
+<li>Benutzerformate in “hist” löschen</li>
+</ol></li>
+<li>Publikationsdatum via REST-API in den KGDI-Metadaten nachführen</li>
+<li>Historische Stände ausdünnen.</li>
+</ol>
+</section>
+<section id="ordnerstruktur-im-ziel-verzeichnis" class="level2">
+<h2 class="anchored" data-anchor-id="ordnerstruktur-im-ziel-verzeichnis">Ordnerstruktur im Ziel-Verzeichnis</h2>
+<section id="gängiger-fall-zwei-modelle-keine-regionen" class="level3">
+<h3 class="anchored" data-anchor-id="gängiger-fall-zwei-modelle-keine-regionen">Gängiger Fall: Zwei Modelle, keine Regionen</h3>
+<p>Publikation in den beiden Datenbereitstellungen ch.so.avt.verkehrszaehlstellen und ch.so.avt.verkehrszaehlstellen.edit</p>
+<p>Namenskonvention für die Dateien: [Datenbereitstellungs-Identifier].[Format-Identifier].zip</p>
+<blockquote class="blockquote">
+<p>data/ * ch.so.avt.verkehrszaehlstellen/ * aktuell/ * ch.so.avt.verkehrszaehlstellen.dxf.zip * Tabelle1.dxf * Tabelle2.dxf * …. * validation.log * validation.ini * ch.so.avt.verkehrszaehlstellen.gpkg.zip * ch.so.avt.verkehrszaehlstellen.gpkg * validation.log * validation.ini * ch.so.avt.verkehrszaehlstellen.shp.zip * Tabelle1.prj * Tabelle1.shp * Tabelle1.shx * Tabelle2.dbf * Tabelle2.prj * Tabelle2.shp * Tabelle2.shx * …. * validation.log * validation.ini * ch.so.avt.verkehrszaehlstellen.xtf.zip * ch.so.avt.verkehrszaehlstellen.xtf * validation.log * validation.ini * meta/ * SO_AVT_Verkehrszaehlstellen_Publikation_20190206.ili * publishdate.json<br>
+* datenbeschreibung.html * hist/ * 2021-04-12/ – intern identisch aufgebaut wie Ordner aktuell/ aber ohne Benutzerformate * ch.so.avt.verkehrszaehlstellen.xtf.zip * ch.so.avt.verkehrszaehlstellen.xtf * validation.log * validation.ini * meta/ * SO_AVT_Verkehrszaehlstellen_Publikation_20190206.ili * publishdate.json<br>
+* datenbeschreibung.html * 2021-03-14/ * … * ch.so.avt.verkehrszaehlstellen.edit/ * aktuell/ * ch.so.avt.verkehrszaehlstellen.edit.xtf.zip * ch.so.avt.verkehrszaehlstellen.edit.xtf * validation.log * validation.ini * meta/ * SO_AVT_Verkehrszaehlstellen_20190206.ili<br>
+* publishdate.json<br>
+* datenbeschreibung.html * hist/ * …</p>
+</blockquote>
+</section>
+<section id="abbildung-von-regionen-einteilungen" class="level3">
+<h3 class="anchored" data-anchor-id="abbildung-von-regionen-einteilungen">Abbildung von Regionen-Einteilungen</h3>
+<p>Die Regionen werden als Präfix der Dateien abgebildet. Die Ordnerstruktur bleibt gleich. Aufbau Dateiname:<br>
+[Regionen-Identifier].[Datenbereitstellungs-Identifier].[Format-Identifier].zip</p>
+<p>Beispiel AV (Regionen-Identifier ist die BFS-NR):</p>
+<blockquote class="blockquote">
+<p>data/ * ch.so.agi.av.mopublic/ * aktuell/ * 2501.ch.so.agi.av.mopublic.dxf.zip * 2501.ch.so.agi.av.mopublic.gpkg.zip * 2501.ch.so.agi.av.mopublic.shp.zip * 2501.ch.so.agi.av.mopublic.xtf.zip * 2502.ch.so.agi.av.mopublic.dxf.zip * 2502.ch.so.agi.av.mopublic.gpkg.zip * 2502.ch.so.agi.av.mopublic.shp.zip * 2502.ch.so.agi.av.mopublic.xtf.zip * … * meta/ * …<br>
+* hist/ * …</p>
+</blockquote>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/gretl\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Amt für Geoinformation Kanton Solothurn</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sogis">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/_sogis">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
