@@ -54,6 +54,8 @@ jobs:
           pwd
           ls -la
 
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
 
       # - name: Render GRETL documentation 
       #   working-directory: gretl
