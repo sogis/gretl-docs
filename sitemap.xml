@@ -2,54 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gretl.app/getting_started.html</loc>
-    <lastmod>2025-01-29T16:05:18.719Z</lastmod>
+    <lastmod>2025-01-29T16:11:30.766Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/index.html</loc>
-    <lastmod>2025-01-29T16:05:18.722Z</lastmod>
+    <lastmod>2025-01-29T16:11:30.768Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/deployment.html</loc>
-    <lastmod>2025-01-29T16:05:18.719Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/docs/user/publisher.html</loc>
-    <lastmod>2025-01-29T16:05:19.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/docs/dev/index.html</loc>
-    <lastmod>2025-01-29T16:05:19.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/gretl/src/docs/publisher.html</loc>
-    <lastmod>2025-01-29T16:05:19.614Z</lastmod>
+    <lastmod>2025-01-29T16:11:30.766Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/publisher.html</loc>
-    <lastmod>2025-01-29T16:05:26.536Z</lastmod>
+    <lastmod>2025-01-29T16:11:38.677Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/help.html</loc>
-    <lastmod>2025-01-29T16:05:18.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/gretl/src/docs/reference.html</loc>
-    <lastmod>2025-01-29T16:05:19.614Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/docs/user/reference.html</loc>
-    <lastmod>2025-01-29T16:05:19.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gretl.app/gretl/docs/architecture/architecture.html</loc>
-    <lastmod>2025-01-29T16:05:19.612Z</lastmod>
+    <lastmod>2025-01-29T16:11:30.766Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/development.html</loc>
-    <lastmod>2025-01-29T16:05:18.719Z</lastmod>
+    <lastmod>2025-01-29T16:11:30.766Z</lastmod>
   </url>
   <url>
     <loc>https://gretl.app/reference.html</loc>
-    <lastmod>2025-01-29T16:05:26.536Z</lastmod>
+    <lastmod>2025-01-29T16:11:38.677Z</lastmod>
   </url>
 </urlset>
