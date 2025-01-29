@@ -27,8 +27,6 @@ jobs:
         with:
           repository: sogis/gretl
           path: gretl
-          #ref: V3_0_doclet
-          #ref: a5caad39483ee10f9aae5492a5946ca83193b1b7
           ref: ${{ github.event.inputs.commit }}
 
       - name: Debug
@@ -46,6 +44,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Copy GRETL reference documentation
+        working-directory: gretl
         run: |
           cp -v gretl/src/docs/*.qmd ..
           cp -vr gretl/src/docs/tasks ..
