@@ -45,8 +45,22 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Copy GRETL reference documentation
+        run: |
+          cp -v gretl/src/docs/*.qmd ..
+          cp -vr gretl/src/docs/tasks ..
+
+      - name: Debug
+        run: |
+          pwd
+          ls -la
+
+
+      # - name: Render GRETL documentation 
+      #   working-directory: gretl
+      #   run: |
+      #       quarto render gretl/src/docs/  --to gfm --output-dir ../../../docs/user
+      #       ls -la docs/user
 
       - name: Debug
         run: |
