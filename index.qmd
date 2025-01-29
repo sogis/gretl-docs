@@ -4,7 +4,7 @@ page-layout: custom
 section-divs: false
 css: index.css
 toc: false
-description: Fubar foo bar.
+description: GRETL Documentation.
 ---
 
 <section class="hero-banner content-block">

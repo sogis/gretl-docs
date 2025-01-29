@@ -57,12 +57,6 @@ jobs:
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
 
-      # - name: Render GRETL documentation 
-      #   working-directory: gretl
-      #   run: |
-      #       quarto render gretl/src/docs/  --to gfm --output-dir ../../../docs/user
-      #       ls -la docs/user
-
       - name: Debug
         run: |
           pwd
@@ -104,7 +98,7 @@ jobs:
         run: |
           aws s3 ls --region fsn1
 
-      - name: Publish to S3
-        run: |
-          aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
+      # - name: Publish to S3
+      #   run: |
+      #     aws s3 cp ${{ github.event.inputs.commit }}.zip s3://ch-agi-geodaten-dev/ --acl public-read --region fsn1
 
