@@ -76,8 +76,8 @@ jobs:
         run: |
           ls -la
 
-      - name: Render and Publish (only on from GRETL master branch (tbd))
-        if: ${{ github.event.inputs.commit == 'master'}}
+      - name: Render and Publish
+        if: ${{ github.event.inputs.commit == 'main'}}
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
