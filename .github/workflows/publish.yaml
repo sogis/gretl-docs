@@ -58,6 +58,10 @@ jobs:
           pwd
           ls -la
 
+      - name: Fix link
+        run: |
+          sed -i 's/publisher\.md/publisher.qmd/g' reference.qmd
+
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
 
