@@ -49,6 +49,10 @@ jobs:
           cp -v gretl/src/docs/*.qmd ..
           cp -vr gretl/src/docs/tasks ..
 
+      - name: Remove GRETL repo
+        run: |
+          rm -rf gretl
+
       - name: Debug
         run: |
           pwd
