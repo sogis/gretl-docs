@@ -4,7 +4,7 @@
 Approach:
 
 - on-demand
-- Parameter: Version (defualt=master/main)
+- Parameter: Version (default=main)
 - falls master/main wird gh pages aktualisiert
 - immer wird ein package deployed mit branch-(und commit id von gretl) im zip-namen oder so ähnlich.
 - 

@@ -4,7 +4,7 @@ on:
       commit:
         description: 'Commit SHA'
         required: false
-        default: 'master'
+        default: 'main'
   # push:
   #   branches: main
 
@@ -12,9 +12,12 @@ name: Publish GRETL documentation and website
 
 jobs:
   build-deploy:
+
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
