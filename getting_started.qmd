@@ -61,7 +61,7 @@ If you want some more logging output, use `gradle --rerun-tasks -i` and you shou
 
 ## Docker flavour
 
-You can build your very own image or just use [_docker.io/sogis/gretl:latest_](https://hub.docker.com/repository/docker/sogis/gretl/general). Since the image makes use of an _init.gradle_ file, the _build.gradle_ file looks a little bit different:
+You can build your very own image or just use [_docker.io/sogis/gretl:3_](https://hub.docker.com/repository/docker/sogis/gretl/general). Since the image makes use of an _init.gradle_ file, the _build.gradle_ file looks a little bit different:
 
 ```groovy
 import java.nio.file.Paths
