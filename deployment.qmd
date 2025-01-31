@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container: #<1>
-      image: sogis/gretl:latest
+      image: sogis/gretl:3
 
     steps:
       - uses: actions/checkout@v3
@@ -74,7 +74,7 @@ jobs:
 ```
 
 
-1. Mit der Anweisung `container` wird der Action mitgeteilt, dass die folgenden Steps _im_ GRETL Dockerimage ausgeführt werden.
+1. Mit der Anweisung `container` wird der Action mitgeteilt, dass die folgenden Steps _im_ GRETL-Dockerimage ausgeführt werden.
 
 Eine leicht komplizierter Workflow könnte so aussehen:
 
