@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: sogis/gretl:latest
+      image: sogis/gretl:3
 
     services:                           #<4>
       postgis:
