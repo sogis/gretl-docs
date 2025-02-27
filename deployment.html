@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a901c950251d501c967ce3c652c0becd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66c917203083cd1eb8a4390da43dd52b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -299,52 +299,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">'file name?'</span></span>
 <span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at">  </span></span>
-<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-17" class="code-annotation-target"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ORG_GRADLE_PROJECT_awsAccessKeyAgi</span><span class="kw">:</span><span class="at"> ${{secrets.AWS_ACCESS_KEY_ID}}</span></span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ORG_GRADLE_PROJECT_awsSecretAccessKeyAgi</span><span class="kw">:</span><span class="at"> ${{secrets.AWS_SECRET_ACCESS_KEY}}</span></span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">image</span><span class="kw">:</span><span class="at"> sogis/gretl:3</span></span>
-<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-26" class="code-annotation-target"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">postgis</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> postgis/postgis:14-3.3</span></span>
-<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_PASSWORD</span><span class="kw">:</span><span class="at"> gretl</span></span>
-<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_USER</span><span class="kw">:</span><span class="at"> gretl</span></span>
-<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_DB</span><span class="kw">:</span><span class="at"> edit</span></span>
-<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">        options</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>          --health-cmd pg_isready</span>
-<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a>          --health-interval 10s</span>
-<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a>          --health-timeout 5s</span>
-<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a>          --health-retries 5</span>
-<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
-<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run GRETL job</span></span>
-<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a>          gradle -b build.gradle --init-script /home/gradle/init.gradle --no-daemon</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-45" class="code-annotation-target"><a href="#annotated-cell-3-45" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_directory</span><span class="kw">:</span><span class="at"> ${{ github.event.inputs.directory }}</span></span>
-<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_fileName</span><span class="kw">:</span><span class="at"> ${{ github.event.inputs.fileName }}</span></span>
-<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbUriEdit</span><span class="kw">:</span><span class="at"> jdbc:postgresql://postgis:5432/edit</span></span>
-<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbUserEdit</span><span class="kw">:</span><span class="at"> gretl</span></span>
-<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbPwdEdit</span><span class="kw">:</span><span class="at"> gretl</span></span>
-<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-52" class="code-annotation-target"><a href="#annotated-cell-3-52" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Upload results</span></span>
-<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v3</span></span>
-<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">name</span><span class="kw">:</span><span class="at"> results</span></span>
-<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56" aria-hidden="true" tabindex="-1"></a><span class="fu">          path</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="annotated-cell-3-57"><a href="#annotated-cell-3-57" aria-hidden="true" tabindex="-1"></a>            out-**.xtf</span>
-<span id="annotated-cell-3-58"><a href="#annotated-cell-3-58" aria-hidden="true" tabindex="-1"></a>            *.log</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-16" class="code-annotation-target"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ORG_GRADLE_PROJECT_awsAccessKeyAgi</span><span class="kw">:</span><span class="at"> ${{secrets.AWS_ACCESS_KEY_ID}}</span></span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ORG_GRADLE_PROJECT_awsSecretAccessKeyAgi</span><span class="kw">:</span><span class="at"> ${{secrets.AWS_SECRET_ACCESS_KEY}}</span></span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">image</span><span class="kw">:</span><span class="at"> sogis/gretl:3</span></span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-25" class="code-annotation-target"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">postgis</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> postgis/postgis:14-3.3</span></span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_PASSWORD</span><span class="kw">:</span><span class="at"> gretl</span></span>
+<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_USER</span><span class="kw">:</span><span class="at"> gretl</span></span>
+<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">POSTGRES_DB</span><span class="kw">:</span><span class="at"> edit</span></span>
+<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">        options</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a>          --health-cmd pg_isready</span>
+<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>          --health-interval 10s</span>
+<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a>          --health-timeout 5s</span>
+<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a>          --health-retries 5</span>
+<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run GRETL job</span></span>
+<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a>          gradle -b build.gradle --init-script /home/gradle/init.gradle --no-daemon</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-44" class="code-annotation-target"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_directory</span><span class="kw">:</span><span class="at"> ${{ github.event.inputs.directory }}</span></span>
+<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_fileName</span><span class="kw">:</span><span class="at"> ${{ github.event.inputs.fileName }}</span></span>
+<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbUriEdit</span><span class="kw">:</span><span class="at"> jdbc:postgresql://postgis:5432/edit</span></span>
+<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbUserEdit</span><span class="kw">:</span><span class="at"> gretl</span></span>
+<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ORG_GRADLE_PROJECT_dbPwdEdit</span><span class="kw">:</span><span class="at"> gretl</span></span>
+<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-51" class="code-annotation-target"><a href="#annotated-cell-3-51" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Upload results</span></span>
+<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v3</span></span>
+<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">name</span><span class="kw">:</span><span class="at"> results</span></span>
+<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">          path</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56" aria-hidden="true" tabindex="-1"></a>            out-**.xtf</span>
+<span id="annotated-cell-3-57"><a href="#annotated-cell-3-57" aria-hidden="true" tabindex="-1"></a>            *.log</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -356,19 +355,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="17" data-code-annotation="3">Der GRETL-Job kommunziert mit AWS-S3 und benötigt Credentials. Diese werden <em>Gradle</em> als ENV-Variablen bekannt gemacht.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="16" data-code-annotation="3">Der GRETL-Job kommunziert mit AWS-S3 und benötigt Credentials. Diese werden <em>Gradle</em> als ENV-Variablen bekannt gemacht.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="26" data-code-annotation="4">Es wird eine PostGIS-Datenbank als Dockercontainer gestartet, die wir für den ETL-Prozess benötigen.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="25" data-code-annotation="4">Es wird eine PostGIS-Datenbank als Dockercontainer gestartet, die wir für den ETL-Prozess benötigen.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="45" data-code-annotation="5">Weitere Umgebungsvariablen für den GRETL-Job.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="44" data-code-annotation="5">Weitere Umgebungsvariablen für den GRETL-Job.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="52" data-code-annotation="6">Das Resultat des GRETL-Jobs (eine XTF-Datei) und Logfiles werden als Artefakt hochgeladen und stehen dem Benutzer zum Download zur Verfügung.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="51" data-code-annotation="6">Das Resultat des GRETL-Jobs (eine XTF-Datei) und Logfiles werden als Artefakt hochgeladen und stehen dem Benutzer zum Download zur Verfügung.</span>
 </dd>
 </dl>
 </section>

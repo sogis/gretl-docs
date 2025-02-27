@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a901c950251d501c967ce3c652c0becd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66c917203083cd1eb8a4390da43dd52b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -215,6 +215,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#gpkgimport" id="toc-gpkgimport" class="nav-link" data-scroll-target="#gpkgimport">GpkgImport</a></li>
   <li><a href="#gpkgvalidator" id="toc-gpkgvalidator" class="nav-link" data-scroll-target="#gpkgvalidator">GpkgValidator</a></li>
   <li><a href="#gzip" id="toc-gzip" class="nav-link" data-scroll-target="#gzip">Gzip</a></li>
+  <li><a href="#ili2duckdbexport" id="toc-ili2duckdbexport" class="nav-link" data-scroll-target="#ili2duckdbexport">Ili2duckdbExport</a></li>
+  <li><a href="#ili2duckdbimport" id="toc-ili2duckdbimport" class="nav-link" data-scroll-target="#ili2duckdbimport">Ili2duckdbImport</a></li>
+  <li><a href="#ili2duckdbimportschema" id="toc-ili2duckdbimportschema" class="nav-link" data-scroll-target="#ili2duckdbimportschema">Ili2duckdbImportSchema</a></li>
   <li><a href="#ili2gpkgimport" id="toc-ili2gpkgimport" class="nav-link" data-scroll-target="#ili2gpkgimport">Ili2gpkgImport</a></li>
   <li><a href="#ili2pgdelete" id="toc-ili2pgdelete" class="nav-link" data-scroll-target="#ili2pgdelete">Ili2pgDelete</a></li>
   <li><a href="#ili2pgexport" id="toc-ili2pgexport" class="nav-link" data-scroll-target="#ili2pgexport">Ili2pgExport</a></li>
@@ -485,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="csv2excel-incubating" class="level3">
 <h3 class="anchored" data-anchor-id="csv2excel-incubating">Csv2Excel (incubating)</h3>
-<p>Konvertiert eine CSV-Datei in eine Excel-Datei (*.xlsx). Datentypen werden anhand eines INTERLIS-Modelles eruiert. Fehlt das Modell, wird alles als Text gespeichert. Die Daten werden vollständig im Speicher vorgehalten. Falls grosse Dateien geschrieben werden müssen, kann das zu Problemen führen. Dann müsste die Apache POI SXSSF Implementierung (Streaming) verwendet werden.</p>
+<p>Konvertiert eine CSV-Datei in eine Excel-Datei (*.xlsx). Datentypen werden anhand eines INTERLIS-Modelles eruiert. Fehlt das Modell, wird alles als Text gespeichert. Die Daten werden vollständig im Speicher vorgehalten. Falls grosse Dateien geschrieben werden müssen, kann das zu Problemen führen. Dann müsste die Apache POI SXSSF Implementierung (Streaming) verwendet werden. Existiert die Datei (<code>outputFile</code>) bereits, wird ein neues Sheet erstellt, d.h. die Datei wird nicht überschrieben. Der Sheet-Name ist immer der normaliserte Name der CSV-Datei. Es wird ein Fehler gemeldet, falls der Sheet-Name bereits existiert.</p>
 <p>Beispiel:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'convertData'</span><span class="op">,</span> Csv2Excel<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    csvFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./20230124_sap_Gebaeude.csv"</span><span class="op">)</span></span>
@@ -494,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    valueSeparator <span class="op">=</span> <span class="st">";"</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">;</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"SO_HBA_Gebaeude_20230111"</span><span class="op">;</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    outputDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">);</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    outputFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">);</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
@@ -543,10 +546,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>&nbsp;ja</td>
 </tr>
 <tr class="even">
-<td>outputDir</td>
+<td>outputFile</td>
 <td><code>File</code></td>
-<td>Verzeichnis, in das die Excel-Datei gespeichert wird. Default: Verzeichnis, in dem die CSV-Datei vorliegt.</td>
-<td>&nbsp;ja</td>
+<td>Excel-Datei (.xlsx), in die die CSV-Datei umgewandelt resp. importiert werden soll.</td>
+<td>&nbsp;nein</td>
 </tr>
 <tr class="odd">
 <td>valueDelimiter</td>
@@ -1950,6 +1953,924 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
+<section id="ili2duckdbexport" class="level3">
+<h3 class="anchored" data-anchor-id="ili2duckdbexport">Ili2duckdbExport</h3>
+<p>Exportiert Daten aus der DuckDB-Datenbank in eine INTERLIS-Transferdatei.</p>
+<p>Beispiel:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">"ili2duckdbexport"</span><span class="op">,</span> Ili2duckdbExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"GB2AV"</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"gb2av"</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"VOLLZUG_SO0200002401_1531_20180105113131.xml"</span><span class="op">)</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    dbfile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"my_gb2av.duckdb"</span><span class="op">)</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 50%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Datentyp</th>
+<th>Beschreibung</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>baskets</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--baskets</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>dataset</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dataset</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>datasetSubstring</td>
+<td><code>ListProperty&lt;Integer&gt;</code></td>
+<td>null</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>dbfile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Datenbank-Datei in die importiert werden soll.</td>
+<td>&nbsp;nein</td>
+</tr>
+<tr class="odd">
+<td>dbschema</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dbschema</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>deleteData</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--deleteData</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>disableAreaValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableAreaValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>disableRounding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableRounding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>disableValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>export3</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--export3</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>exportModels</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--exportModels</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>exportTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--exportTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>failOnException</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--failOnException</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>forceTypeValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--forceTypeValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>iligml20</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--iligml20</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>importBid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importBid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>importTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>logFile</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--logFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>modeldir</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--modeldir</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>models</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--models</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>postScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--postScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>preScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--preScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxy</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td><code>Property&lt;Integer&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxyPort</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>skipGeometryErrors</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipGeometryErrors</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>skipPolygonBuilding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipPolygonBuilding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>strokeArcs</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--strokeArcs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>topics</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--topics</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>trace</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--trace</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>validConfigFile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--validConfigFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ili2duckdbimport" class="level3">
+<h3 class="anchored" data-anchor-id="ili2duckdbimport">Ili2duckdbImport</h3>
+<p>Importiert Daten aus einer INTERLIS-Transferdatei in die DuckDB-Datenbank.</p>
+<p>Das Property <code>dataFile</code> kann mehreren Datentypen entsprechen:</p>
+<ul>
+<li><code>File</code>: Es wird eine einzelne Datei importiert.</li>
+<li><code>List</code>: Es werden mehrere Dateien gleichzeitig importiert. Die Namen der Dateien sind bereits vor Start des Jobs klar.</li>
+<li><code>FileCollection</code>: Es werden mehrere Dateien gleichzeitig importiert. Die Namen der Dateien sind erst zur Laufzeit bekannt (z.B. nach Download von FTP-Server o.ä.).</li>
+<li><code>String</code>: Es wird eine einzelne Datei aus einem ilidata-Repository automatisch heruntergeladen und importiert.</li>
+</ul>
+<p>Beispiel:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">"ili2duckdbimport"</span><span class="op">,</span> Ili2duckdbImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"GB2AV"</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"gb2av"</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"VOLLZUG_SO0200002401_1531_20180105113131.xml"</span><span class="op">)</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    dbfile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"my_gb2av.duckdb"</span><span class="op">)</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 50%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Datentyp</th>
+<th>Beschreibung</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>baskets</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--baskets</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>dataFile</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Name der XTF-/ITF-Datei, die gelesen werden soll. Es können auch mehrere Dateien sein. <code>FileCollection</code> oder <code>String</code>.</td>
+<td>&nbsp;nein</td>
+</tr>
+<tr class="odd">
+<td>dataset</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dataset</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>datasetSubstring</td>
+<td><code>ListProperty&lt;Integer&gt;</code></td>
+<td>null</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>dbfile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Datenbank-Datei in die importiert werden soll.</td>
+<td>&nbsp;nein</td>
+</tr>
+<tr class="even">
+<td>dbschema</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dbschema</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>deleteData</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--deleteData</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableAreaValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>disableRounding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableRounding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>disableValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>exportTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--exportTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>failOnException</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--failOnException</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>forceTypeValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--forceTypeValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>iligml20</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--iligml20</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>importBid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importBid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>importTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--logFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>modeldir</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--modeldir</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--models</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>postScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--postScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>preScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--preScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>proxy</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxy</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>proxyPort</td>
+<td><code>Property&lt;Integer&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxyPort</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>skipGeometryErrors</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipGeometryErrors</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipPolygonBuilding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>strokeArcs</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--strokeArcs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>topics</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--topics</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>trace</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--trace</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>validConfigFile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--validConfigFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ili2duckdbimportschema" class="level3">
+<h3 class="anchored" data-anchor-id="ili2duckdbimportschema">Ili2duckdbImportSchema</h3>
+<p>Erstellt die Tabellenstruktur in der DuckDB-Datenbank anhand eines INTERLIS-Modells. Fremdschlüssel werden nicht unterstützt (weil <code>ADD CONSTRAINT</code>-Syntax nicht unterstützt wird). Es muss <code>--strokeArcs</code> verwendet werden. Räumlicher Index von DuckDB ist noch rudimentär umgesetzt.</p>
+<p>Beispiel:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">"ili2duckdbschemaimport"</span><span class="op">,</span> Ili2duckdbImportSchema<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    dbfile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"my_gb2av.duckdb"</span><span class="op">)</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"GB2AV"</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    modeldir <span class="op">=</span> rootProject<span class="op">.</span>projectDir<span class="op">.</span><span class="fu">toString</span><span class="op">()</span> <span class="op">+</span> <span class="st">";http://models.interlis.ch"</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"gb2av"</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    coalesceJson <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    createBasketCol <span class="op">=</span> <span class="kw">true</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 50%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Datentyp</th>
+<th>Beschreibung</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>baskets</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--baskets</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>beautifyEnumDispName</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--beautifyEnumDispName</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>coalesceArray</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--coalesceArray</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>coalesceCatalogueRef</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--coalesceCatalogueRef</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>coalesceJson</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--coalesceJson</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>coalesceMultiLine</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--coalesceMultiline</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>coalesceMultiSurface</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--coalesceMultiSurface</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createBasketCol</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createBasketCol</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createDatasetCol</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createDatasetCol</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createDateTimeChecks</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createDateTimeChecks</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createEnumColAsItfCode</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createEnumColAsItfCode</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createEnumTabs</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createEnumTabs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createEnumTabsWithId</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createEnumTabsWithId</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createEnumTxtCol</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createEnumTxtCol</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createFk</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createFk</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createFkIdx</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createFkIdx</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createGeomIdx</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createGeomIdx</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createImportTabs</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createImportTabs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createMetaInfo</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createMetaInfo</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createNumChecks</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createNumChecks</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createSingleEnumTab</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createSingleEnumTab</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createStdCols</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createStdCols</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createTextChecks</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createTextChecks</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createTidCol</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createTidCol</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createTypeConstraint</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createTypeConstraint</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createTypeDiscriminator</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createTypeDescriminator</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>createUnique</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createUnique</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>createscript</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--createscript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>dataset</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dataset</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>datasetSubstring</td>
+<td><code>ListProperty&lt;Integer&gt;</code></td>
+<td>null</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>dbfile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Datenbank-Datei in die importiert werden soll.</td>
+<td>&nbsp;nein</td>
+</tr>
+<tr class="even">
+<td>dbschema</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dbschema</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>defaultSrsAuth</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--defaultSrsAuth</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>defaultSrsCode</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--defaultSrsCode</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>deleteData</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--deleteData</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>disableAreaValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableAreaValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>disableNameOptimization</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableNameOptimization</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>disableRounding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableRounding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>disableValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--disableValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>dropscript</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--dropscript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>expandMultilingual</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--expandMultilingual</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>exportTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--exportTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>failOnException</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--failOnException</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>forceTypeValidation</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--forceTypeValidation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>idSeqMax</td>
+<td><code>Property&lt;Long&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--idSeqMax</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>idSeqMin</td>
+<td><code>Property&lt;Long&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--idSeqMin</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>iliFile</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Name der ili-Datei, die gelesen werden soll.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>iliMetaAttrs</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--iliMetaAttrs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>iligml20</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--iligml20</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>importBid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importBid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>importTid</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--importTid</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>keepAreaRef</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--keepAreaRef</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>logFile</td>
+<td><code>Property&lt;Object&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--logFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>maxNameLength</td>
+<td><code>Property&lt;Integer&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--maxNameLength</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>metaConfig</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--metaConfig</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>modeldir</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--modeldir</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>models</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--models</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>nameByTopic</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--nameByTopic</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>noSmartMapping</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--noSmartMapping</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>oneGeomPerTable</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--oneGeomPerTable</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>postScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--postScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>preScript</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--preScript</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>proxy</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxy</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>proxyPort</td>
+<td><code>Property&lt;Integer&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--proxyPort</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>setupPgExt</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--setupPgExt</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>skipGeometryErrors</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipGeometryErrors</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>skipPolygonBuilding</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--skipPolygonBuilding</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>smart1Inheritance</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--smart1Inheritance</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>smart2Inheritance</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--smart2Inheritance</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>sqlColsAsText</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--sqlColsAsText</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>sqlEnableNull</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--sqlEnableNull</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>sqlExtRefCols</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--sqlExtRefCols</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>strokeArcs</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--strokeArcs</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>t_id_Name</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--t_id_Name</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>topics</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--topics</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>trace</td>
+<td><code>Property&lt;Boolean&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--trace</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="odd">
+<td>translation</td>
+<td><code>Property&lt;String&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--translation</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+<tr class="even">
+<td>validConfigFile</td>
+<td><code>Property&lt;File&gt;</code></td>
+<td>Entspricht der ili2db-Option <code>--validConfigFile</code>.</td>
+<td>&nbsp;ja</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="ili2gpkgimport" class="level3">
 <h3 class="anchored" data-anchor-id="ili2gpkgimport">Ili2gpkgImport</h3>
 <p>Importiert Daten aus einer INTERLIS-Transferdatei in eine GeoPackage-Datei.</p>
@@ -1958,11 +2879,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2gpkgReplace (<strong>not yet implemented</strong>) verwendet werden.</p>
 <p>Die Option <code>--doSchemaImport</code> wird automatisch gesetzt.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2gpkgImport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"SO_AGI_AV_GB_Administrative_Einteilungen_20180613"</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"data.xtf"</span><span class="op">);</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    dbfile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"data.gpkg"</span><span class="op">)</span>    </span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2gpkgImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"SO_AGI_AV_GB_Administrative_Einteilungen_20180613"</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"data.xtf"</span><span class="op">);</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    dbfile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"data.gpkg"</span><span class="op">)</span>    </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2161,26 +3082,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ili2pgdelete">Ili2pgDelete</h3>
 <p>Löscht einen Datensatz in der PostgreSQL-Datenbank anhand eines Datensatz-Identifikators. Diese Funktion bedingt, dass das Datenbankschema mit der Option createBasketCol erstellt wurde (via Task Ili2pgImportSchema). Der Parameter <code>failOnException</code> muss <code>false</code> sein, ansonsten bricht der Job ab.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'deleteDataset'</span><span class="op">,</span> Ili2pgDelete<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"DM01AVSO24LV95"</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"dm01"</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"kammersrohr"</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'deleteDataset'</span><span class="op">,</span> Ili2pgDelete<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"DM01AVSO24LV95"</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"dm01"</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"kammersrohr"</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Es können auch mehrere Datensätze pro Task gelöscht werden:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'deleteDataset'</span><span class="op">,</span> Ili2pgDelete<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"dm01"</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="op">[</span><span class="st">"Olten"</span><span class="op">,</span><span class="st">"Grenchen"</span><span class="op">]</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'deleteDataset'</span><span class="op">,</span> Ili2pgDelete<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"dm01"</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="op">[</span><span class="st">"Olten"</span><span class="op">,</span><span class="st">"Grenchen"</span><span class="op">]</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2218,7 +3139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="odd">
@@ -2375,27 +3296,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Mit dem Parameter <code>models</code>, <code>topics</code>, <code>baskets</code> oder <code>dataset</code> wird definiert, welche Daten exportiert werden.</p>
 <p>Ob die Daten im INTERLIS-1-, INTERLIS-2- oder GML-Format geschrieben werden, ergibt sich aus der Dateinamenserweiterung der Ausgabedatei. Für eine INTERLIS-1-Transferdatei muss die Erweiterung .itf verwendet werden. Für eine GML-Transferdatei muss die Erweiterung .gml verwendet werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportData'</span><span class="op">,</span> Ili2pgExport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900-out.itf"</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportData'</span><span class="op">,</span> Ili2pgExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900-out.itf"</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Dateinamen und Datensätzen angegeben werden.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportData'</span><span class="op">,</span> Ili2pgExport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="op">[</span><span class="st">"lv03_254900-out.itf"</span><span class="op">,</span><span class="st">"lv03_255000-out.itf"</span><span class="op">]</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="op">[</span><span class="st">"254900"</span><span class="op">,</span><span class="st">"255000"</span><span class="op">]</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportData'</span><span class="op">,</span> Ili2pgExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="op">[</span><span class="st">"lv03_254900-out.itf"</span><span class="op">,</span><span class="st">"lv03_255000-out.itf"</span><span class="op">]</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="op">[</span><span class="st">"254900"</span><span class="op">,</span><span class="st">"255000"</span><span class="op">]</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2433,7 +3354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="odd">
@@ -2599,33 +3520,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ili2pgimport" class="level3">
 <h3 class="anchored" data-anchor-id="ili2pgimport">Ili2pgImport</h3>
 <p>Importiert Daten aus einer INTERLIS-Transferdatei in die PostgreSQL-Datenbank.</p>
-<p>Die Tabellen werden implizit auch angelegt, falls sie noch nicht vorhanden sind. Falls die Tabellen in der Datenbank schon vorhanden sind, können sie zusätzliche Spalten enthalten (z.B. bfsnr, datum etc.), welche beim Import leer bleiben.</p>
+<p>Falls die Tabellen in der Datenbank schon vorhanden sind, können sie zusätzliche Spalten enthalten (z.B. bfsnr, datum etc.), welche beim Import leer bleiben.</p>
 <p>Falls beim Import ein Datensatz-Identifikator (dataset) definiert wird, darf dieser Datensatz-Identifikator in der Datenbank noch nicht vorhanden sein.</p>
-<p>Falls man mehrere Dateien importieren will, diese jedoch erst zur Laufzeit eruiert werden können, muss der Parameter <code>dataFile</code> eine Gradle <code>FileCollection</code> resp. eine implementierende Klasse (z.B. <code>FileTree</code>) sein. Gleiches gilt für den <code>dataset</code>-Parameter. Als einzelner Wert für das Dataset wird in diesem Fall der Name der Datei <em>ohne</em> Extension und <em>ohne</em> Pfad verwendet. Leider kann nicht bereits in der Task-Definition aus dem Filetree eine Liste gemacht werden, z.B. <code>fileTree(pathToUnzipFolder) { include '*.itf' }.files.name</code>. Diese Liste ist leer.</p>
+<p>Das Property <code>dataFile</code> kann mehreren Datentypen entsprechen:</p>
+<ul>
+<li><code>File</code>: Es wird eine einzelne Datei importiert.</li>
+<li><code>List</code>: Es werden mehrere Dateien gleichzeitig importiert. Die Namen der Dateien sind bereits vor Start des Jobs klar.</li>
+<li><code>FileCollection</code>: Es werden mehrere Dateien gleichzeitig importiert. Die Namen der Dateien sind erst zur Laufzeit bekannt (z.B. nach Download von FTP-Server o.ä.).</li>
+<li><code>String</code>: Es wird eine einzelne Datei aus einem ilidata-Repository automatisch heruntergeladen und importiert.</li>
+</ul>
 <p>Um die bestehenden (früher importierten) Daten zu ersetzen, kann der Task Ili2pgReplace verwendet werden.</p>
 <p>Beispiel 1:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgImport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Beispiel 2:</p>
 <p>Import der AV-Daten. In der <code>t_datasetname</code>-Spalte soll die BFS-Nummer stehen. Die BFS-Nummer entspricht den ersten vier Zeichen des Filenamens.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgImport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span>pathToUnzipFolder<span class="op">)</span> <span class="op">{</span> include <span class="st">'*.itf'</span> <span class="op">}</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> dataFile</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    datasetSubstring <span class="op">=</span> <span class="op">(</span><span class="fl">0..4</span><span class="op">).</span><span class="fu">toList</span><span class="op">()</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span>pathToUnzipFolder<span class="op">)</span> <span class="op">{</span> include <span class="st">'*.itf'</span> <span class="op">}</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> dataFile</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    datasetSubstring <span class="op">=</span> <span class="op">(</span><span class="fl">0..4</span><span class="op">).</span><span class="fu">toList</span><span class="op">()</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2669,7 +3596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="even">
@@ -2825,16 +3752,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Erstellt die Tabellenstruktur in der PostgreSQL-Datenbank anhand eines INTERLIS-Modells.</p>
 <p>Der Parameter <code>iliFile</code> oder <code>models</code> muss gesetzt werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importSchema'</span><span class="op">,</span> Ili2pgImportSchema<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"DM01AVSO24"</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"gretldemo"</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importSchema'</span><span class="op">,</span> Ili2pgImportSchema<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"DM01AVSO24"</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"gretldemo"</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -3034,7 +3961,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="even">
@@ -3327,27 +4254,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ili2pgreplace">Ili2pgReplace</h3>
 <p>Ersetzt die Daten in der PostgreSQL-Datenbank anhand eines Datensatz-Identifikators (dataset) mit den Daten aus einer INTERLIS-Transferdatei. Diese Funktion bedingt, dass das Datenbankschema mit der Option createBasketCol erstellt wurde (via Task Ili2pgImportSchema).</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'replaceData'</span><span class="op">,</span> Ili2pgReplace<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgReplace<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">'DM01AVSO24LV95'</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">'agi_dm01avso24'</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span>dir<span class="op">:</span> dm01SoDir<span class="op">,</span> include<span class="op">:</span> <span class="st">'*.itf'</span><span class="op">)</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> dataFile</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    datasetSubstring <span class="op">=</span> <span class="fl">0..4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'replaceData'</span><span class="op">,</span> Ili2pgReplace<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importData'</span><span class="op">,</span> Ili2pgReplace<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">'DM01AVSO24LV95'</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">'agi_dm01avso24'</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span>dir<span class="op">:</span> dm01SoDir<span class="op">,</span> include<span class="op">:</span> <span class="st">'*.itf'</span><span class="op">)</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> dataFile</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    datasetSubstring <span class="op">=</span> <span class="fl">0..4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -3391,7 +4318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="even">
@@ -3547,16 +4474,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Aktualisiert die Daten in der PostgreSQL-Datenbank anhand einer INTERLIS-Transferdatei, d.h. neue Objekte werden eingefügt, bestehende Objekte werden aktualisiert und in der Transferdatei nicht mehr vorhandene Objekte werden gelöscht.</p>
 <p>Diese Funktion bedingt, dass das Datenbankschema mit der Option <code>--createBasketCol</code> erstellt wurde (via Task Ili2pgImportSchema), und dass die Klassen und Topics eine stabile OID haben.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'updateData'</span><span class="op">,</span> Ili2pgUpdate<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'updateData'</span><span class="op">,</span> Ili2pgUpdate<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"lv03_254900.itf"</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> <span class="st">"254900"</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ili2pg.log"</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -3600,7 +4527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="even">
@@ -3756,17 +4683,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Prüft die Daten ohne diese in eine Datei zu exportieren. Der Task ist erfolgreich, wenn keine Fehler gefunden werden und ist nicht erfolgreich, wenn Fehler gefunden werden. Mit der Option <code>failOnException=false</code> ist der Task erfolgreich, auch wenn Fehler gefunden werden.</p>
 <p>Mit dem Parameter <code>--models</code>, <code>--topics</code>, <code>--baskets</code> oder <code>--dataset</code> wird definiert, welche Daten geprüft werden. Parameter <code>--dataset</code> akzeptiert auch eine Liste von Datasets.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> Ili2pgValidate<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"SO_AGI_AV_GB_Administrative_Einteilungen_20180613"</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    modeldir <span class="op">=</span> rootProject<span class="op">.</span>projectDir<span class="op">.</span><span class="fu">toString</span><span class="op">()</span> <span class="op">+</span> <span class="st">";http://models.interlis.ch"</span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"agi_av_gb_admin_einteilungen_fail"</span></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"fubar.log"</span><span class="op">)</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> Ili2pgValidate<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"SO_AGI_AV_GB_Administrative_Einteilungen_20180613"</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    modeldir <span class="op">=</span> rootProject<span class="op">.</span>projectDir<span class="op">.</span><span class="fu">toString</span><span class="op">()</span> <span class="op">+</span> <span class="st">";http://models.interlis.ch"</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    dbschema <span class="op">=</span> <span class="st">"agi_av_gb_admin_einteilungen_fail"</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"fubar.log"</span><span class="op">)</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -3804,7 +4731,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>datasetSubstring</td>
 <td><code>ListProperty&lt;Integer&gt;</code></td>
-<td>Entspricht der ili2pg-Option <code>--datasetSubstring</code>.</td>
+<td>null</td>
 <td>&nbsp;ja</td>
 </tr>
 <tr class="odd">
@@ -3959,10 +4886,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ilivalidator">IliValidator</h3>
 <p>Prüft eine INTERLIS-Datei (.itf oder .xtf) gegenüber einem INTERLIS-Modell (.ili). Basiert auf dem <a href="https://github.com/claeis/ilivalidator"><em>ilivalidator</em></a>.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> IliValidator<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"Beispiel2a.xtf"</span><span class="op">]</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ilivalidator.log"</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> IliValidator<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"Beispiel2a.xtf"</span><span class="op">]</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    logFile <span class="op">=</span> <span class="st">"ilivalidator.log"</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4089,12 +5016,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="jsonimport">JsonImport</h3>
 <p>Daten aus einer Json-Datei in eine Datenbanktabelle importieren. Die gesamte Json-Datei (muss UTF-8 encoded sein) wird als Text in eine Spalte importiert. Ist das Json-Objekt in der Datei ein Top-Level-Array wird für jedes Element des Arrays ein Record in der Datenbanktabelle erzeugt.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importJson'</span><span class="op">,</span> JsonImport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    jsonFile <span class="op">=</span> <span class="st">"data.json"</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    qualifiedTableName <span class="op">=</span> <span class="st">"jsonimport.jsonarray"</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    columnName <span class="op">=</span> <span class="st">"json_text_col"</span></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'importJson'</span><span class="op">,</span> JsonImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    jsonFile <span class="op">=</span> <span class="st">"data.json"</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    qualifiedTableName <span class="op">=</span> <span class="st">"jsonimport.jsonarray"</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    columnName <span class="op">=</span> <span class="st">"json_text_col"</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4147,15 +5074,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="postgisrasterexport" class="level3">
 <h3 class="anchored" data-anchor-id="postgisrasterexport">PostgisRasterExport</h3>
 <p>Exportiert eine PostGIS-Raster-Spalte in eine Raster-Datei mittels SQL-Query. Die SQL-Query darf nur einen Record zurückliefern, d.h. es muss unter Umständen <code>ST_Union()</code> verwendet werden. Es wird angenommen, dass die erste <em>bytea</em>-Spalte des Resultsets die Rasterdaten enthält. Weitere <em>bytea</em>-Spalten werden ignoriert. Das Outputformat und die Formatoptionen müssen in der SQL-Datei (in der Select-Query) angegeben werden, z.B.:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>:<span class="ch">:int</span> <span class="kw">AS</span> foo, ST_AsGDALRaster((ST_AsRaster(ST_Buffer(ST_Point(<span class="dv">2607880</span>,<span class="dv">1228287</span>),<span class="dv">10</span>),<span class="dv">150</span>, <span class="dv">150</span>)), <span class="st">'AAIGrid'</span>, <span class="dt">ARRAY</span>[<span class="st">''</span>], <span class="dv">2056</span>) <span class="kw">AS</span> raster</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>:<span class="ch">:int</span> <span class="kw">AS</span> foo, ST_AsGDALRaster((ST_AsRaster(ST_Buffer(ST_Point(<span class="dv">2607880</span>,<span class="dv">1228287</span>),<span class="dv">10</span>),<span class="dv">150</span>, <span class="dv">150</span>)), <span class="st">'AAIGrid'</span>, <span class="dt">ARRAY</span>[<span class="st">''</span>], <span class="dv">2056</span>) <span class="kw">AS</span> raster</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportTiff'</span><span class="op">,</span> PostgisRasterExport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    sqlFile <span class="op">=</span> <span class="st">"raster.sql"</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"export.tif"</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'exportTiff'</span><span class="op">,</span> PostgisRasterExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    sqlFile <span class="op">=</span> <span class="st">"raster.sql"</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"export.tif"</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4208,13 +5135,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="s3bucket2bucket">S3Bucket2Bucket</h3>
 <p>Kopiert Objekte von einem Bucket in einen anderen. Die Buckets müssen in der gleichen Region sein. Die Permissions werden nicht mitkopiert und müssen explizit gesetzt werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'copyFiles'</span><span class="op">,</span> S3Bucket2Bucket<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> s3AccessKey</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> s3SecretKey</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    sourceBucket <span class="op">=</span> s3SourceBucket</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    targetBucket <span class="op">=</span> s3TargetBucket</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'copyFiles'</span><span class="op">,</span> S3Bucket2Bucket<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> s3AccessKey</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> s3SecretKey</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    sourceBucket <span class="op">=</span> s3SourceBucket</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    targetBucket <span class="op">=</span> s3TargetBucket</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4286,15 +5213,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="s3download">S3Download</h3>
 <p>Lädt eine Datei aus einem S3-Bucket herunter.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'downloadFile'</span><span class="op">,</span> S3Download<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> <span class="st">'abcdefg'</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> <span class="st">'hijklmnopqrstuvwxy'</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    downloadDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./path/to/dir/"</span><span class="op">)</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"foo.pdf"</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'downloadFile'</span><span class="op">,</span> S3Download<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> <span class="st">'abcdefg'</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> <span class="st">'hijklmnopqrstuvwxy'</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    downloadDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./path/to/dir/"</span><span class="op">)</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"foo.pdf"</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4361,16 +5288,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Lädt ein Dokument (<code>sourceFile</code>) oder alle Dokumente in einem Verzeichnis (<code>sourceDir</code>) in einen S3-Bucket (<code>bucketName</code>) hoch.</p>
 <p>Mit dem passenden Content-Typ kann man das Verhalten des Browsers steuern. Default ist ‘application/octect-stream’, was dazu führt, dass die Datei immer heruntergeladen wird. Soll z.B. ein PDF oder ein Bild im Browser direkt angezeigt werden, muss der korrekte Content-Typ gewählt werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'uploadDirectory'</span><span class="op">,</span> S3Upload<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> <span class="st">'abcdefg'</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> <span class="st">'hijklmnopqrstuvwxy'</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    sourceDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./docs"</span><span class="op">)</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    contentType <span class="op">=</span> <span class="st">"application/pdf"</span></span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'uploadDirectory'</span><span class="op">,</span> S3Upload<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    accessKey <span class="op">=</span> <span class="st">'abcdefg'</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    secretKey <span class="op">=</span> <span class="st">'hijklmnopqrstuvwxy'</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    sourceDir <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"./docs"</span><span class="op">)</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    bucketName <span class="op">=</span> <span class="st">"ch.so.ada.denkmalschutz"</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    endPoint <span class="op">=</span> <span class="st">"https://s3.eu-central-1.amazonaws.com"</span> </span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    region <span class="op">=</span> <span class="st">"eu-central-1"</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    acl <span class="op">=</span> <span class="st">"public-read"</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    contentType <span class="op">=</span> <span class="st">"application/pdf"</span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4460,16 +5387,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="shpexport">ShpExport</h3>
 <p>Daten aus einer bestehenden Datenbanktabelle werden in eine SHP-Datei exportiert.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'shpexport'</span><span class="op">,</span> ShpExport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpexport"</span></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"exportdata"</span></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'shpexport'</span><span class="op">,</span> ShpExport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpexport"</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"exportdata"</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4526,16 +5453,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Die Tabelle muss eine Geometriespalte enthalten. Der Name der Geometriespalte kann beliebig gewählt werden.</p>
 <p>Die Gross-/Kleinschreibung der SHP-Spaltennamen wird für die Zuordnung zu den DB-Spalten ignoriert.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'shpimport'</span><span class="op">,</span> ShpImport<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpimport"</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"importdata"</span></span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'shpimport'</span><span class="op">,</span> ShpImport<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>    schemaName <span class="op">=</span> <span class="st">"shpimport"</span></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>    tableName <span class="op">=</span> <span class="st">"importdata"</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    dataFile <span class="op">=</span> <span class="st">"data.shp"</span></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4591,10 +5518,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Im gegebenen Modell wird eine Klasse gesucht, die genau die Attributenamen wie in der Shp-Datei enthält (wobei die Gross-/Kleinschreibung ignoriert wird); die Attributtypen werden ignoriert. Wird keine solche Klasse gefunden, gilt das als Validierungsfehler.</p>
 <p>Die Prüfung von gleichzeitig mehreren Shapefiles führt zu Fehlermeldungen wie <code>OID o3158 of object &lt;Modelname&gt;.&lt;Topicname&gt;.&lt;Klassenname&gt; already exists in ...</code>. Beim Öffnen und Lesen eines Shapefiles wird immer der Zähler, der die interne (im Shapefile nicht vorhandene) <code>OID</code> generiert, zurückgesetzt. Somit kann immer nur ein Shapefile pro Task geprüft werden.</p>
 <p>Beispiel:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> ShpValidator<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"ShpModel"</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"data.shp"</span><span class="op">]</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'validate'</span><span class="op">,</span> ShpValidator<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    models <span class="op">=</span> <span class="st">"ShpModel"</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    dataFiles <span class="op">=</span> <span class="op">[</span><span class="st">"data.shp"</span><span class="op">]</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4735,25 +5662,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Der SqlExecutor-Task muss neben Updates ganzer Tabellen (d.h. Löschen des gesamten Inhalts einer Tabelle und gesamter neuer Stand in die Tabelle schreiben) auch Updates von Teilen von Tabellen zulassen. D.h. es muss z.B. möglich sein, innerhalb einer Tabelle nur die Objekte einer bestimmten Gemeinde zu aktualisieren. Darum ist es möglich innerhalb der .sql-Datei Paramater zu verwenden und diesen Parametern beim Task einen konkreten Wert zuzuweisen. Innerhalb der .sql-Datei werden Paramter mit folgender Syntax verwendet: <code>${paramName}</code>.</p>
 <p>Unterstützte Datenbanken: PostgreSQL, SQLite, Oracle, Derby und DuckDB.</p>
 <p>Beispiele:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'executeSomeSql'</span><span class="op">,</span> SqlExecutor<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">]</span></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost:54321/gretldemo'</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'executeSomeSql'</span><span class="op">,</span> SqlExecutor<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">]</span></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Damit mit einer einzigen Task-Definition mehrere Datensätze verarbeitet werden können, kann auch eine Liste von Parametern angegeben werden.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'executeSomeSql'</span><span class="op">,</span> SqlExecutor<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">],[</span>dataset<span class="op">:</span><span class="st">'Grenchen'</span><span class="op">]]</span></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_uri <span class="op">=</span> <span class="st">'jdbc:postgresql://localhost/gretldemo'</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_user <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="dt">def</span> db_pass <span class="op">=</span> <span class="st">"dmluser"</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'executeSomeSql'</span><span class="op">,</span> SqlExecutor<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="op">[</span>db_uri<span class="op">,</span> db_user<span class="op">,</span> db_pass<span class="op">]</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>    sqlParameters <span class="op">=</span> <span class="op">[[</span>dataset<span class="op">:</span><span class="st">'Olten'</span><span class="op">],[</span>dataset<span class="op">:</span><span class="st">'Grenchen'</span><span class="op">]]</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>    sqlFiles <span class="op">=</span> <span class="op">[</span><span class="st">'demo.sql'</span><span class="op">]</span></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -4795,23 +5722,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="xsltransformer-incubating">XslTransformer (incubating)</h3>
 <p>Transformiert eine Datei mittels einer XSL-Transformation ein eine andere Datei. Ist der <code>xslFile</code>-Parameter ein String, wird erwartet, dass die Datei im GRETL-Verzeichnis im Ressourcenordner <code>src/main/resources/xslt</code>-Verzeichnis gespeichert ist. Falls der <code>xslFile</code>-Parameter ein File-Objekt ist, können lokale Dateien verwendet werden.</p>
 <p>Beispiele:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"path/to/eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span><span class="op">)</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span><span class="st">"."</span><span class="op">).</span><span class="fu">matching</span> <span class="op">{</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>        include <span class="st">"*.xml"</span></span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"path/to/eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span><span class="op">)</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"MeldungAnGeometer_G-0111102_20221103_145001.xml"</span><span class="op">)</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>tasks<span class="op">.</span><span class="fu">register</span><span class="op">(</span><span class="st">'transform'</span><span class="op">,</span> XslTransformer<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    xslFile <span class="op">=</span> <span class="st">"eCH0132_to_SO_AGI_SGV_Meldungen_20221109.xsl"</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    xmlFile <span class="op">=</span> <span class="fu">fileTree</span><span class="op">(</span><span class="st">"."</span><span class="op">).</span><span class="fu">matching</span> <span class="op">{</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>        include <span class="st">"*.xml"</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>    outDirectory <span class="op">=</span> <span class="fu">file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
